@@ -1,0 +1,3 @@
+[submodule "ss24/ds1-ss24/exercises/5/ds_ex_repo"]
+	path = ss24/ds1-ss24/exercises/5/ds_ex_repo
+	url = git@github.com:erdfern/ds_ex_repo
