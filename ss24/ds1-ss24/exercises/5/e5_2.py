@@ -1,3 +1,4 @@
+import argparse
 from typing import List
 
 
@@ -20,7 +21,7 @@ def find_individual(lst: List[int]) -> int:
     ```
     """
     if len(lst) == 0 or len(lst) % 2 == 0:
-        raise ValueError("Length is ")
+        raise ValueError("Length of the list must be odd")
     assert_list_of_integers(lst)
 
     element_counts = dict.fromkeys(lst, 0)
@@ -52,7 +53,19 @@ def find_individual(lst: List[int]) -> int:
 
 
 def _main():
-    find_individual([1, 1, 2, 3, 3])
+    parser = argparse.ArgumentParser(
+        description="Find the unique element in a list where all other elements appear exactly twice."
+    )
+    parser.add_argument(
+        "integers",
+        metavar="N",
+        type=int,
+        nargs="+",
+        help="an integer for the list",
+    )
+    args = parser.parse_args()
+    result = find_individual(args.integers)
+    print(result)
 
 
 if __name__ == "__main__":
