@@ -1,3 +1,6 @@
+from typing import Tuple
+
+
 def showLit(lit):
     if lit[1]:
         return lit[0]
@@ -16,11 +19,11 @@ def showCNF(F):
     return " ^ ".join("(" + showClause(clause) + ")" for clause in F)
 
 
-def alphaLit(lit, alpha):
+def alphaLit(lit: tuple[str, bool], alpha):
     if lit[0] in alpha:
         return lit[1]
     else:
-        return False
+        return not lit[1]
 
 
 def alphaClause(clause, alpha):
@@ -74,11 +77,10 @@ def main():
 
     print("~~~ 4. ~~~")
     # Erfüllende Belegung??
-    # alpha_true = {"A": True, "B": False, "C": True}
-    alpha_true = {"A": False, "B": False, "C": False}
+    alpha_true = []
 
     # Nicht erfüllende Belegung
-    alpha_false = {"A": False, "B": True, "C": True}
+    alpha_false = ["B"]
 
     print(f"Erfüllende Belegung: {alpha_true} -> {alphaCNF(c, alpha_true)}")
     print(
@@ -86,10 +88,10 @@ def main():
     )
 
     print("~~~ 5. ~~~")
-    for assignment in itertools.product([True, False], repeat=3):
-        lits = tuple(zip(["X", "Y", "Z"], assignment))
-        print(showCNF(F(lits[0], lits[1], lits[2])))
-        print(alphaCNF(F(lits[0], lits[1], lits[2]), alpha))
+    f = F(("X", True), ("Y", True), ("Z", True))
+    print(
+        f"Alle Belegungen von {showCNF(f)} nicht erfüllbar: {not all([ alphaCNF(f, x) for xs in [itertools.combinations(['X', 'Y', 'Z'], x) for x in range(0, 4)] for x in xs ])}"
+    )
 
 
 if __name__ == "__main__":
