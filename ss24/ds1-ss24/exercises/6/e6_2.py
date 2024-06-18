@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.stats import norm
+from scipy.stats import norm, bootstrap
 
 # Parameters for the Gaussian distribution
 mean = 10
@@ -68,3 +68,19 @@ axs[2].legend()
 
 plt.tight_layout()
 plt.show()
+
+# 2.3) load sample.npy
+sample = np.load("sample.npy")
+empirical_mean = sample.mean()
+sample = (sample,)
+print(sample)
+
+# calculate 95% bootstrapped confidence interval for mean
+bootstrap_ci = bootstrap(
+    sample, np.mean, confidence_level=0.95, random_state=1, method="percentile"
+)
+
+print(f"95% confidence interval for mean: {bootstrap_ci.confidence_interval}")
+print(f"Empirical mean: {empirical_mean}")
+
+# 2.4) null hypothesis is that mean is equal to 5. Alternative hypothesis is that it's not. Reject H0? Use bootstrapping.
