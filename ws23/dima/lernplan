@@ -1,0 +1,102 @@
+<BuchInhalt>
+1 Grundlagen
+1.1 Naive Mengenlehre
+1.2 Die natürlichen Zahlen und Induktion
+1.3 Kardinalität einer Menge
+1.A Beweis von Theorem 1.19
+1.B Was ist an der Mengenlehre naiv?
+1.C Aufgaben
+
+2 Kombinatorik
+2.1 Permutationen
+2.2 Der Binomialkoeffizient
+2.3 Inklusion-Exklusion
+2.4 Diskrete Wahrscheinlichkeitsrechnung
+2.A Aufgaben
+
+3 Rekursionen.
+3.1 Lineare homogene Rekursionen
+3.2 Fibonacci-Zahlen
+3.A Aufgaben
+
+4 Graphentheorie (NICHT BEHANDELT)
+
+5 Elementare und modulare Arithmetik
+5.1 Ein bisschen Algebra
+5.2 Ganze Zahlen und Teilbarkeit
+5.3 Primzahlen
+5.4 Modulare Arithmetik
+5.5 Rechnen modulo einer Primzahl
+5.A Aufgaben
+
+6 Kryptographie
+6.1 Anfänge der Kryptographie
+6.2 Schlüsselwort und Schlüsselbuchstaben
+6.3 RSA-Kryptosystem
+6.A Aufgaben
+
+</BuchInhalt>
+
+<Vorlesungsverlauf>
+W1:
+- Mengen
+- Relationen
+- Funktionen (injektiv/surjektiv, bijektiv/Umkehrfunktion).
+- Unterlagen: Folien bis Seite 26
+
+W2:
+- Komposition von Funktionen
+- Kardinalitaet von Mengen
+- Aequivalenzreaktionen, Kongruenzen, Aequivalenzklassen/Restklassen, Partitionen (Folen Seiten 33-43)
+- Aussagenlogik (Folien 60-65)
+
+W3:
+- Aussagenlogik (Folien Seiten 62-67)
+- Induktionsprinzip und Vollstaendige Induktion (Folien Seiten 49-53, Buch Seiten 12 und 12, Theorem 1.41 Seiten 17-18)
+- Beispiele aus zur Induktion von StudIP
+
+W4:
+- Additions- und Multiplikationsprinzip (Buch Seiten 17-23)
+- Kombinatorik: Permutationen (Buch Seiten 33-37)
+
+W5:
+- Binomialkoeffizient, Kombinationen, Variationen: Buch Seiten 38-47
+
+W6:
+- Euklidischer Algorithmus, Loesung von linearen Gleichungen in Z: Buch Seiten 114-123
+
+W7:
+- Gruppen, Ringe, Koerper (Buch Seiten 109-110, Definitino 5.5 bis Lemma 5.8, Abschnitt 5.3 auf Seite 123 bis Lemma 5.36)
+- Theorem 5.37 auf Seite 123 bis Proposition 5.44 auf Seite 127
+
+W8:
+- Beispiele von Gruppen und kurze Wiederholung von W7
+- Buch Seiten 133-136, insbesondere: (Z/nZ,+,x) ist ein Ring, fuer Primzahl p ist (Z/pZ,+,x) ein Koerper
+- Besonders wichtig: Lemma 5.62 und Bemerkung 5.65. Daraus folgt, dass das multiplikative Inverse von a in Z/nZ durch den Euklidischen Algorithmus als Loesung von ax+ny=1 bestimmt.
+- Definition der eulerschen Phi Funktion, Beispiele von Phi(p) und Phi(p^r) fuer p Primzahl
+
+W9:
+- Chinesischer Restsatz (C0.pdf, C1.pdf, Buch Seiten 137-139, Beispiele 5.75 und 5.76)
+- Phi Funktion
+- => Wir koennen jetzt ein modulares Gleichungsystem loesen, und fuer jede natuerliche Zahl die Phi Funktion bestimmen
+- Eigenschaften der Phi Funktion und deren Bestimmung (Buch Seiten 141-143 ab Korollar 5.77 und ohne Proposition 5.80)
+
+W10:
+- Zyklische Gruppen und Ordnung (Buch Seiten 148-151 von Bemerkung 5.89 bis Proposition 5.95, ohne Korollar 5.94)
+- Polynome (Buch Seiten 151-155, bis Lemma 5.104)
+
+W11:
+- Morphismen(Homomorphismen) von Gruppen (Buch Seiten 137-138)
+- Proposition 5.80, Buch Seite 143
+- Theorem 5.105, Beispiele 5.106 und Korollar 5107, Buch Seiten 155-157
+- Germans kleiner Satz (FkS) und Anwendung (Buch Seiten 145-146)
+
+W12:
+- Anwendung von Fermats kleinem Satz (Buch Bemerkung 5.85, Seite 146)
+- Satz von Euler (Buch Seite 147)
+- Beispiele 5.87, 5.88, 5.89 (Buch Seiten 147-148)
+- Krypthographie: Caesar und Vigenere Kryptosysteme (Buch Seiten 163-168)
+
+W13:
+- Schluesseltausch und RSA Kryptosystem (Buch Seiten 168-179)
+</Vorlesungsverlauf>

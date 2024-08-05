@@ -1,0 +1,169 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs}
+\usepackage[ngerman]{babel}
+
+\title{Lösungen zu Übungsaufgaben 04 \\ \small Gruppe: Mi 08-10 SR 2, Barbara Rieß}
+\author{Linus Keiser}
+\date{\today}
+
+% Theorem-Umgebungen
+\renewcommand{\proofname}{Beweis}
+\newtheorem*{theorem}{Satz}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Bemerkung}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 13}
+
+\begin{enumerate}
+	\item[(a)] Binärdarstellung von 101 ist 1100101:
+		\[
+			\begin{aligned}
+				101 / 2 & = 50 & \text{Rest } 1 \\
+				50 / 2  & = 25 & \text{Rest } 0 \\
+				25 / 2  & = 12 & \text{Rest } 1 \\
+				12 / 2  & = 6  & \text{Rest } 0 \\
+				6 / 2   & = 3  & \text{Rest } 0 \\
+				3 / 2   & = 1  & \text{Rest } 1 \\
+				1 / 2   & = 0  & \text{Rest } 1
+			\end{aligned}
+		\]
+	\item[(b)] Hexadezimaldarstellung von 107470 ist 1A3C6:
+		\[
+			\begin{aligned}
+				107470 / 16 & = 6716 & \text{Rest } 6  \\
+				6716 / 16   & = 419  & \text{Rest } 12 \\
+				419 / 16    & = 26   & \text{Rest } 3  \\
+				26 / 16     & = 1    & \text{Rest } 10 \\
+				1 / 16      & = 0    & \text{Rest } 1
+			\end{aligned}
+		\]
+	\item[(c)] Oktaldarstellung von 95 ist 137:
+		\[
+			\begin{aligned}
+				95 / 8 & = 11 & \text{Rest } 7 \\
+				11 / 8 & = 1  & \text{Rest } 3 \\
+				1 / 8  & = 0  & \text{Rest } 1
+			\end{aligned}
+		\]
+\end{enumerate}
+
+
+\section*{Aufgabe 15}
+
+\subsection*{a): \( M := \mathbb{N}_0 = \mathbb{N} \cup \{0\} \)}
+
+\begin{itemize}
+	\item \textbf{Nach unten beschränkt:} Die Menge \( \mathbb{N}_0 \) ist nach unten beschränkt, da alle Elemente in dieser Menge größer oder gleich 0 sind. Also ist 0 eine untere Schranke.
+	\item \textbf{Nach oben beschränkt:} Die Menge \( \mathbb{N}_0 \) ist nicht nach oben beschränkt. Dies liegt daran, dass es in den natürlichen Zahlen kein größtes Element gibt; für jede natürliche Zahl \( n \) gibt es eine größere Zahl \( n+1 \).
+	\item \textbf{Minimum:} Das Minimum von \( \mathbb{N}_0 \) ist 0, da es das kleinste Element in der Menge ist.
+	\item \textbf{Maximum:} Es gibt kein Maximum, da die Menge nach oben nicht beschränkt ist.
+	\item \textbf{Infimum:} Das Infimum ist ebenfalls 0, da es keine kleinere Zahl in \( \mathbb{Q} \) gibt, die noch eine Schranke für \( \mathbb{N}_0 \) ist.
+	\item \textbf{Supremum:} Das Supremum existiert nicht in \( \mathbb{Q} \), da die Menge nach oben unbegrenzt ist.
+\end{itemize}
+
+\subsection*{b): \( M := \mathbb{Z} \)}
+
+\begin{itemize}
+	\item \textbf{Nach unten beschränkt:} Die Menge \( \mathbb{Z} \) ist nicht nach unten beschränkt, da für jede Zahl in \( \mathbb{Z} \) eine noch kleinere Zahl existiert.
+	\item \textbf{Nach oben beschränkt:} \( \mathbb{Z} \) ist auch nicht nach oben beschränkt, da es zu jeder Zahl in \( \mathbb{Z} \) eine größere Zahl gibt.
+	\item \textbf{Minimum:} Es gibt kein Minimum, da es keine kleinste ganze Zahl gibt.
+	\item \textbf{Maximum:} Ebenso gibt es kein Maximum, da es keine größte ganze Zahl gibt.
+	\item \textbf{Infimum:} Das Infimum existiert nicht in \( \mathbb{Q} \), da es keine größte untere Schranke gibt. Jede Zahl, die man als Infimum betrachten könnte, hätte eine noch kleinere Zahl als untere Schranke.
+	\item \textbf{Supremum:} Das gleiche gilt für das Supremum – es gibt keine kleinste obere Schranke in \( \mathbb{Q} \).
+\end{itemize}
+
+\subsection*{c): \( M := \{x \in \mathbb{Z} \mid 8 < x^2 < 50\} \)}
+
+\subsubsection*{Elemente in \( M \)}
+\begin{itemize}
+	\item Die Ungleichung \( x^2 > 8 \) ist erfüllt für ganzzahlige \( x \), deren Betrag größer als \( \sqrt{8} \) ist. Da \( \sqrt{8} \) ungefähr 2,83 ist, bedeutet dies, dass \( |x| > 2 \) sein muss.
+	\item Die Ungleichung \( x^2 < 50 \) ist erfüllt für ganzzahlige \( x \), deren Betrag kleiner als \( \sqrt{50} \) ist. Da \( \sqrt{50} \) ungefähr 7,07 ist, bedeutet dies, dass \( |x| < 7 \).
+\end{itemize}
+Daraus folgt, dass die ganzen Zahlen \( x \) in \( M \) diejenigen sind, für die \( 3 \leq |x| \leq 7 \). Das bedeutet, \( x \) kann -7, -6, -5, -4, -3, 3, 4, 5, 6 oder 7 sein.
+\begin{itemize}
+	\item \textbf{Nach unten beschränkt:} Da -7 die kleinste Zahl in \( M \) ist, ist \( M \) nach unten beschränkt.
+	\item \textbf{Nach oben beschränkt:} Da 7 die größte Zahl in \( M \) ist, ist \( M \) nach oben beschränkt.
+	\item \textbf{Minimum:} Das Minimum von \( M \) ist -7, da es das kleinste Element in der Menge ist.
+	\item \textbf{Maximum:} Das Maximum von \( M \) ist 7, da es das größte Element in der Menge ist.
+	\item \textbf{Infimum:} Das Infimum von \( M \) ist ebenfalls -7, da es die größte Zahl in \( \mathbb{Q} \) ist, die kleiner oder gleich allen Elementen von \( M \) ist.
+	\item \textbf{Supremum:} Das Supremum von \( M \) ist 7, da es die kleinste Zahl in \( \mathbb{Q} \) ist, die größer oder gleich allen Elementen von \( M \) ist.
+\end{itemize}
+
+\subsection*{d): \( M := \{x \in \mathbb{Q} \mid 2 < x^2 < 4\} \)}
+
+\subsubsection*{Elemente in \( M \)}
+\begin{itemize}
+	\item Die Ungleichung \( x^2 > 2 \) ist erfüllt für \( x \), dessen Betrag größer als \( \sqrt{2} \) ist. Da \( \sqrt{2} \) ungefähr 1,41 ist, bedeutet dies, dass \( |x| > \sqrt{2} \).
+	\item Die Ungleichung \( x^2 < 4 \) ist erfüllt für \( x \), dessen Betrag kleiner als 2 ist.
+\end{itemize}
+Somit umfasst die Menge \( M \) alle rationalen Zahlen \( x \), für die \( \sqrt{2} < |x| < 2 \).
+\begin{itemize}
+	\item \textbf{Nach unten beschränkt:} Da es keine rationale Zahl in \( M \) gibt, die kleiner als \( -\sqrt{2} \) ist, ist \( M \) nach unten beschränkt.
+	\item \textbf{Nach oben beschränkt:} Ebenso gibt es keine rationale Zahl in \( M \) größer als \( \sqrt{2} \), daher ist \( M \) nach oben beschränkt.
+	\item \textbf{Minimum:} Es gibt kein Minimum in \( M \), da für jede rationale Zahl \( x \) in \( M \) eine kleinere rationale Zahl \( x' \) existiert, so dass \( \sqrt{2} < x'^2 < x^2 < 4 \).
+	\item \textbf{Maximum:} Ebenso gibt es kein Maximum in \( M \), da für jede rationale Zahl \( x \) in \( M \) eine größere rationale Zahl \( x' \) existiert, so dass \( 2 < x^2 < x'^2 < 4 \).
+	\item \textbf{Infimum:} Das Infimum von \( M \) ist \( -\sqrt{2} \), da es die größte Zahl in \( \mathbb{Q} \) ist, die kleiner als alle Elemente von \( M \) ist (obwohl \( -\sqrt{2} \) selbst nicht rational und somit nicht in \( M \) ist).
+	\item \textbf{Supremum:} Das Supremum von \( M \) ist \( \sqrt{2} \), da es die kleinste Zahl in \( \mathbb{Q} \) ist, die größer als alle Elemente von \( M \) ist (obwohl \( \sqrt{2} \) selbst nicht rational und somit nicht in \( M \) ist).
+\end{itemize}
+
+\subsection*{e): \( M := \left\{ x \in \mathbb{Q} \mid x = \frac{2}{3n+1} \text{ für ein } n \in \mathbb{N}_0 \right\}. \)}
+
+\begin{itemize}
+	\item \textbf{Nach unten beschränkt:} Da sowohl der Zähler (2) als auch der Nenner ($3n+1$) immer positiv sind, sind alle Werte in $M$ positiv. Daher ist die Menge nach unten beschränkt durch die untere Schranke 0.
+	\item \textbf{Nach oben beschränkt:} Der größte Wert in $M$ tritt auf, wenn $n=0$, was zu $x=2$ führt. Daher ist die Menge nach oben beschränkt durch 2.
+	\item \textbf{Minimum:} Es gibt kein Minimum, da es keine kleinste positive rationale Zahl gibt. Für jedes $x \in M$ kann ein kleineres positives $x'$ in $M$ gefunden werden, indem ein größeres $n$ gewählt wird.
+	\item \textbf{Maximum:} Das Maximum der Menge ist 2, erreicht für $n=0$.
+	\item \textbf{Infimum:} Das Infimum von $M$ ist 0, da es die größte Zahl in $\mathbb{Q}$ ist, die kleiner als alle Elemente von $M$ ist, obwohl 0 selbst nicht in $M$ ist.
+	\item \textbf{Supremum:} Das Supremum von $M$ ist 2, was der kleinste Wert in $\mathbb{Q}$ ist, der größer oder gleich allen Elementen von $M$ ist.
+\end{itemize}
+
+\section*{Aufgabe 16}
+
+\subsection*{Teil (a): Konvergenz der Folge \((a_n)\)}
+\begin{theorem}
+	Die Folge \((a_n)_{n\in\mathbb{N}}\) mit \(a_n = \frac{4n^3 + n^2}{5n^3}\) konvergiert gegen den Grenzwert \(\frac{4}{5}\).
+\end{theorem}
+
+\begin{proof}
+	Wir zeigen durch Anwendung der Definition 5.2 der Grenzwertkonvergenz, dass die Folge \((a_n)\) gegen \(\frac{4}{5}\) konvergiert.
+
+	\begin{enumerate}
+		\item Zunächst vereinfachen wir den Ausdruck \(a_n\):
+		      \[ a_n = \frac{4n^3 + n^2}{5n^3} = \frac{n^2(4n + 1)}{5n^3} = \frac{4n + 1}{5n} \]
+
+		\item Nun betrachten den Abstand zwischen \(a_n\) und dem Grenzwert \(\frac{4}{5}\):
+		      \[ |a_n - \frac{4}{5}| = \left| \frac{4n + 1}{5n} - \frac{4}{5} \right| = \left| \frac{4n + 1 - 4n}{5n} \right| = \left| \frac{1}{5n} \right| \]
+		      Da \(n\) positiv ist, können wir den Absolutbetrag weglassen:
+		      \[ |a_n - \frac{4}{5}| = \frac{1}{5n} \]
+
+		\item Für jedes \(\varepsilon > 0\) finden wir ein \(N(\varepsilon)\), sodass für alle \(n \geq N(\varepsilon)\) gilt \(|a_n - \frac{4}{5}| < \varepsilon\). Dies ist gleichbedeutend damit, dass \(\frac{1}{5n} < \varepsilon\) sein muss. Daraus folgt \(n > \frac{1}{5\varepsilon}\) und somit setzen wir \(N(\varepsilon) = \left\lceil \frac{1}{5\varepsilon} \right\rceil\).
+	\end{enumerate}
+	Wir haben damit bestätigt, dass die Folge \((a_n)\) den Konvergenzkriterien entspricht und gegen \(\frac{4}{5}\) konvergiert.
+\end{proof}
+
+\subsection*{Teil (b): Divergenz der Folgen \((b_n)\) und \((c_n)\)}
+\begin{theorem}
+	Die Folgen \((b_n)_{n\in\mathbb{N}}\) mit \(b_n = (-1)^n\) und \((c_n)_{n\in\mathbb{N}}\) mit \(c_n = 2^n\) sind divergent.
+\end{theorem}
+
+\begin{proof}
+	Wir führen einen direkten Beweis, um zu zeigen, dass beide Folgen die Bedingungen der Konvergenz nicht erfüllen und somit divergent sind.
+
+	\begin{enumerate}
+		\item Die Folge \(b_n = (-1)^n\) alterniert zwischen -1 und 1. Für ungerade \(n\) ist \(b_n = -1\) und für gerade \(n\) ist \(b_n = 1\). Diese ständige Oszillation zwischen zwei Werten bedeutet, dass für jeden angenommenen Grenzwert \(a\) und für jedes \(\varepsilon > 0\), das kleiner ist als min{ |a - 1|, |a + 1| }, kein \(N(\varepsilon)\) existiert, sodass \(|b_n - a| < \varepsilon\) für alle \(n \geq N(\varepsilon)\) gilt. Daher kann kein Grenzwert \(a\) gefunden werden, der die Konvergenzbedingung erfüllt, und somit ist \((b_n)\) divergent.
+
+		\item Die Folge \(c_n = 2^n\) wächst unbeschränkt. Für jeden potenziellen Grenzwert \(a\) und für jedes \(\varepsilon > 0\) gibt es immer ein \(n\), sodass \(|c_n - a|\) nicht kleiner als \(\varepsilon\) ist. Daher ist \((c_n)\) divergent.
+	\end{enumerate}
+
+	Wir haben damit gezeigt, dass sowohl \((b_n)\) als auch \((c_n)\) nicht divergieren.
+\end{proof}
+
+\end{document}

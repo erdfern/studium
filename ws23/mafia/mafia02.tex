@@ -1,0 +1,226 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{Lösungen zu Übungsaufgaben 02 \\ \small Gruppe: Mi 08-10 SR 2, Barbara Rieß}
+\author{Linus Keiser}
+\date{\today}
+
+\newtheorem{theorem}{Satz}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 5}
+
+\subsection*{(a) \( f^{-1}(V_1 \cup V_2) = f^{-1}(V_1) \cup f^{-1}(V_2) \)}
+
+\begin{proof}
+	Wir zeigen die Gleichheit der Mengen durch Nachweis der gegenseitigen Inklusion.
+
+	\textbf{Zu zeigen:} \( f^{-1}(V_1 \cup V_2) \subseteq f^{-1}(V_1) \cup f^{-1}(V_2) \) und \( f^{-1}(V_1) \cup f^{-1}(V_2) \subseteq f^{-1}(V_1 \cup V_2) \).
+
+	\textbf{1. Inklusion:} Sei \( x \in f^{-1}(V_1 \cup V_2) \). Dann gilt:
+	\begin{align*}
+		f(x) & \in V_1 \cup V_2                                              \\
+		     & \Rightarrow f(x) \in V_1 \text{ oder } f(x) \in V_2           \\
+		     & \Rightarrow x \in f^{-1}(V_1) \text{ oder } x \in f^{-1}(V_2) \\
+		     & \Rightarrow x \in f^{-1}(V_1) \cup f^{-1}(V_2)
+	\end{align*}
+
+	\textbf{2. Inklusion:} Sei \( x \in f^{-1}(V_1) \cup f^{-1}(V_2) \). Dann gilt:
+	\begin{align*}
+		x & \in f^{-1}(V_1) \text{ oder } x \in f^{-1}(V_2)     \\
+		  & \Rightarrow f(x) \in V_1 \text{ oder } f(x) \in V_2 \\
+		  & \Rightarrow f(x) \in V_1 \cup V_2                   \\
+		  & \Rightarrow x \in f^{-1}(V_1 \cup V_2)
+	\end{align*}
+
+	Da \( x \) in beiden Fällen zu \( f^{-1}(V_1 \cup V_2) \) gehört, folgt die Gleichheit der Mengen:
+	\[ f^{-1}(V_1 \cup V_2) = f^{-1}(V_1) \cup f^{-1}(V_2) \]
+\end{proof}
+
+\subsection*{(b) \( f^{-1}(V_1 \cap V_2) = f^{-1}(V_1) \cap f^{-1}(V_2) \)}
+
+\begin{proof}
+	Wir zeigen die Gleichheit der Mengen durch Nachweis der gegenseitigen Inklusion.
+	
+	\textbf{Zu zeigen:} \( f^{-1}(V_1 \cap V_2) \subseteq f^{-1}(V_1) \cap f^{-1}(V_2) \) und \( f^{-1}(V_1) \cap f^{-1}(V_2) \subseteq f^{-1}(V_1 \cap V_2) \).
+	
+	\textbf{1. Inklusion:} Sei \( x \in f^{-1}(V_1 \cap V_2) \). Dann gilt:
+	\begin{align*}
+		f(x) & \in V_1 \cap V_2                                             \\
+		     & \Rightarrow f(x) \in V_1 \text{ und } f(x) \in V_2           \\
+		     & \Rightarrow x \in f^{-1}(V_1) \text{ und } x \in f^{-1}(V_2) \\
+		     & \Rightarrow x \in f^{-1}(V_1) \cap f^{-1}(V_2)
+	\end{align*}
+	
+	\textbf{2. Inklusion:} Sei \( x \in f^{-1}(V_1) \cap f^{-1}(V_2) \). Dann gilt:
+	\begin{align*}
+		x & \in f^{-1}(V_1) \text{ und } x \in f^{-1}(V_2)     \\
+		  & \Rightarrow f(x) \in V_1 \text{ und } f(x) \in V_2 \\
+		  & \Rightarrow f(x) \in V_1 \cap V_2                  \\
+		  & \Rightarrow x \in f^{-1}(V_1 \cap V_2)
+	\end{align*}
+	
+	Da \( x \) in beiden Fällen zu \( f^{-1}(V_1 \cap V_2) \) gehört, folgt die Gleichheit der Mengen:
+	\[ f^{-1}(V_1 \cap V_2) = f^{-1}(V_1) \cap f^{-1}(V_2) \]
+\end{proof}
+
+\subsection*{(c) \( f(U_1 \cup U_2) = f(U_1) \cup f(U_2) \)}
+
+\begin{proof}
+	Wir zeigen die Gleichheit der Mengen durch Nachweis der gegenseitigen Inklusion.
+
+	\textbf{Zu zeigen:} \( f(U_1 \cup U_2) \subseteq f(U_1) \cup f(U_2) \) und \( f(U_1) \cup f(U_2) \subseteq f(U_1 \cup U_2) \).
+
+	\textbf{1. Inklusion:} Sei \( y \in f(U_1 \cup U_2) \). Dann existiert ein \( x \in U_1 \cup U_2 \), so dass \( f(x) = y \). Es folgt:
+	\begin{align*}
+		x & \in U_1 \cup U_2                                          \\
+		  & \Rightarrow x \in U_1 \text{ oder } x \in U_2             \\
+		  & \Rightarrow f(x) \in f(U_1) \text{ oder } f(x) \in f(U_2) \\
+		  & \Rightarrow y \in f(U_1) \cup f(U_2)
+	\end{align*}
+
+	\textbf{2. Inklusion:} Sei \( y \in f(U_1) \cup f(U_2) \). Es folgt:
+	\begin{align*}
+		y & \in f(U_1) \text{ oder } y \in f(U_2)                                                       \\
+		  & \Rightarrow \exists x_1 \in U_1 : f(x_1) = y \text{ oder } \exists x_2 \in U_2 : f(x_2) = y \\
+		  & \Rightarrow \exists x \in U_1 \cup U_2 : f(x) = y                                           \\
+		  & \Rightarrow y \in f(U_1 \cup U_2)
+	\end{align*}
+
+	Da \( y \) in beiden Fällen zu \( f(U_1 \cup U_2) \) gehört, folgt die Gleichheit der Mengen:
+	\[ f(U_1 \cup U_2) = f(U_1) \cup f(U_2) \]
+\end{proof}
+
+\subsection*{(d) \( f(U_1 \cap U_2) \subseteq f(U_1) \cap f(U_2) \)}
+
+\begin{proof}
+	Wir zeigen, dass jedes Element der Bildmenge von \( U_1 \cap U_2 \) auch in der Schnittmenge der Bildmengen von \( U_1 \) und \( U_2 \) liegt.
+	
+	\textbf{Zu zeigen:} \( f(U_1 \cap U_2) \subseteq f(U_1) \cap f(U_2) \).
+	
+	Sei \( y \in f(U_1 \cap U_2) \). Dann existiert ein \( x \in U_1 \cap U_2 \) so, dass \( f(x) = y \). Da \( x \) sowohl in \( U_1 \) als auch in \( U_2 \) liegt, gilt:
+	\begin{align*}
+		x & \in U_1 \cap U_2                                         \\
+		  & \Rightarrow x \in U_1 \text{ und } x \in U_2             \\
+		  & \Rightarrow f(x) \in f(U_1) \text{ und } f(x) \in f(U_2) \\
+		  & \Rightarrow y \in f(U_1) \text{ und } y \in f(U_2)       \\
+		  & \Rightarrow y \in f(U_1) \cap f(U_2)
+	\end{align*}
+	
+	Daher ist jedes Element von \( f(U_1 \cap U_2) \) auch ein Element von \( f(U_1) \cap f(U_2) \), und somit ist \( f(U_1 \cap U_2) \subseteq f(U_1) \cap f(U_2) \) bewiesen.
+\end{proof}
+
+
+\subsection*{(e) Ist \( f \) injektiv, so gilt \( f(U_1 \cap U_2) = f(U_1) \cap f(U_2) \)}
+
+\begin{proof}
+	Da \( f \) injektiv ist, hat jedes Element in \( N \) höchstens ein Urbild in \( M \). Wir zeigen die Gleichheit der Mengen durch Nachweis der gegenseitigen Inklusion.
+	
+	\textbf{Zu zeigen:} \( f(U_1 \cap U_2) \subseteq f(U_1) \cap f(U_2) \) und \( f(U_1) \cap f(U_2) \subseteq f(U_1 \cap U_2) \).
+	
+	Die erste Inklusion \( f(U_1 \cap U_2) \subseteq f(U_1) \cap f(U_2) \) haben wir bereits in Teil (d) bewiesen.
+	
+	Für die umgekehrte Inklusion, sei \( y \in f(U_1) \cap f(U_2) \). Dann existieren \( x_1 \in U_1 \) und \( x_2 \in U_2 \) so, dass \( f(x_1) = y \) und \( f(x_2) = y \). Da \( f \) injektiv ist, folgt \( x_1 = x_2 \). Also liegt \( x_1 \) (welches gleich \( x_2 \) ist) sowohl in \( U_1 \) als auch in \( U_2 \), d.h. \( x_1 \in U_1 \cap U_2 \). Daher ist \( y = f(x_1) \in f(U_1 \cap U_2) \).
+	
+	Somit ist \( f(U_1) \cap f(U_2) \subseteq f(U_1 \cap U_2) \) und zusammen mit der ersten Inklusion folgt die Gleichheit der Mengen:
+	\[ f(U_1 \cap U_2) = f(U_1) \cap f(U_2) \]
+\end{proof}
+
+\subsection*{Gegenbeispiel zur Aussage (e)}
+
+Um zu zeigen, dass auf die Injektivität von \( f \) in Teil (e) nicht verzichtet werden kann, geben wir ein Beispiel einer nicht-injektiven Abbildung \( f : \mathbb{Z} \rightarrow \mathbb{Z} \) und Mengen \( U_1, U_2 \subset \mathbb{Z} \) an, für die gilt: \( f(U_1 \cap U_2) \neq f(U_1) \cap f(U_2) \).
+
+Betrachten wir die Funktion \( f : \mathbb{Z} \rightarrow \mathbb{Z}, f(x) = x^2 \). Diese Funktion ist offensichtlich nicht injektiv, da \( f(x) = f(-x) \) für alle \( x \in \mathbb{Z} \).
+
+Wählen wir \( U_1 = \{1\} \) und \( U_2 = \{-1\} \), dann erhalten wir:
+
+\begin{itemize}
+	\item \( U_1 \cap U_2 = \emptyset \), also \( f(U_1 \cap U_2) = \emptyset \).
+	\item \( f(U_1) = \{1^2\} = \{1\} \) und \( f(U_2) = \{-1^2\} = \{1\} \), also \( f(U_1) \cap f(U_2) = \{1\} \).
+\end{itemize}
+
+Es folgt, dass \( f(U_1 \cap U_2) = \emptyset \) nicht gleich \( f(U_1) \cap f(U_2) = \{1\} \) ist. Dieses Beispiel zeigt, dass ohne die Injektivität von \( f \) die Gleichheit in Aussage (e) nicht gewährleistet ist.
+
+\section*{Aufgabe 7}
+
+\subsection*{(a) Beweise zu Injektivität und Surjektivität}
+
+\textbf{Satz 1.10 (Teilaussagen):} Für Abbildungen \( f : L \rightarrow M \) und \( g : M \rightarrow N \) gilt:
+
+\begin{enumerate}
+	\item Sind \( f \) und \( g \) surjektiv, so ist auch \( g \circ f \) surjektiv.
+	\item Ist \( g \circ f \) injektiv, so ist auch \( f \) injektiv.
+\end{enumerate}
+
+\begin{proof}
+	\textbf{Teil 1:} Wir nehmen an, dass \( f \) und \( g \) surjektiv sind. Für jedes Element \( n \) in \( N \) existiert aufgrund der Surjektivität von \( g \) ein Element \( m \) in \( M \) mit \( g(m) = n \). Da \( f \) ebenfalls surjektiv ist, existiert für dieses \( m \) ein Element \( l \) in \( L \) mit \( f(l) = m \). Folglich gilt für die Verkettung \( g \circ f \), dass \( (g \circ f)(l) = g(f(l)) = g(m) = n \). Da \( n \) beliebig gewählt war, ist \( g \circ f \) surjektiv.
+
+	\textbf{Teil 2:} Wir nehmen nun an, dass \( g \circ f \) injektiv ist. Angenommen, es gibt \( l_1, l_2 \in L \) mit \( f(l_1) = f(l_2) \). Dann folgt \( (g \circ f)(l_1) = g(f(l_1)) = g(f(l_2)) = (g \circ f)(l_2) \). Da \( g \circ f \) injektiv ist, muss \( l_1 = l_2 \) gelten. Dies zeigt, dass \( f \) injektiv ist.
+\end{proof}
+
+\subsection*{(b) Gegenbeispiele zur Umkehrung v. Aussagen aus Teil (a)}
+
+\textbf{Ziel:} Wir zeigen, dass die Umkehrungen der Aussagen aus Teil (a) nicht allgemeingültig sind, indem wir geeignete Gegenbeispiele konstruieren.
+
+\begin{enumerate}
+	\item \textbf{Gegenbeispiel für die Surjektivität:}
+	      Wir definieren die Funktionen \( f : L \rightarrow M \) und \( g : M \rightarrow N \) wie folgt:
+	      \begin{itemize}
+		      \item Sei \( L = \{1\} \), \( M = \{a, b\} \), und \( N = \{\alpha\} \).
+		      \item Die Funktion \( f \) ist gegeben durch \( f(1) = a \).
+		      \item Die Funktion \( g \) ist gegeben durch \( g(a) = g(b) = \alpha \).
+	      \end{itemize}
+	      Obwohl \( f \) nicht surjektiv ist, da kein Element in \( L \) auf \( b \) abgebildet wird, ist die Verkettung \( g \circ f \) surjektiv, da für jedes Element in \( N \) ein Urbild in \( L \) existiert, nämlich \( 1 \).
+
+	\item \textbf{Gegenbeispiel für die Injektivität:}
+	      Wir betrachten die Mengen und Funktionen:
+	      \begin{itemize}
+		      \item Sei \( L = \{1, 2\} \), \( M = \{a, b\} \), und \( N = \{\alpha\} \).
+		      \item Die Funktion \( f \) ist definiert durch \( f(1) = a \) und \( f(2) = b \), und ist somit injektiv.
+		      \item Die Funktion \( g \) ist definiert durch \( g(a) = g(b) = \alpha \).
+	      \end{itemize}
+	      Hier ist \( f \) injektiv, aber die Verkettung \( g \circ f \) ist nicht injektiv, da sowohl \( f(1) \) als auch \( f(2) \) auf das gleiche Element \( \alpha \) in \( N \) abgebildet werden.
+\end{enumerate}
+
+Diese Gegenbeispiele zeigen, dass die Umkehrungen der Aussagen aus Teil (a) nicht zutreffen und somit die Originalaussagen nicht umkehrbar sind.
+
+\section*{Aufgabe 8}
+
+Gegeben ist der logische Ausdruck:
+\[
+	([ \neg (A \lor B)] \oplus [C \land ( \neg D)]) \rightarrow [A \land(C \lor D) \land ( \neg B)]
+\]
+
+\subsubsection*{(a) Belegung: \( (A,B,C,D) = (1,0,1,0) \)}
+
+\begin{align*}
+	\neg (A \lor B)                                 & \Rightarrow \neg (1 \lor 0) \Rightarrow \neg 1 \Rightarrow 0                                        \\
+	C \land (\neg D)                                & \Rightarrow 1 \land (\neg 0) \Rightarrow 1 \land 1 \Rightarrow 1                                    \\
+	A \land (C \lor D) \land (\neg B)               & \Rightarrow 1 \land (1 \lor 0) \land (\neg 0) \Rightarrow 1 \land 1 \land 1 \Rightarrow 1           \\
+	[ \neg (A \lor B)] \oplus [C \land ( \neg D)]   & \Rightarrow 0 \oplus 1 \Rightarrow 1                                                                \\
+	([ \neg (A \lor B)] \oplus [C \land ( \neg D)]) & \rightarrow [A \land(C \lor D) \land ( \neg B)] \Rightarrow 1 \rightarrow 1 \Rightarrow \text{WAHR}
+\end{align*}
+
+Daher ist der Wahrheitswert der Aussage für die \textbf{Belegung (a) WAHR}.
+
+\subsubsection*{(b) Belegung: \( (A,B,C,D) = (0,1,1,0) \)}
+
+\begin{align*}
+	\neg (A \lor B)                                 & \Rightarrow \neg (0 \lor 1) \Rightarrow \neg 1 \Rightarrow 0                                          \\
+	C \land (\neg D)                                & \Rightarrow 1 \land (\neg 0) \Rightarrow 1 \land 1 \Rightarrow 1                                      \\
+	A \land (C \lor D) \land (\neg B)               & \Rightarrow 0 \land (1 \lor 0) \land (\neg 1) \Rightarrow 0 \land 1 \land 0 \Rightarrow 0             \\
+	[ \neg (A \lor B)] \oplus [C \land ( \neg D)]   & \Rightarrow 0 \oplus 1 \Rightarrow 1                                                                  \\
+	([ \neg (A \lor B)] \oplus [C \land ( \neg D)]) & \rightarrow [A \land(C \lor D) \land ( \neg B)] \Rightarrow 1 \rightarrow 0 \Rightarrow \text{FALSCH}
+\end{align*}
+
+Daher ist der Wahrheitswert der Aussage für die \textbf{Belegung (b) FALSCH}.
+
+\end{document}

@@ -1,0 +1,235 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[ngerman]{babel}
+
+% "Beweis" anstatt "Proof" bei proof Umgebung
+\renewcommand{\proofname}{Beweis}
+% Ohne serielle Nummerierung
+% \newtheorem*{theorem}{Satz}
+% \newtheorem*{lemma}[theorem]{Lemma}
+
+\title{Lösungen zu Übungsaufgaben 05 \\ \small Gruppe: Do 08-10 HS 3, Runa Pflume}
+\author{Linus Keiser, Viktor Varbanov}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Aufgabe 1}
+
+\begin{enumerate}
+	\item[(i)] \textbf{Flush}
+
+		Ein Flush in Poker besteht aus fünf Karten der gleichen Farbe. Die spezifische Wertigkeit der Karten ist dabei irrelevant.
+
+		\begin{itemize}
+			\item Wir haben insgesamt vier Farben zur Auswahl.
+			\item Für jede Farbe gibt es 13 Karten.
+			\item Wir wählen 5 Karten aus diesen 13, wobei die Reihenfolge keine Rolle spielt.
+		\end{itemize}
+
+		\textbf{Ansatz:}
+		Da die Reihenfolge der Karten in einem Flush irrelevant ist, verwenden wir Kombinationen. Die Formel für Kombinationen ist
+		\[
+			\binom{n}{k} = \frac{n!}{k!(n-k)!}
+		\]
+		wobei \( n \) die Gesamtzahl der Objekte und \( k \) die Anzahl der ausgewählten Objekte ist.
+
+		\textbf{Lösung:}
+		Für jede Farbe berechnen wir die Anzahl der Möglichkeiten, 5 Karten aus 13 zu wählen, was \( \binom{13}{5} \) entspricht. Da es vier Farben gibt, multiplizieren wir das Ergebnis mit 4, um alle möglichen Flush-Hände zu erhalten.
+
+		Berechnung:
+		\begin{itemize}
+			\item Anzahl der Möglichkeiten, 5 Karten aus 13 zu wählen: \( \binom{13}{5} \)
+			\item Gesamtanzahl der Flush-Möglichkeiten: \( 4 \times \binom{13}{5} \)
+		\end{itemize}
+	\item[(ii)] \textbf{Straight-Flush}
+
+		Ein Straight-Flush besteht aus fünf Karten in aufsteigender Wertigkeit, alle der gleichen Farbe.
+
+		\textbf{Ansatz:}
+		\begin{itemize}
+			\item Ein Straight-Flush erfordert eine spezifische Sequenz von fünf aufeinanderfolgenden Karten.
+			\item In einer Farbe (13 Karten) gibt es genau neun mögliche Straight-Sequenzen (beginnend bei As, 2, ..., bis zur 10).
+			\item Da es vier Farben gibt, wird die Anzahl der möglichen Straight-Sequenzen pro Farbe mit vier multipliziert.
+		\end{itemize}
+
+		Für einen Straight-Flush ist die spezifische Reihenfolge der Karten entscheidend. Da es jedoch nur eine mögliche Anordnung für jede Straight-Sequenz gibt, zählt jede Sequenz als eine einzige Möglichkeit. Es wird also keine Kombinations- oder Permutationsformel benötigt.
+
+		\textbf{Lösung:}
+		Die Gesamtanzahl der Straight-Flush-Möglichkeiten ergibt sich aus der Multiplikation der möglichen Straight-Sequenzen pro Farbe mit der Anzahl der Farben. Für jede Farbe gibt es 9 mögliche Straight-Sequenzen (beginnend bei As bis zur 10), und da es vier Farben gibt, berechnet sich die Gesamtanzahl der Möglichkeiten als:
+		\[
+			4 \times 9 = 36
+		\]
+	\item[(iii)] \textbf{Zwei Paare}
+
+		Eine Pokerhand mit zwei Paaren besteht aus zwei verschiedenen Paaren und einer zusätzlichen Karte.
+
+		\textbf{Ansatz:}
+		\begin{itemize}
+			\item Zuerst wählen wir die Wertigkeiten für die beiden Paare aus. Da es 13 verschiedene Wertigkeiten gibt, wählen wir zwei davon aus.
+			\item Dann wählen wir für jedes Paar zwei Karten aus den verfügbaren vier Karten (vier Farben) aus.
+			\item Schließlich wählen wir eine zusätzliche Karte aus, die eine andere Wertigkeit als die beiden Paare haben muss.
+		\end{itemize}
+		Wir verwenden Kombinationen für alle Auswahlprozesse, da die Reihenfolge jeweils keine Rolle spielt.
+
+		\textbf{Lösung:}
+		Die Gesamtanzahl der Möglichkeiten für eine Hand mit zwei Paaren ergibt sich aus der Kombination folgender Auswahlprozesse:
+		\begin{enumerate}
+			\item Zwei verschiedene Wertigkeiten für die Paare aus den 13 möglichen wählen: \( \binom{13}{2} \).
+			\item Für jedes Paar zwei Karten aus den vier Farben wählen: \( \binom{4}{2} \) für jedes Paar.
+			\item Eine zusätzliche Karte mit einer anderen Wertigkeit als die beiden Paare und einer beliebigen Farbe wählen: \( \binom{11}{1} \) für die Wertigkeit und \( \binom{4}{1} \) für die Farbe.
+		\end{enumerate}
+		Durch Multiplikation dieser einzelnen Auswahlmöglichkeiten erhalten wir die Gesamtzahl der möglichen Hände mit zwei Paaren.
+		\[
+			\binom{13}{2} \times \left( \binom{4}{2} \times \binom{4}{2} \right) \times \left( \binom{11}{1} \times \binom{4}{1} \right)
+		\]
+	\item[(iv)] \textbf{Möglichkeiten bei sechs Spielern}
+
+		Es wird gefragt, auf wie viele Arten sechs Spieler jeweils fünf Karten aus einem Standarddeck von 52 Karten erhalten können.
+
+		\textbf{Ansatz:}
+		\begin{itemize}
+			\item Jeder der sechs Spieler erhält 5 Karten.
+			\item Jede Verteilung von 5 Karten an jeden Spieler wird als eine Möglichkeit betrachtet.
+			\item Die Reihenfolge, in der die Spieler ihre Karten erhalten, spielt eine Rolle.
+		\end{itemize}
+		Wir verwenden das Konzept der Permutationen ohne Wiederholung für die Verteilung der Karten.
+
+		\textbf{Lösung:}
+		Die Gesamtanzahl der Möglichkeiten für sechs Spieler, jeweils fünf Karten zu erhalten, berechnet sich durch sukzessive Auswahl und Verteilung der Karten an jeden Spieler. Die endgültige Formel für die Berechnung lautet:
+		\[
+			\binom{52}{5} \times \binom{47}{5} \times \binom{42}{5} \times \binom{37}{5} \times \binom{32}{5} \times \binom{27}{5}
+		\]
+		Diese Formel berücksichtigt die Auswahl von 5 Karten für jeden der sechs Spieler, wobei die Anzahl der verfügbaren Karten nach jeder Auswahl abnimmt.
+	\item[(v)] \textbf{Ein Spieler erhält alle vier Asse}
+
+		Wir sollen die Anzahl der Möglichkeiten berechnen, bei denen ein Spieler alle vier Asse erhält, während sechs Spieler insgesamt jeweils fünf Karten erhalten.
+
+		\textbf{Ansatz:}
+		\begin{itemize}
+			\item Zuerst bestimmen wir die Anzahl der Möglichkeiten, dass ein bestimmter Spieler alle vier Asse erhält.
+			\item Dieser Spieler erhält zusätzlich eine weitere Karte aus den verbleibenden 48 Karten.
+			\item Dann verteilen wir die restlichen Karten an die anderen fünf Spieler.
+			\item Für die Auswahl der zusätzlichen Karte für den Spieler mit den Assen verwenden wir Kombinationen.
+			\item Für die Verteilung der restlichen Karten an die anderen Spieler verwenden wir ebenfalls Kombinationen, da jeder Spieler 5 Karten aus dem verbleibenden Deck erhält.
+		\end{itemize}
+
+		\textbf{Lösung:}
+		Die Berechnung der Gesamtanzahl der Möglichkeiten erfolgt in mehreren Schritten:
+		\begin{enumerate}
+			\item Der Spieler mit den Assen erhält die vier Asse und eine zusätzliche Karte aus den verbleibenden 48 Karten: \( \binom{48}{1} \).
+			\item Die Verteilung der restlichen Karten an die anderen fünf Spieler:
+			      \begin{itemize}
+				      \item Der erste dieser fünf Spieler erhält 5 Karten aus den verbleibenden 47 Karten: \( \binom{47}{5} \).
+				      \item Für jeden weiteren Spieler wird die Anzahl der verbleibenden Karten jeweils um 5 verringert und die Kartenverteilung entsprechend berechnet.
+			      \end{itemize}
+		\end{enumerate}
+		Die Gesamtanzahl der Möglichkeiten wird durch Multiplikation dieser Werte berechnet. Die endgültige Formel lautet:
+		\[
+			\binom{48}{1} \times \binom{47}{5} \times \binom{42}{5} \times \binom{37}{5} \times \binom{32}{5} \times \binom{27}{5}
+		\]
+\end{enumerate}
+
+\section*{Aufgabe 2}
+
+\textbf{Aufgabenstellung:} Ermittlung der Anzahl der Studierenden, die mindestens eines der drei Gerichte (Käsespätzle, Beilagensalat, Vanillepudding) in der Mensa gewählt haben.
+
+\subsection*{Ansatz:}
+Wir definieren die Mengen \( K \), \( B \), und \( V \), die die Studierenden repräsentieren, die Käsespätzle, Beilagensalat bzw. Vanillepudding gewählt haben. Es gelten folgende Größen:
+- \( |K| = 21 \) (Käsespätzle)
+- \( |B| = 16 \) (Beilagensalat)
+- \( |V| = 8 \) (Vanillepudding)
+
+Weiterhin sind die Schnittmengen von zwei und drei Gerichten wie folgt gegeben:
+- \( |K \cap B| = 12 \) (Käsespätzle und Beilagensalat)
+- \( |K \cap V| = 5 \) (Käsespätzle und Vanillepudding)
+- \( |B \cap V| = 3 \) (Beilagensalat und Vanillepudding)
+- \( |K \cap B \cap V| = 2 \) (alle drei Gerichte)
+
+Zur Bestimmung der Anzahl der Studierenden, die mindestens eines der Gerichte gewählt haben, wenden wir das Inklusions-Exklusions-Prinzip an:
+\[ |K \cup B \cup V| = |K| + |B| + |V| - |K \cap B| - |K \cap V| - |B \cap V| + |K \cap B \cap V| \]
+
+\subsection*{Lösung:}
+Durch Einsetzen der gegebenen Werte in die Formel des Inklusions-Exklusions-Prinzips erhalten wir:
+\[ |K \cup B \cup V| = 21 + 16 + 8 - 12 - 5 - 3 + 2 = 27. \]
+Demnach haben 27 Studierende mindestens eines der Gerichte (Käsespätzle, Beilagensalat oder Vanillepudding) auf ihrem Tablett.
+
+\section*{Aufgabe 3}
+
+\textbf{Aufgabenstellung:} Bestimmung der Anzahl möglicher Auslosungen bei einer Wichtelaktion mit fünf Personen, wobei niemand sich selbst beschenkt.
+
+\subsection*{Ansatz:}
+Wir definieren die Menge \( S = \{1, 2, 3, 4, 5\} \), wobei jedes Element eine Person repräsentiert. Eine Auslosung entspricht einer bijektiven Funktion \( f: S \to S \), mit der Bedingung, dass für alle \( i \in S \) gilt: \( f(i) \neq i \). Wir bezeichnen eine solche Permutation ohne Fixpunkte als ``Derangement``.
+
+Die Anzahl der Derangements für eine Menge von \( n \) Elementen wird mit \( !n \) (Subfakultät) bezeichnet. Für eine Menge mit \( n \) Elementen berechnen wir die Anzahl der Derangements durch die Formel
+\[ !n = n! \left( \frac{1}{0!} - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \ldots + (-1)^n \frac{1}{n!} \right). \]
+
+\subsection*{Lösung:}
+Die Anzahl der möglichen Auslosungen bei der Wichtelaktion entspricht der Anzahl der Derangements für \( n = 5 \), also
+\[ !5 = 5! \left( \frac{1}{0!} - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!} - \frac{1}{5!} \right) = 44. \]
+
+\section*{Aufgabe 4}
+
+Gegeben ist eine Getränkekiste mit 12 Fächern, die mit vier unterschiedlichen Sorten von Getränken (Mineralwasser, Apfelsaft, Orangensaft, Cola) gefüllt werden soll.
+
+\subsection*{Teil (i): Beliebige Kombinationen}
+
+\textbf{Aufgabenstellung}: Bestimmung der Anzahl der Möglichkeiten, die 12 Fächer der Kiste mit den vier Getränkesorten zu füllen, wobei jede Sorte beliebig oft gewählt werden kann.
+
+\textbf{Ansatz}: Hier handelt es sich um ein Problem der Kombinationen mit Wiederholung. Die Reihenfolge, in der die Getränkesorten ausgewählt werden, ist irrelevant, und jede Sorte kann mehrmals ausgewählt werden.
+
+\textbf{Lösung}: Die Anzahl der Kombinationen mit Wiederholung wird durch die Formel
+\[
+	\binom{n + r - 1}{r}
+\]
+berechnet, wobei \( n \) die Anzahl der Sorten (4) und \( r \) die Anzahl der Fächer (12) ist.
+
+\subsection*{Teil (ii): Jede Sorte mindestens einmal}
+
+\textbf{Aufgabenstellung}: Ermittlung der Anzahl der Möglichkeiten, die Kiste zu füllen, wobei jede der vier Sorten mindestens einmal vorkommen muss.
+
+\textbf{Ansatz}: Zuerst werden 4 beliebige Fächer mit je einer der vier Sorten gefüllt, um die Mindestanforderung zu erfüllen. Für die verbleibenden 8 Fächer wird wieder die Kombination mit Wiederholung angewendet.
+
+\textbf{Lösung}: Die Formel bleibt dieselbe wie in Teil (i), jedoch mit der Anpassung, dass nach der Verteilung einer jeden Sorte nur noch 8 Fächer zu füllen sind:
+\[
+	\binom{n + r - 1}{r}
+\]
+wobei \( n = 4 \) und \( r = 8 \).
+
+
+\section*{Aufgabe 5}
+
+\textbf{Aufgabenstellung:} Bestimmung der Anzahl der Möglichkeiten, 14 Personen in 6 Gruppen aufzuteilen, wobei zwei der Gruppen jeweils 3 Personen und die restlichen vier Gruppen jeweils 2 Personen enthalten.
+
+\subsection*{Ansatz:}
+Wir wählen zuerst zwei 3-Personen-Gruppen aus den 14 Personen und dann vier 2-Personen-Gruppen aus den verbleibenden 8 Personen. Die Anzahl der Möglichkeiten für jede Gruppenbildung wird durch Kombinationen berechnet.
+
+Die Gesamtanzahl der Möglichkeiten ergibt sich als das Produkt der Anzahlen für die 3-Personen-Gruppen und die 2-Personen-Gruppen.
+
+\subsection*{Lösung:}
+Die Anzahl der Möglichkeiten, zwei 3-Personen-Gruppen zu bilden, berechnet sich durch das Produkt der Kombinationen \(\binom{14}{3}\) für die erste Gruppe und \(\binom{11}{3}\) für die zweite Gruppe.
+
+Für die Aufteilung der verbleibenden 8 Personen in vier 2-Personen-Gruppen berechnen wir die Anzahl der Möglichkeiten wie folgt:
+\begin{itemize}
+	\item Die Wahl der ersten 2-Personen-Gruppe aus 8 Personen: \(\binom{8}{2}\)
+	\item Die Wahl der zweiten 2-Personen-Gruppe aus den verbleibenden 6 Personen: \(\binom{6}{2}\)
+	\item Die Wahl der dritten 2-Personen-Gruppe aus den verbleibenden 4 Personen: \(\binom{4}{2}\)
+	\item Die Wahl der vierten 2-Personen-Gruppe aus den verbleibenden 2 Personen: \(\binom{2}{2}\)
+\end{itemize}
+
+Da die Reihenfolge, in der diese Gruppen gebildet werden, irrelevant ist, wird das Produkt dieser Kombinationen durch \(4!\) geteilt.
+
+Damit gilt:
+
+\[
+	\text{Gesamtmöglichkeiten} = \left(\binom{14}{3} \cdot \binom{11}{3}\right) \cdot \frac{\binom{8}{2} \cdot \binom{6}{2} \cdot \binom{4}{2} \cdot \binom{2}{2}}{4!}
+\]
+
+\end{document}

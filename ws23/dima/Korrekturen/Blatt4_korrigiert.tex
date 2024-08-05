@@ -1,0 +1,116 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[ngerman]{babel}
+
+% "Beweis" anstatt "Proof" bei proof Umgebung
+\renewcommand{\proofname}{Beweis}
+% Ohne serielle Nummerierung
+% \newtheorem*{theorem}{Satz}
+% \newtheorem*{lemma}[theorem]{Lemma}
+
+% \theoremstyle{definition}
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem{conjecture}[theorem]{Conjecture}
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{example}[theorem]{Example}
+% \theoremstyle{remark}
+% \newtheorem*{remark}{Bemerkung}
+% \theoremstyle{plain}
+% \newtheorem*{proof*}{Beweis}
+
+\title{Korrektur zu Lösungen zu Übungsaufgaben 04 \\ \small Gruppe: Do 08-10 HS 3, Runa Pflume}
+\author{Linus Keiser, Viktor Varbanov}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+\subsection*{(i) - Keine Korrektur}
+Gegeben sei eine Funktion $f: \{1, \ldots, n\} \rightarrow \{1, \ldots, m\}$ mit $n > m$. Das Schubfachprinzip besagt, dass wenn $n$ Objekte in $m$ Schubfächer verteilt werden und $n > m$, dann muss mindestens ein Schubfach mehr als ein Objekt enthalten.
+
+\begin{proof}
+	Angenommen, für unsere Funktion $f$ gäbe es keine zwei unterschiedlichen Elemente $k_1, k_2 \in \{1, \ldots, n\}$, so dass $f(k_1) = f(k_2)$. Dies würde implizieren, dass $f$ injektiv wäre. Jedoch ist dies nicht möglich, da es mehr Elemente in der Definitionsmenge als in der Zielmenge gibt, was einen Widerspruch zur Annahme darstellt. Folglich muss es mindestens ein Paar $(k_1, k_2)$ geben, sodass $k_1 \neq k_2$ und $f(k_1) = f(k_2)$ gilt.
+\end{proof}
+
+\subsection*{(ii) - Korrigiert hinsichtlich fehlender Details.}
+Sei \(a_1, \ldots, a_n\) eine Permutation der Zahlen \(1, \ldots, n\) und \(n\) sei ungerade. Zu zeigen ist, dass das Produkt \((a_1 - 1) \cdot \ldots \cdot (a_n - n)\) gerade ist.
+
+\begin{proof}
+	Da \(n\) ungerade ist, gibt es eine ungerade Anzahl von Termen in der Folge \((a_1 - 1), \ldots, (a_n - n)\). Jeder Term \(a_i - i\) ist entweder gerade oder ungerade. Wenn \(a_i - i\) gerade ist, dann bleibt die Parität des Produkts unverändert, wenn dieser Term multipliziert wird. Ist \(a_i - i\) jedoch ungerade, so ändert sich die Parität des Produkts zu ungerade, vorausgesetzt, dass alle vorherigen Terme zu einem geraden Produkt geführt haben.
+
+	Nach dem Schubfachprinzip, angewendet auf die \(n\) Terme, muss es aufgrund der Injektivität der Permutation und der Tatsache, dass \(n > n/2\) ist, mindestens einen Index \(i\) geben, für den \(a_i\) und \(i\) dieselbe Parität haben. Daraus folgt, dass \(a_i - i\) gerade sein muss.
+
+	Da das Produkt einer ungeraden Anzahl von ungeraden Zahlen ungerade ist, würde ein einziges gerades \(a_i - i\) ausreichen, um sicherzustellen, dass das gesamte Produkt gerade ist. Da wir bereits festgestellt haben, dass mindestens ein solches \(a_i - i\) existiert, ist das Produkt \((a_1 - 1) \cdot \ldots \cdot (a_n - n)\) notwendigerweise gerade.
+\end{proof}
+
+\newpage
+
+\section*{Aufgabe 2}
+
+\subsection*{(i) - Korrigiert; fehlende Erklärung hinzugefügt.}
+Die Anzahl der möglichen Tabellenkonstellationen für 18 Mannschaften ergibt sich aus den möglichen Permutationen dieser Mannschaften, da jede Mannschaft genau einen Platz in der Tabelle einnehmen kann. Da die Reihenfolge relevant ist und keine Mannschaft mehrfach auftreten kann, ist die Rechnung:
+\[ 18! \]
+
+\subsection*{(ii) - Korrigiert; fehlende Erklärung hinzugefügt.}
+Die Anzahl der verschiedenen Besetzungen der ersten sechs Plätze ergibt sich aus den Permutationen von 6 Plätzen aus 18 möglichen Mannschaften. Da es für den ersten Platz 18 Möglichkeiten gibt, für den zweiten Platz 17, und so weiter bis zum sechsten Platz, berechnet sich das als:
+\[ \frac{18!}{(18-6)!} \]
+
+\subsection*{(iii) - Korrigiert; fehlende Erklärung hinzugefügt.}
+Unter der Annahme, dass Team A unter den letzten drei Mannschaften ist, gibt es für A drei mögliche Positionen (16., 17. oder 18.). Für B gibt es dann 17 Möglichkeiten (alle außer der Position von A) und für C entsprechend 16 Möglichkeiten. Da B jedoch vor C stehen muss, zählen wir nur die Hälfte dieser Kombinationen. Zusammen mit den Permutationen der restlichen 15 Teams (die in beliebiger Reihenfolge angeordnet werden können), ergibt sich die Anzahl der möglichen Konstellationen als:
+\[ 3 \cdot \frac{17 \cdot 16}{2} \cdot 15! \]
+
+\subsection*{(iv) - Keine Korrektur}
+Wir finden eine geeignete Bedingung für 6! \(\cdot\) 12! Konstellationen durch die Betrachtung zweier Gruppen von Mannschaften: \( G_1 \) mit 6 Mannschaften und \( G_2 \) mit 12 Mannschaften. Die Reihenfolge innerhalb jeder Gruppe ist relevant, aber die Reihenfolge der Gruppen zueinander nicht. Die Anzahl der möglichen Anordnungen für \( G_1 \) ist \( 6! \) und für \( G_2 \) ist \( 12! \). Die Gesamtanzahl der Anordnungen ist das Produkt der Anordnungen beider Gruppen:
+\[ 6! \times 12! = 720 \times 479,001,600 = 345,098,752,000 \]
+Dies bedeutet, dass die Gesamtanzahl der Konstellationen genau 6! \(\cdot\) 12! beträgt, wenn die Bedingungen erfüllt sind. Die Reihenfolge von \( G_1 \) und \( G_2 \) ist unabhängig voneinander, wobei beispielsweise \( G_1 \) die ersten sechs oder die letzten sechs Plätze einnehmen könnte und \( G_2 \) entsprechend die anderen Plätze.
+
+% \newpage
+
+\section*{Aufgabe 3 - Korrigiert; fehlende Erklärung hinzugefügt.}
+
+Gegeben ist eine Notenverteilung für 250 Studierende, bei der spezifische Noten in fester Anzahl vorliegen. Wir lösen dieses Problem mithilfe des Multinomialkoeffizienten, da es sich hierbei um die Verteilung von unterscheidbaren Objekten – den Studierenden und ihren individuellen Noten – auf nicht unterscheidbare Kategorien – die verschiedenen Notenstufen – handelt.
+
+Die gegebenen Kategorien und ihre Anzahlen sind:
+\begin{align*}
+	 & n_{1.0} = n_{4.0} = 10, \\
+	 & n_{1.3} = n_{3.7} = 15, \\
+	 & n_{1.7} = n_{3.3} = 25, \\
+	 & n_{2.0} = n_{3.0} = 35, \\
+	 & n_{2.3} = n_{2.7} = 40.
+\end{align*}
+
+Wir berechnen die Anzahl der möglichen Verteilungen, indem wir die Reihenfolge, in der die Noten den Studierenden zugewiesen werden, als Permutationen der Gesamtheit aller Noten betrachten. Die Formel des Multinomialkoeffizienten
+\[
+	\frac{250!}{(10!)^2 \cdot (15!)^2 \cdot (25!)^2 \cdot (35!)^2 \cdot (40!)^2}
+\]
+spiegelt die Anzahl dieser Permutationen wider, korrigiert um die Mehrfachzählung identischer Verteilungen aufgrund der Austauschbarkeit der Studierenden mit derselben Note.
+
+\section*{Aufgabe 4}
+
+Bei der Untersuchung der Permutationsmöglichkeiten für die 16 Schachfiguren auf einem 8x8 Schachbrett betrachten wir äquivalente Figuren als nicht unterscheidbar. Dies führt zur Anwendung des Multinomialkoeffizienten, da es sich um ein klassisches Zählproblem mit identischen Objekten handelt.
+
+\subsection*{Platzierung auf den ersten beiden Reihen}
+Für die ersten beiden Reihen des Schachbretts gibt es 16 Felder, auf die wir 8 Bauern, 2 Springer, 2 Läufer, 2 Türme, eine Dame und einen König verteilen möchten. Da die Bauern untereinander und die Figuren gleichen Typs jeweils nicht unterscheidbar sind, nutzen wir den Multinomialkoeffizienten zur Berechnung der einzigartigen Anordnungen. Der Term \( (2!)^3 \) im Nenner berücksichtigt die Mehrfachzählung von Anordnungen, die sich nur durch die Platzierung der untereinander nicht unterscheidbaren Springer, Läufer und Türme unterscheiden. Die Gesamtzahl der Platzierungen ist damit:
+
+\[
+	\frac{16!}{8! \cdot (2!)^3 \cdot 1! \cdot 1!}
+\]
+
+\subsection*{Verteilung auf dem gesamten Schachbrett}
+Beim Übergang zur Verteilung der Figuren über das gesamte Brett erhöht sich die Anzahl der Felder auf 64. Die Gesamtzahl der Platzierungen berechnet sich durch den Multinomialkoeffizienten, wobei \( (64-16)! \) die Anzahl der Möglichkeiten angibt, die verbleibenden leeren Felder zu ordnen, welche keinen Einfluss auf die unterscheidbare Platzierung der Figuren haben. Damit ist die Gesamtzahl der Platzierungen:
+
+\[
+	\frac{64!}{8! \cdot (2!)^3 \cdot 1! \cdot 1! \cdot (64-16)!}
+\]
+
+\end{document}

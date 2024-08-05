@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs}
+\usepackage[ngerman]{babel}
+
+\title{Lösungen zu Übungsaufgaben 06 \\ \small Gruppe: Mi 08-10 SR 2, Barbara Rieß}
+\author{Linus Keiser}
+\date{\today}
+
+% Theorem-Umgebungen
+\renewcommand{\proofname}{Beweis}
+\newtheorem*{theorem}{Satz}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Bemerkung}
+
+\begin{document}
+
+\maketitle
+
+\paragraph{Aufgaben 22 und 24 habe ich nicht bearbeitet.}
+
+\section*{Aufgabe 21}
+
+\textit{Zu zeigen:} Die durch \( a_n := \sum_{k=1}^{n} \frac{1}{k} \) definierte Folge \((a_n)_{n\in\mathbb{N}}\) ist keine Cauchyfolge.
+
+\begin{proof}
+	Gemäß der Definition 5.8 einer Cauchyfolge muss für jedes \(\varepsilon > 0\) ein \(N(\varepsilon) \in \mathbb{N}\) existieren, sodass für alle \(n, m \geq N(\varepsilon)\) die Bedingung \(|a_n - a_m| < \varepsilon\) erfüllt ist.
+
+	Wir wählen \(\varepsilon = \frac{1}{2}\) und betrachten \(n, m \in \mathbb{N}\) mit \(m > n\). Es muss gezeigt werden, dass die Differenz \(a_m - a_n\) für unendlich viele Werte von \(m\) und \(n\) größer oder gleich \(\varepsilon\) ist.
+
+	Sei \(n\) beliebig und \(m = 2n\). Dann gilt für die Differenz:
+
+	\begin{align*}
+		a_m - a_n & = \left( \sum_{k=1}^{2n} \frac{1}{k} \right) - \left( \sum_{k=1}^{n} \frac{1}{k} \right) \\
+		          & = \sum_{k=n+1}^{2n} \frac{1}{k}                                                          \\
+		          & \geq \sum_{k=n+1}^{2n} \frac{1}{2n} \quad \text{(da \(k \leq 2n\))}                      \\
+		          & = n \cdot \frac{1}{2n}                                                                   \\
+		          & = \frac{1}{2}.
+	\end{align*}
+
+	Da \(\frac{1}{2} \geq \varepsilon\), existieren also für jedes \(n\) Werte von \(m\), speziell \(m = 2n\), sodass \(|a_n - a_m| \geq \varepsilon\). Damit ist die Bedingung der Cauchyfolge für unser gewähltes \(\varepsilon\) verletzt.
+
+	Da die Wahl von \(\varepsilon\) beliebig war und \(n\) nicht beschränkt ist, kann die Folge \((a_n)_{n\in\mathbb{N}}\) keine Cauchyfolge sein.
+\end{proof}
+
+\section*{Aufgabe 23}
+
+\subsection*{a)}
+
+\textit{Zu zeigen:} Wenn \( M \) und \( N \) abzählbare Mengen sind, dann ist auch \( M \cup N \) abzählbar.
+
+\begin{proof}
+	Gemäß Definition 6.9 ist eine Menge abzählbar, wenn es eine bijektive Abbildung von dieser Menge nach \(\mathbb{N}\) gibt. Gegeben sind zwei abzählbare Mengen \( M \) und \( N \), somit existieren bijektive Abbildungen \( f: M \to \mathbb{N} \) und \( g: N \to \mathbb{N} \).
+
+	Um zu zeigen, dass \( M \cup N \) abzählbar ist, konstruieren wir eine bijektive Abbildung \( h: M \cup N \to \mathbb{N} \). Hierzu betrachten wir \( M \) und \( N \setminus M \), um durch Disjunktheit von \( M \) und \( N \) um die Eindeutigkeit von \( h \) zu gewährleisten.
+
+	Die Abbildung \( h \) definieren wir durch:
+	\[
+		h(x) =
+		\begin{cases}
+			2f(x)     & \text{für } x \in M,             \\
+			2g(x) + 1 & \text{für } x \in N \setminus M.
+		\end{cases}
+	\]
+	Diese Konstruktion stellt sicher, dass \( h(x) \) bijektiv ist. Jedes Element in \( M \) wird auf eine gerade Zahl und jedes Element in \( N \setminus M \) auf eine ungerade Zahl abgebildet. Da sowohl \( f \) als auch \( g \) bijektive Abbildungen sind, ist \( h \) ebenfalls bijektiv.
+
+	Daher ist \( M \cup N \), als Vereinigung zweier abzählbarer Mengen, ebenfalls abzählbar.
+\end{proof}
+
+\subsection*{b)}
+
+\textit{Zu zeigen:} \( \mathbb{R} \setminus \mathbb{Q} \) ist nicht abzählbar.
+
+\begin{proof}
+	Aus Satz 6.10 wissen wir, dass die Menge der rationalen Zahlen \( \mathbb{Q} \) abzählbar und die Menge der reellen Zahlen \( \mathbb{R} \) nicht abzählbar ist.
+
+	Die Menge \( \mathbb{R} \setminus \mathbb{Q} \) repräsentiert die Menge aller irrationalen Zahlen. Wir nehmen an, \( \mathbb{R} \setminus \mathbb{Q} \) wäre abzählbar. Dann gäbe es eine bijektive Abbildung zwischen \( \mathbb{R} \setminus \mathbb{Q} \) und \( \mathbb{N} \). Da \( \mathbb{Q} \) ebenfalls abzählbar ist, könnten wir \( \mathbb{R} \) als die Vereinigung der beiden abzählbaren Mengen \( \mathbb{Q} \) und \( \mathbb{R} \setminus \mathbb{Q} \) betrachten.
+
+	Jedoch steht dies im Widerspruch zur bekannten Tatsache, dass \( \mathbb{R} \) nicht abzählbar ist. Daher muss unsere Annahme, dass \( \mathbb{R} \setminus \mathbb{Q} \) abzählbar ist, falsch sein. Somit ist \( \mathbb{R} \setminus \mathbb{Q} \), die Menge aller irrationalen Zahlen, nicht abzählbar.
+\end{proof}
+
+\end{document}

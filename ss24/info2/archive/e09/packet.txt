@@ -1,0 +1,30 @@
+AAAAAAAAAAAAAA | PREAMBLE
+AB | SFD
+9F A4 12 C6 39 F5 | DEST ADDR = 159:164:18:198:57:245
+1B 2B 98 5D 27 35 | SRC ADDR  = 27:43:152:93:39:53
+0800 | LEN/ETHERTYPE = 2048
+
+DATA IPv4 Packet
+45 | VERSION = 4
+00 | Type of Service
+00 23 | LENGTH
+8E 8C | ID
+00 00 | Flags and Fragment Offset
+BA | TTL
+11 | PROTOCOL = UDP (17)
+41 DF | Header Checksum
+DC E8 23 85 | SRC IP
+73 F2 F2 CB | DST IP
+
+User Datagram Protocol
+83 10 | SRC Port
+0E 42 | DST Port
+00 0F | LENGTH
+32 35 | Checksum
+
+49 4E 54 45 47 45 52 | UDP Payload = INTEGER
+
+Ethernet II
+00 00 00 00 00 00 00 00 00 00 00 | Padding
+
+3E C5 A1 CB | CRC

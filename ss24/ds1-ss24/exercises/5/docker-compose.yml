@@ -1,0 +1,17 @@
+services:
+  test:
+    image: find_individual
+    build:
+      context: .
+    volumes:
+      - .:/usr/src/app
+    command: pytest
+
+  run_script:
+    image: find_individual
+    build:
+      context: .
+    volumes:
+      - .:/usr/src/app
+    entrypoint: python e5_2.py
+    command: ["1", "1", "2", "3", "3"]

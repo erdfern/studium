@@ -1,0 +1,43 @@
+Hinweise für den Fernzugriff (Ergänzung zu dem Video unter "Medien")
+====================================================================
+[Zu den Hintergründen finden Sie unter
+https://user.informatik.uni-goettingen.de/~damm/info1/blog21.html ein
+paar Erklärungen.]
+
+Ausführliche Anleitungen:
+https://user.informatik.uni-goettingen.de/~damm/info1/aktuell/2FA.html
+https://doc.informatik.uni-goettingen.de/wiki/index.php/Shell
+
+Was man braucht: 
+- LDAP login credentials (also Nutzername/Passwort zu Ihrem studentischen Account)
+- VPN Verbindung ins Uni-Netzwerk (https://info.gwdg.de/docs/doku.php?id=de:services:network_services:vpn:anyconnect), 
+	verwenden Sie bitte einen der beiden neuen VPN-Server, die in der Anleitung genannt sind)
+- PuTTY (https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) 
+	oder ein Terminal mit ssh (zum Beispiel cygwin)
+- Authenticator Software (zum Beipsiel für Windows: https://github.com/winauth/winauth/releases/download/3.5.1/WinAuth-3.5.1.zip 
+	oder für Android: https://f-droid.org/packages/com.google.android.apps.authenticator2/)
+
+
+Um Ihren Account vorzubereiten und sich erfolgreich von außen im Ifi-Netzwerk anmelden zu können, 
+befolgen Sie bitte die oben verlinkten Anleitungen.
+
+Hinweise: 
+Um sich für die Initialisierung auf dem Server shellinit.informatik.uni-goettingen.de einzuloggen, 
+haben sie zum Beispiel folgende Möglichkeiten:
+
+Variante 1) PuTTY:
+Starten Sie die PuTTY Software tragen sie als Host Name
+shellinit.informatik.uni-goettingen.de
+ein und starten Sie mit Klick auf "Open" die Verbindung. Ihre Login Daten entsprechen Ihren LDAP Credentials.
+Variante 2) Terminal mit ssh:
+Führen Sie den Befehl
+ssh username@shellinit.informatik.uni-goettingen.de
+aus, wobei 'username' durch Ihren LDAP Benutzernamen ausgetauscht werden muss.
+Geben Sie bei Nachfrage Ihr LDAP Passwort ein.
+
+Während Sie den Google Authenticator im Vorbereitungsschritt ausführen, 
+notieren Sie sich das Geheimnis, dass Ihnen nach Beantwortung der ersten Frage gegeben wird.
+Es ist in der Zeile 'Your new secret key is:' zu finden.
+
+Nachdem Sie die Initialisierung abgeschlossen haben, 
+können Sie die hergestellte VPN Verbindung ins Uni-Netzwerk wieder schließen und die Anleitung weiter befolgen.

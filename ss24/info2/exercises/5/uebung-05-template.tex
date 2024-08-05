@@ -1,0 +1,312 @@
+% Dokoumentenklassen legen das grobe Layout fest. Hier wird eine selbsterstellte Klasse verwendet, deswegen benötigt man zum erstellen des PDFs auch die Datei uebungsblatt.cls und uebungsblatt.sty
+\documentclass{uebungsblatt}
+
+\usepackage[linesnumbered,commentsnumbered]{algorithm2e}
+\usepackage{tikz}
+\usepackage{hyperref}
+% Store \nl in \oldnl
+\let\oldnl\nl
+% Remove line number for one line
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}
+
+%Hier wird die Kopfzeile erstellt
+\header{\textbf{Grundlagen der Praktischen Informatik}\hfill\textbf{Sommersemester 2024}\\
+Simon Keiser % Name des Gruppenmitglieds Eintragen
+\hfill Georg-August-Universität Göttingen \\
+Linus Keiser (16604467) % Name des Gruppenmitglieds Eintragen
+\hfill Institut für Informatik\\ 
+% Student:in3 (Matrikelnummer2)\\  % Name des Gruppenmitglieds Eintragen
+% Student:in4 (Matrikelnummer2)\\  % Name des Gruppenmitglieds Eintragen
+
+% Hiermit wird der horizontale Strick erzeugt, der die Kopfzeile abgrenzt.
+\rule{\textwidth}{0.1mm}}
+
+% Hier wird die Blattnummer festgelegt.
+\blattnummer{5}
+
+% Hier beginnt der eigentliche Textkörper. Alles zwischen \begin{document} und \end{document} ist der eigentliche Text
+\begin{document}
+
+% Mit \underline kann man Sachen unterstreichen
+
+% \begin{aufgabe} erstellt ein Aufgabenumgebung mit [...] könnt ihr den Titel angeben und mit \score die Punktzahl festlegen. Ist aber für euch nicht so wichtig.
+\begin{aufgabe}[Pumping Lemma \score{17}]
+	Zeigen Sie, dass die Sprache
+	$L = \{a^p \ | \ p \in \mathbb{N} \text{ ist eine Primzahl}\}$ nicht regulär ist.\\
+	\score{17}
+
+	\medskip
+	\underline{Hinweise}
+
+	\begin{itemize}
+		\item
+		      Es gibt unendlich viele Primzahlen, d.h. für jedes
+		      $k \in \mathbb{N}$ gibt es eine Primzahl $p \geq k + 2$.
+		\item
+		      Der Widerspruch $xy^iz \not\in L$, d.h. $|xy^iz|$ ist keine Primzahl,
+		      muss mit einem passend gewählten $i \in \mathbb{N}$ geführt werden.
+	\end{itemize}
+
+\end{aufgabe}
+% Hier könnt ihr eure Lösung hinschreiben
+\begin{loesung}
+	Um zu zeigen, dass die Sprache $L = \{ a^p \mid p \in \mathbb{N} \text{ ist eine Primzahl} \} $ nicht regulär ist, verwenden wir das Pumping-Lemma für reguläre Sprachen. Das Pumping-Lemma besagt, dass für jede reguläre Sprache $L$ eine Konstante $p$ existiert, sodass jedes Wort $w \in L$ mit $|w| \geq p$ in drei Teile $w = xyz$ zerlegt werden kann, wobei folgende Bedingungen erfüllt sind:
+
+	1. $|xy| \leq p$,
+	2. $|y| \geq 1$,
+	3. $xy^i z \in L$ für alle $i \in \mathbb{N}$.
+
+	Nehmen wir an, $L$ sei regulär. Dann existiert eine Pumping-Länge $p$. Wählen wir ein Wort $w = a^q \in L$ mit $q$ eine Primzahl und $q \geq p$.
+
+	Da $|w| = q \geq p$, können wir $w$ in drei Teile $w = xyz$ zerlegen, sodass $|xy| \leq p$ und $|y| \geq 1$. Da $|xy| \leq p$ und $w = a^q$, besteht $x$ und $y$ nur aus den Symbolen $a$. Also können wir schreiben:
+
+	$$x = a^m, \quad y = a^n, \quad z = a^k$$
+
+	mit $m + n \leq p$ und $n \geq 1$ und $m + n + k = q$.
+
+	Nun betrachten wir das Wort $xy^2z$:
+
+	$$xy^2z = a^m (a^n)^2 a^k = a^{m+n+n+k} = a^{q+n}$$
+
+	Dabei ist $q+n$ die Länge des neuen Wortes. Da $n \geq 1$, ist $q+n > q$. Da $q$ eine Primzahl ist, ist $q+n$ keine Primzahl, weil eine Primzahl durch Addition einer positiven Zahl größer als 1 keine Primzahl mehr bleibt (es sei denn, die Zahl selbst ist wieder eine Primzahl, aber wir wissen, dass $n \geq 1$ und $q$ bereits so gewählt ist, dass $q+n$ keine Primzahl ist).
+
+	Somit haben wir ein $i \in \mathbb{N}$ gefunden (nämlich $i = 2$), sodass $xy^i z \notin L$ ist. Dies steht im Widerspruch zur Annahme, dass $L$ regulär ist.
+
+	Daraus folgt, dass $L$ nicht regulär sein kann. Q.E.D.
+
+\end{loesung}
+
+\newpage
+%-----------------------------
+\begin{aufgabe}[Grammatik \score{26}]
+	\medskip
+	Gegeben sei folgende Sprache über dem Alphabet $\Sigma = \{a,b\}$.
+	\begin{align*}
+		L = \{ w \in \Sigma^* \ | \ w\ \mbox{enthält weder das Teilwort $aa$ noch das Teilwort $bb$} \}
+	\end{align*}
+
+	\begin{enumerate}
+		\item
+		      \label{kurzeWoerter}
+		      Geben Sie die sieben kürzesten Wörter aus $L$ an.\\
+		      \score{4}
+		\item
+		      \label{abGrammatik}
+		      Geben Sie eine reguläre Grammatik $G$ an, die $L$ erzeugt.
+		      Benutzen Sie dabei höchstens 4 Nichterminale.\\
+		      \score{8}
+		\item
+		      Zeigen Sie für die beiden längsten Wörter aus Aufgabenteil~\ref{kurzeWoerter}., jeweils
+		      durch Angabe einer Ableitung, das diese Wörter zur Sprache $L(G)$ gehören, die
+		      von der Grammatik aus Aufgabenteil \ref{abGrammatik}. erzeugt wird.\\
+		      \score{4}
+		\item
+		      Ist $L$ eine reguläre Sprache? Mit Begründung.\\
+		      \score{2}
+		\item
+		      Legen Sie eine natürliche Zahl $k \in \mathbb{N}$ fest und
+		      geben Sie für jedes Wort $w \in L$ mit $|w| \ge k$ eine Zerlegung
+		      $xyz \in \{a, b\}^*$ an, für die gilt
+		      \begin{itemize}
+			      \item
+			            $w = xyz$,
+			      \item
+			            $|y| \ge 1$,
+			      \item
+			            $|xy| \le k$,
+			      \item
+			            für alle $i \in \mathbb{N} \cup \{0\}$ gilt, $xy^{i}z \in L$.
+		      \end{itemize}
+		      \score{8}
+	\end{enumerate}
+\end{aufgabe}
+\begin{loesung}
+	\begin{enumerate}
+
+		\item
+		      \begin{enumerate}
+			      \item $\epsilon$ (das leere Wort)
+			      \item $a$
+			      \item $b$
+			      \item $ab$
+			      \item $ba$
+			      \item $aba$
+			      \item $bab$
+		      \end{enumerate}
+
+		      Diese Wörter erfüllen alle die Bedingung, dass sie weder das Teilwort \texttt{aa} noch \texttt{bb} enthalten.
+
+
+		\item
+		      Eine Grammatik $G$, die mit höchstens 4 Nichtterminalen $L$ erzeught, können wir wie folgt konstruieren:
+
+		      \begin{itemize}
+			      \item $N = \{S, A, B\}$
+			      \item $T = \{a, b\}$
+			      \item Produktionen:
+			            \begin{align*}
+				            S & \rightarrow aA \mid bB \mid \epsilon \\
+				            A & \rightarrow bS \mid aA               \\
+				            B & \rightarrow aS \mid bB
+			            \end{align*}
+			      \item Startsymbol: $S$
+		      \end{itemize}
+
+		      Mit diesen Produktionen ist sichergestellt, dass keine zwei aufeinanderfolgenden $a$- oder $b$-Symbole entstehen, da jede Produktion entweder das Symbol wechselt oder zum Startsymbol zurückkehrt, um neue Symbolfolgen zu erzeugen. Der $\epsilon$-Übergang erlaubt es, das Wort zu jedem Zeitpunkt zu beenden.
+
+
+		      \label{gra}
+		\item
+		      Für das Wort $aba$:
+
+		      \begin{enumerate}
+			      \item $S$
+			      \item $S \rightarrow aA$
+			      \item $aA \rightarrow abS$
+			      \item $abS \rightarrow abaA$
+			      \item $abaA \rightarrow aba$ (durch Anwendung von $A \rightarrow \epsilon$)
+		      \end{enumerate}
+
+		      Für das Wort $bab$:
+
+		      \begin{enumerate}
+			      \item $S$
+			      \item $S \rightarrow bB$
+			      \item $bB \rightarrow baS$
+			      \item $baS \rightarrow babB$
+			      \item $babB \rightarrow bab$ (durch Anwendung von $B \rightarrow \epsilon$)
+		      \end{enumerate}
+
+		      Diese Ableitungen zeigen, dass die Wörter $aba$ und $bab$ in der von der Grammatik erzeugten Sprache $L(G)$ enthalten sind.
+
+
+		\item
+		      Wir wissen, dass $L = \{ w \in \{a, b\}^* \mid w \text{ enthält weder das Teilwort } aa \text{ noch das Teilwort } bb \} $ regulär ist, da eine reguläre Sprache eine Sprache ist, die von einem endlichen Automaten erkannt oder durch eine reguläre Grammatik erzeugt werden kann. In \ref{gra}. haben wir eine reguläre Grammatik $G$ konstruiert, die $L$ erzeugt. Zusätzlich können wir noch einen endlichen Automaten angeben, der $L$ akzeptiert.
+
+		      Ein deterministischer endlicher Automat (DFA), der $L$ akzeptiert, kann wie folgt konstruiert werden:
+
+		      \begin{itemize}
+			      \item Zustände: $\{S, A, B, D\}$
+			            \begin{itemize}
+				            \item $S$: Startzustand und akzeptierender Zustand
+				            \item $A$: Zustand, nachdem ein $a$ gelesen wurde
+				            \item $B$: Zustand, nachdem ein $b$ gelesen wurde
+				            \item $D$: Dead-Zustand (wird erreicht, wenn ein ungültiges Muster erkannt wird)
+			            \end{itemize}
+			      \item Alphabet: $\{a, b\}$
+			      \item Übergangsfunktionen:
+			            \begin{align*}
+				            \delta(S, a) & = A \\
+				            \delta(S, b) & = B \\
+				            \delta(A, a) & = D \\
+				            \delta(A, b) & = S \\
+				            \delta(B, a) & = S \\
+				            \delta(B, b) & = D \\
+				            \delta(D, a) & = D \\
+				            \delta(D, b) & = D
+			            \end{align*}
+			      \item Startzustand: $S$
+			      \item Akzeptierende Zustände: $\{S, A, B\}$
+		      \end{itemize}
+
+		      Da ebenfalls ein deterministischer endlicher Automat existiert, der $L$ akzeptiert, ist bestimmt $L$ regulär. Q.E.D.
+
+		\item
+		      Wir wählen $k = 2$. Sei $w \in L$ mit $|w| \geq k$. Wir zerlegen $w$ wie folgt:
+
+		      \begin{itemize}
+			      \item Wähle $x = \epsilon$ (das leere Wort)
+			      \item Wähle $y = w_1$ (das erste Zeichen von $w$)
+			      \item Wähle $z = w_2w_3\ldots w_n$ (den Rest des Wortes ab dem zweiten Zeichen)
+		      \end{itemize}
+
+		      Formell: Sei $w = w_1w_2w_3\ldots w_n$ mit $w_1, w_2, \ldots, w_n \in \{a, b\}$ und $n \geq 2$. Dann ist die Zerlegung:
+		      $$x = \epsilon, \quad y = w_1, \quad z = w_2w_3\ldots w_n$$
+		      Überprüfung der Bedingungen:
+
+		      \begin{enumerate}
+			      \item $w = xyz$:
+
+			            $$ w = \epsilon \cdot w_1 \cdot w_2w_3\ldots w_n = w_1w_2w_3\ldots w_n$$
+
+			            Dies ist genau $w$.
+
+			      \item $|y| \geq 1$:
+
+			            $$ |y| = |w_1| = 1 \geq 1 $$
+
+			      \item $|xy| \leq k$:
+
+			            $$ |xy| = |\epsilon w_1| = |w_1| = 1 \leq 2 $$
+
+			      \item Für alle $i \in \mathbb{N} \cup \{0\}$ gilt, $xy^i z \in L$:
+
+			            Für jedes $i \in \mathbb{N} \cup \{0\}$ ist:
+
+			            $$ xy^i z = \epsilon \cdot w_1^i \cdot w_2w_3\ldots w_n = w_1^i w_2w_3\ldots w_n $$
+
+			            Da $w \in L$ ist, enthält $w$ weder $aa$ noch $bb$. Da $y = w_1$ nur ein einzelnes Zeichen $a$ oder $b$ ist und $w$ bereits die Bedingung erfüllt, dass weder $aa$ noch $bb$ vorkommen, bleibt diese Bedingung auch für $w_1^i w_2w_3\ldots w_n$ erfüllt.
+
+			            \begin{itemize}
+				            \item Wenn $w_1 = a$, dann ist $w_1^i = a^i$. Für alle $i \geq 0$ gibt es keine zwei aufeinanderfolgenden $a$ in $w_1^i w_2w_3\ldots w_n$, weil $w_2 \neq a$.
+				            \item Wenn $w_1 = b$, dann ist $w_1^i = b^i$. Für alle $i \geq 0$ gibt es keine zwei aufeinanderfolgenden $b$ in $w_1^i w_2w_3\ldots w_n$, weil $w_2 \neq b$.
+			            \end{itemize}
+		      \end{enumerate}
+
+		      Daher bleibt $xy^i z$ in der Sprache $L$ für alle $i \in \mathbb{N} \cup \{0\}$.
+
+		      Mit $k = 2$ und der Zerlegung $x = \epsilon$, $y = w_1$, $z = w_2w_3\ldots w_n$ erfüllen wir alle Bedingungen des Pumping-Lemmas für die Sprache $L$.
+	\end{enumerate}
+
+\end{loesung}
+\newpage
+\begin{aufgabe}[Rechts-/Linkslineare Grammatik \score{16}]
+	\medskip
+	Gegeben sei folgende rechtslineare Grammatik $G = (N,T,P,S)$.
+	\begin{itemize}
+		\item
+		      Nichtterminale
+		      $N := \{$ START, BIN, NULL, OP $\}$
+		\item
+		      Terminale
+		      $T := \{0, 1, \vee, \wedge\}$
+		\item
+		      Produktionen
+		      \begin{tabbing}
+			      $P$ := \{ \quad \= FACTOR \quad \= \kill
+			      $P$ := \{ \> START  \>$\rightarrow$ 1 BIN $|$ 0 NULL $|$ 1 $|$ 0  \\
+			      \> BIN    \>$\rightarrow$ 1 BIN $|$ 0 BIN $|$ $\vee$ OP $|$ $\wedge$ OP $|$ $\varepsilon$ \\
+			      \> NULL   \>$\rightarrow$ $\vee$ OP $|$ $\wedge$ OP $|$ $\varepsilon$ \\
+			      \> OP     \>$\rightarrow$ 1 BIN $|$ 0 NULL \quad \}
+		      \end{tabbing}
+		\item
+		      Startsymbol $S :=$ START
+	\end{itemize}
+
+	\begin{enumerate}
+		\item
+		      \label{zweiWoerter}
+		      Geben Sie zwei Worte der von $G$ erzeugten Sprache $L(G)$ an,
+		      die jeweils mit $0$ und $1$ beginnen,
+		      jeweils jedes Terminalsymbol mindestens einmal enthalten und
+		      insgesamt keine Ziffernfolge mehr als einmal enthalten.\\
+		      \score{2}
+		\item
+		      \label{linksGrammatik}
+		      Geben Sie eine linkslineare Grammatik $G'$ an,
+		      die dieselbe Sprache wie die rechtslineare Grammatik $G$
+		      erzeugt, d.h. es gilt $L(G') = L(G)$.\\
+		      \score{10}
+		\item
+		      Zeigen Sie für die beiden Wörter aus Aufgabenteil~\ref{zweiWoerter}., jeweils
+		      durch Angabe einer Ableitung, das diese Wörter zur Sprache $L(G')$ gehören, die
+		      von der Grammatik aus Aufgabenteil \ref{linksGrammatik}. erzeugt wird.\\
+		      \score{4}
+
+	\end{enumerate}
+\end{aufgabe}
+% Hier könnt ihr eure Lösung hinschreiben
+\begin{loesung}
+
+\end{loesung}
+\end{document}

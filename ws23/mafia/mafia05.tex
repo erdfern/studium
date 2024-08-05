@@ -1,0 +1,217 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs}
+\usepackage[ngerman]{babel}
+
+\title{Lösungen zu Übungsaufgaben 05 \\ \small Gruppe: Mi 08-10 SR 2, Barbara Rieß}
+\author{Linus Keiser}
+\date{\today}
+
+% Theorem-Umgebungen
+\renewcommand{\proofname}{Beweis}
+\newtheorem*{theorem}{Satz}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Bemerkung}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 17}
+
+\textit{Zu zeigen:} Die Folge \((\alpha \cdot a_n)_{n\in\mathbb{N}}\) konvergiert gegen den Grenzwert \(\alpha \cdot a\).
+
+\begin{proof}
+	Gegeben ist eine konvergente Folge \((a_n)_{n\in\mathbb{N}}\) mit dem Grenzwert \(a\). Nach der Definition der Konvergenz, für jedes \(\varepsilon > 0\), existiert ein \(N \in \mathbb{N}\), so dass für alle \(n \geq N\) gilt, dass \(|a_n - a| < \varepsilon/\alpha\), wobei \(\alpha\) eine konstante reelle Zahl ist.
+
+	Wir müssen zeigen, dass \(\lim_{n \to \infty} (\alpha \cdot a_n) = \alpha \cdot a\). Dafür betrachten wir den Ausdruck \(|(\alpha \cdot a_n) - (\alpha \cdot a)|\), der sich zu \(\alpha \cdot |a_n - a|\) vereinfacht. Da \(|a_n - a| < \varepsilon/\alpha\) für alle \(n \geq N\), folgt, dass \(\alpha \cdot |a_n - a| < \varepsilon\), und somit \(|(\alpha \cdot a_n) - (\alpha \cdot a)| < \varepsilon\) für alle \(n \geq N\).
+
+	Somit konvergiert die Folge \((\alpha \cdot a_n)_{n\in\mathbb{N}}\) gegen \(\alpha \cdot a\), da die Bedingung der Konvergenz für jedes \(\varepsilon > 0\) erfüllt ist, sobald \(n\) groß genug ist.
+\end{proof}
+
+\subsection*{Teil (b)}
+\textit{Zu zeigen:} Jede Cauchyfolge in \(K\) ist beschränkt.
+
+\begin{proof}
+	Sei \((b_n)_{n\in\mathbb{N}}\) eine Cauchyfolge in \(K\). Nach der Definition einer Cauchyfolge gibt es für jedes \(\varepsilon > 0\) ein \(N \in \mathbb{N}\), so dass für alle \(m, n \geq N\) gilt, dass \(|b_m - b_n| < \varepsilon\). Wählen wir speziell \(\varepsilon = 1\), dann existiert ein solches \(N\).
+
+	Für alle \(n \geq N\) gilt dann \(|b_n - b_N| < 1\), was bedeutet, dass \(b_n\) im Intervall \([b_N - 1, b_N + 1]\) liegt. Betrachten wir nun die Folgenglieder \(b_1, b_2, \ldots, b_{N-1}\). Es gibt ein maximales Element \(b_{max}\) und ein minimales Element \(b_{min}\) bezüglich ihres Betrages.
+
+	Wir definieren \(M\) als das Maximum von \(|b_{max}|\), \(|b_{min}|\), und \(|b_N + 1|\). Dadurch ist sichergestellt, dass \(|b_n| \leq M\) für alle \(n < N\) und \(|b_n| \leq |b_N + 1| \leq M\) für alle \(n \geq N\).
+
+	Somit ist die gesamte Folge \((b_n)\) beschränkt, da es ein \(M > 0\) gibt, so dass \(|b_n| \leq M\) für alle \(n \in \mathbb{N}\).
+\end{proof}
+
+\section*{Aufgabe 18}
+
+\subsection*{Teil (a)}
+\textit{Zu zeigen:} Für die Folgen \( (a_n)_{n \in \mathbb{N}} \) und \( (b_n)_{n \in \mathbb{N}} \) gelten:
+\begin{itemize}
+	\item \( \lim_{n \to \infty} a_n = \infty \)
+	\item \( \lim_{n \to \infty} b_n = 0 \)
+	\item \( \lim_{n \to \infty} a_n b_n = 3 \)
+\end{itemize}
+
+\begin{proof}
+	Wir wählen \( a_n = n \) und \( b_n = \frac{3}{n} \).
+
+	Zuerst betrachten wir die Folge \( (a_n) \):
+	\[ \lim_{n \to \infty} a_n = \lim_{n \to \infty} n = \infty. \]
+
+	Für die Folge \( (b_n) \) gilt:
+	\[ \lim_{n \to \infty} b_n = \lim_{n \to \infty} \frac{3}{n} = 0. \]
+
+	Für das Produkt der beiden Folgen erhalten wir:
+	\[ \lim_{n \to \infty} a_n b_n = \lim_{n \to \infty} n \cdot \frac{3}{n} = \lim_{n \to \infty} 3 = 3. \]
+
+	Damit sind alle drei Bedingungen erfüllt.
+\end{proof}
+
+\subsection*{Teil (b)}
+\textit{Zu zeigen:} Für die Folgen \( (a_n)_{n \in \mathbb{N}} \) und \( (b_n)_{n \in \mathbb{N}} \) gilt:
+\begin{itemize}
+	\item \( \lim_{n \to \infty} a_n = \infty \)
+	\item \( \lim_{n \to \infty} b_n = 0 \)
+	\item Die Folge \( (a_n b_n)_{n \in \mathbb{N}} \) ist beschränkt, aber nicht konvergent.
+\end{itemize}
+
+\begin{proof}
+	Wir definieren \( a_n = (-1)^n n \) und \( b_n = \frac{1}{n} \).
+
+	Für \( a_n \) gilt:
+	\[ \lim_{n \to \infty} a_n = \infty, \]
+	da die Beträge der Folgenglieder gegen unendlich streben, obwohl die Folge selbst nicht gegen einen spezifischen Wert konvergiert, sondern oszilliert.
+
+	Für \( b_n \) erhalten wir:
+	\[ \lim_{n \to \infty} b_n = \lim_{n \to \infty} \frac{1}{n} = 0. \]
+
+	Für das Produkt \( (a_n b_n) \) gilt:
+
+	Die Folge \( (a_n b_n)_{n \in \mathbb{N}} = ((-1)^n) \) ist offensichtlich beschränkt, da sie nur die Werte -1 und 1 annimmt. Jedoch ist sie nicht konvergent, da kein Grenzwert existiert, gegen den die Folge konvergiert.
+
+	Somit sind alle geforderten Eigenschaften nachgewiesen.
+\end{proof}
+
+
+\section*{Aufgabe 19}
+
+\subsection*{Teil (a)}
+\textit{Zu zeigen:} Die Reihe \(\sum_{k=1}^{\infty} \frac{5}{k(k+1)}\) konvergiert und bestimmen Sie ihren Grenzwert.
+
+\begin{proof}
+	Wir betrachten die Partialbruchzerlegung der Terme der Reihe:
+	\[ \frac{5}{k(k+1)} = \frac{A}{k} + \frac{B}{k+1} \]
+	wobei \( A \) und \( B \) so gewählt werden, dass die Gleichheit für alle \( k \) gilt. Durch Koeffizientenvergleich erhalten wir \( A = 5 \) und \( B = -5 \), also:
+	\[ \frac{5}{k(k+1)} = \frac{5}{k} - \frac{5}{k+1} \]
+	Dies führt zu einer teleskopierenden Reihe, deren Partialsummen \( S_N \) sich wie folgt verhalten:
+	\[ S_N = \sum_{k=1}^{N} \left( \frac{5}{k} - \frac{5}{k+1} \right) = 5 \left( 1 - \frac{1}{N+1} \right) \]
+	Da \( \lim_{N \to \infty} \frac{1}{N+1} = 0 \), konvergiert \( S_N \) gegen 5.
+
+	Daher konvergiert die Reihe \(\sum_{k=1}^{\infty} \frac{5}{k(k+1)}\) und ihr Grenzwert ist 5.
+\end{proof}
+
+\subsection*{Teil (b)}
+\textit{Zu zeigen:} Die Folge \( (a_n)_{n\in\mathbb{N}} \) mit \( a_n := \sqrt{n^2 + 2} - n \) konvergiert und bestimmen Sie ihren Grenzwert.
+
+\begin{proof}
+	Um die Konvergenz der Folge zu zeigen, formen wir \( a_n \) um:
+	\[ a_n = \frac{\left( \sqrt{n^2 + 2} - n \right) \left( \sqrt{n^2 + 2} + n \right)}{\sqrt{n^2 + 2} + n} = \frac{n^2 + 2 - n^2}{\sqrt{n^2 + 2} + n} = \frac{2}{\sqrt{n^2 + 2} + n} \]
+	Für große \( n \) nähert sich der Term \( \sqrt{n^2 + 2} \) dem Term \( n \), und daher strebt der Ausdruck \( \frac{2}{\sqrt{n^2 + 2} + n} \) gegen 0.
+
+	Somit konvergiert die Folge \( (a_n)_{n\in\mathbb{N}} \) gegen 0, da der Grenzwert der Folge für \( n \) gegen unendlich 0 ist.
+\end{proof}
+
+\newpage
+
+\section*{Aufgabe 20}
+
+\subsection*{Teil (a)}
+\textit{Zu zeigen:} Für die Folge \( (a_n)_{n \in \mathbb{N}_0} \) definiert durch
+\[ a_0 := 0, \, a_1 := 1, \, a_n := \frac{a_{n-1} + a_{n-2}}{2} \text{ für } n = 2, 3, \dots \]
+gilt
+\[ a_{n+1} - a_n = \frac{(-1)^n}{2^n} \text{ für } n \in \mathbb{N}_0. \]
+
+\begin{proof}
+Wir führen einen Induktionsbeweis.
+
+\textbf{Induktionsanfang (n = 0):}
+\begin{align*}
+a_{0+1} - a_0 &= a_1 - a_0 \\
+&= 1 - 0 \\
+&= 1 \\
+&= \frac{(-1)^0}{2^0} \\
+&= 1.
+\end{align*}
+Die Behauptung gilt für \( n = 0 \).
+
+\textbf{Induktionsschritt:}
+\textit{Induktionsvoraussetzung:} Für ein beliebiges, aber festes \( n \in \mathbb{N}_0 \) gilt
+\[ a_{n+1} - a_n = \frac{(-1)^n}{2^n}. \]
+
+\textit{Zu zeigen:} Die Behauptung gilt auch für \( n+1 \), also
+\[ a_{n+2} - a_{n+1} = \frac{(-1)^{n+1}}{2^{n+1}}. \]
+
+Aus der Rekursionsformel folgt:
+\[ a_{n+2} = \frac{a_{n+1} + a_n}{2}. \]
+Daraus ergibt sich:
+\begin{align*}
+a_{n+2} - a_{n+1} &= \frac{a_{n+1} + a_n}{2} - a_{n+1} \\
+&= \frac{a_n - a_{n+1}}{2}.
+\end{align*}
+Unter Verwendung der Induktionsvoraussetzung erhalten wir:
+\begin{align*}
+a_{n+2} - a_{n+1} &= \frac{-\frac{(-1)^n}{2^n}}{2} \\
+&= -\frac{(-1)^n}{2^{n+1}} \\
+&= \frac{(-1)^{n+1}}{2^{n+1}}.
+\end{align*}
+Somit gilt die Behauptung auch für \( n+1 \).
+
+Der Induktionsbeweis ist damit abgeschlossen, und die Aussage gilt für alle \( n \in \mathbb{N}_0 \).
+\end{proof}
+
+\subsection*{Teil (b)}
+\textit{Zu zeigen:} Für alle \( n \in \mathbb{N}_0 \) und \( k \in \mathbb{N} \) gilt
+\[ a_{n+k} - a_n = \sum_{j=1}^{k} (a_{n+j} - a_{n+j-1}). \]
+
+\begin{proof}
+Zur Beweisführung nutzen wir die Eigenschaft von Teleskopsummen, dass sich in der Summe der aufeinanderfolgenden Differenzen benachbarter Glieder die meisten Terme gegenseitig aufheben.
+
+Betrachten wir die gegebene Summe:
+\[ \sum_{j=1}^{k} (a_{n+j} - a_{n+j-1}). \]
+Jeder Summand kann als Differenz zweier aufeinanderfolgender Glieder der Folge interpretiert werden. Indem wir die Terme der Summe einzeln anschreiben, beobachten wir, dass sich aufeinanderfolgende Terme aufheben:
+\begin{align*}
+&(a_{n+1} - a_n) + (a_{n+2} - a_{n+1}) + \ldots + (a_{n+k} - a_{n+k-1}) \\
+&= a_{n+1} - a_n + a_{n+2} - a_{n+1} + \ldots + a_{n+k} - a_{n+k-1} \\
+&= - a_n + a_{n+k}.
+\end{align*}
+Hier heben sich alle Terme außer \( -a_n \) und \( a_{n+k} \) auf, was zur Formulierung \( a_{n+k} - a_n \) führt.
+
+Somit ist die Gleichung
+\[ a_{n+k} - a_n = \sum_{j=1}^{k} (a_{n+j} - a_{n+j-1}) \]
+formal bewiesen.
+\end{proof}
+
+\subsection*{Teil (c)}
+\textit{Zu zeigen:} Die durch
+\[ a_0 := 0, \, a_1 := 1, \, a_n := \frac{a_{n-1} + a_{n-2}}{2} \text{ für } n = 2, 3, \dots \]
+definierte Folge \( (a_n)_{n \in \mathbb{N}_0} \) ist eine Cauchyfolge.
+
+\begin{proof}
+Um zu zeigen, dass \( (a_n)_{n \in \mathbb{N}_0} \) eine Cauchyfolge ist, müssen wir beweisen, dass für jedes \( \varepsilon > 0 \) ein \( N(\varepsilon) \in \mathbb{N} \) existiert, sodass für alle \( m, n \geq N(\varepsilon) \) gilt \( |a_m - a_n| < \varepsilon \).
+
+Aus Teil (a) wissen wir, dass \( a_{n+1} - a_n = \frac{(-1)^n}{2^n} \) für alle \( n \in \mathbb{N}_0 \). Für \( m > n \) kann \( |a_m - a_n| \) wie folgt ausgedrückt werden:
+\[ |a_m - a_n| = \left| \sum_{i=n}^{m-1} (a_{i+1} - a_i) \right| \]
+Anwendung der Dreiecksungleichung ergibt:
+\[ |a_m - a_n| \leq \sum_{i=n}^{m-1} |a_{i+1} - a_i| = \sum_{i=n}^{m-1} \left| \frac{(-1)^i}{2^i} \right| \]
+Da \( \left| \frac{(-1)^i}{2^i} \right| = \frac{1}{2^i} \), haben wir:
+\[ |a_m - a_n| \leq \sum_{i=n}^{m-1} \frac{1}{2^i} \]
+Diese Summe ist eine endliche geometrische Reihe, die sich zu \( 2 \cdot 2^{-n} - 2 \cdot 2^{-m} \) vereinfacht. Für \( m, n \geq N(\varepsilon) \) mit \( N(\varepsilon) = \lceil -\log_2(\varepsilon/2) \rceil \), ist:
+\[ |a_m - a_n| \leq 2 \cdot 2^{-n} < \varepsilon. \]
+
+Somit ist \( (a_n)_{n \in \mathbb{N}_0} \) eine Cauchyfolge.
+\end{proof}
+
+\end{document}

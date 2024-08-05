@@ -1,0 +1,259 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+
+% "Beweis" anstatt "Proof" bei proof Umgebung
+\renewcommand{\proofname}{Beweis}
+
+% \title{Lösungen zu Übungsaufgaben 03 \\ \small Gruppe: Mi 08-10 SR 2, Barbara Rieß}
+\title{Lösungen\rlap{\raisebox{0.3ex}{\hspace{0mm}\textsuperscript{\tiny Learning}}} zu\rlap{\raisebox{-0.3ex}{\hspace{0mm}\textsubscript{\tiny \LaTeX}}} Übungsaufgaben\rlap{\raisebox{0.3ex}{\hspace{-8mm}\textsuperscript{\tiny Edition}}} 03\rlap{\textsubscript{\tiny :)}}
+\\ \small Gruppe: Mi 08-10 SR 2, Barbara Rieß}
+\author{Linus Keiser}
+\date{\today}
+
+% \newtheorem{theorem}{Satz}
+% \newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 9}
+
+\subsection*{(a) i.}
+
+\subsection*{Wahrheitstabelle für \( x \rightarrow y \)}
+\[
+	\begin{array}{cc|c}
+		x & y & x \rightarrow y \\
+		\hline
+		W & W & W               \\
+		W & F & F               \\
+		F & W & W               \\
+		F & F & W               \\
+	\end{array}
+\]
+
+\subsection*{Wahrheitstabelle für \( \neg(x \land \neg y) \)}
+\[
+	\begin{array}{cc|c}
+		x & y & \neg(x \land \neg y) \\
+		\hline
+		W & W & W                    \\
+		W & F & F                    \\
+		F & W & W                    \\
+		F & F & W                    \\
+	\end{array}
+\]
+
+Der Vergleich der beiden Wahrheitstabellen zeigt, dass die Werte in der Ergebnisspalte für jede mögliche Kombination von \( x \) und \( y \) identisch sind. Daher können wir schlussfolgern, dass die Aussagen \( x \rightarrow y \) und \( \neg(x \land \neg y) \) logisch äquivalent sind.
+
+\subsection*{(a) ii.}
+
+\subsection*{Wahrheitstabelle für \( x \leftrightarrow y \)}
+\[
+	\begin{array}{cc|c}
+		x & y & x \leftrightarrow y \\
+		\hline
+		W & W & W                   \\
+		W & F & F                   \\
+		F & W & F                   \\
+		F & F & W                   \\
+	\end{array}
+\]
+
+\subsection*{Wahrheitstabelle für \( (x \rightarrow y) \land (y \rightarrow x) \)}
+\[
+	\begin{array}{cc|c}
+		x & y & (x \rightarrow y) \land (y \rightarrow x) \\
+		\hline
+		W & W & W                                         \\
+		W & F & F                                         \\
+		F & W & F                                         \\
+		F & F & W                                         \\
+	\end{array}
+\]
+
+Der Vergleich der beiden Wahrheitstabellen zeigt, dass die Werte in der Ergebnisspalte für jede mögliche Kombination von \( x \) und \( y \) identisch sind. Daher können wir schlussfolgern, dass die Aussagen \( x \leftrightarrow y \) und \( (x \rightarrow y) \land (y \rightarrow x) \) logisch äquivalent sind.
+
+\section*{(b)}
+
+% Die folgenden logischen Operationen werden ausschließlich mit dem Sheffer-Operator (NAND) dargestellt:
+
+\begin{align*}
+	\text{Negation:}    & \quad \neg x              &  & = x \mid x                                                       \\
+	\text{Konjunktion:} & \quad x \land y           &  & = (x \mid y) \mid (x \mid y)                                     \\
+	\text{Disjunktion:} & \quad x \lor y            &  & = (x \mid x) \mid (y \mid y)                                     \\
+	\text{Implikation:} & \quad x \rightarrow y     &  & = x \mid (y \mid y)                                              \\
+	\text{Äquivalenz:}  & \quad x \leftrightarrow y &  & = ((x \mid y) \mid (x \mid y)) \mid ((x \mid x) \mid (y \mid y))
+\end{align*}
+
+\newpage
+
+\section*{Aufgabe 10}
+
+\begin{itemize}
+	\item[(a)] \textbf{Direkter Beweis, dass wenn \( x \) durch 3 teilbar ist, \( x^2 \) auch durch 3 teilbar ist:}
+		
+		Gegeben ist, dass \( x \in \mathbb{N} \) und \( x \) durch 3 teilbar ist. Daraus folgt, dass es eine ganze Zahl \( k \) gibt, sodass \( x = 3k \). Wir müssen zeigen, dass \( x^2 \) ebenfalls durch 3 teilbar ist.
+		
+		\textit{Zu zeigen:} ist \( x \in \mathbb{N} \) durch 3 teilbar, so ist auch \( x^2 \) durch 3 teilbar.
+		
+		\begin{proof}
+			Wir berechnen:
+			\[ x^2 = (3k)^2 = 9k^2 = 3(3k^2). \]
+			Da \( 3k^2 \) eine ganze Zahl ist (denn \( k \) ist eine ganze Zahl und das Quadrat einer ganzen Zahl ist wiederum eine ganze Zahl), ist \( x^2 \) das Produkt von 3 und einer ganzen Zahl, also durch 3 teilbar.
+		\end{proof}
+		
+	\item[(b)] \textbf{Indirekter Beweis, dass wenn \( y^{2} \) durch 3 teilbar ist, \( y \) auch durch 3 teilbar ist:}
+
+		\textit{Aussage zu beweisen:} Wenn \( y^2 \) durch 3 teilbar ist, dann muss \( y \) durch 3 teilbar sein.
+
+		\textit{Kontraposition der Aussage:} Wenn \( y \) nicht durch 3 teilbar ist, dann ist \( y^2 \) nicht durch 3 teilbar.
+
+		\begin{proof}
+			Nehmen wir an, \( y \) ist nicht durch 3 teilbar. Das bedeutet, \( y \) hat bei Division durch 3 entweder den Rest 1 oder den Rest 2. In beiden Fällen zeigen wir, dass \( y^2 \) nicht durch 3 teilbar ist.
+
+			\textit{1. Fall:} \( y = 3k + 1 \) für ein \( k \in \mathbb{Z} \).
+			\[ y^2 = (3k + 1)^2 = 9k^2 + 6k + 1 = 3(3k^2 + 2k) + 1. \]
+			Da 3 eine Primzahl ist und der Ausdruck \( 3(3k^2 + 2k) \) durch 3 teilbar ist, der Term \( +1 \) aber nicht, kann \( y^2 \) nicht durch 3 teilbar sein.
+
+			\textit{2. Fall:} \( y = 3k + 2 \).
+			\[ y^2 = (3k + 2)^2 = 9k^2 + 12k + 4 = 3(3k^2 + 4k + 1) + 1. \]
+			Ähnlich wie im ersten Fall ist der Ausdruck \( 3(3k^2 + 4k + 1) \) durch 3 teilbar, aber der Term \( +1 \) wiederum nicht, also kann auch hier \( y^2 \) nicht durch 3 teilbar sein.
+
+			Da in beiden Fällen \( y^2 \) nicht durch 3 teilbar ist, wenn \( y \) nicht durch 3 teilbar ist, haben wir die Kontraposition der ursprünglichen Aussage bewiesen. Das bedeutet, dass unsere ursprüngliche Aussage wahr sein muss: Wenn \( y^2 \) durch 3 teilbar ist, dann muss auch \( y \) durch 3 teilbar sein.
+		\end{proof}
+
+	\item[(c)] \textbf{Indirekter Beweis, dass \( \sqrt{3} \) irrational ist:}
+
+		\textit{Zu zeigen:} \( \sqrt{3} \) ist irrational.
+		
+		Wir führen einen Widerspruchsbeweis und nehmen an, dass \( \sqrt{3} \) rational ist.
+		
+		\begin{proof}
+			Wenn \( \sqrt{3} \) rational ist, kann es als Bruch zweier teilerfremder ganzer Zahlen \( a \) und \( b \) dargestellt werden, d.h. \( \sqrt{3} = \frac{a}{b} \), wobei \( a, b \in \mathbb{Z} \) und \( b \neq 0 \).
+			\begin{align*}
+				(\frac{a}{b})^2 & = 3     \\
+				a^2             & = 3b^2.
+			\end{align*}
+			Da \( a^2 \) das Dreifache einer ganzen Zahl ist, muss \( a^2 \) und somit \( a \) durch 3 teilbar sein. Also gibt es eine ganze Zahl \( k \), sodass \( a = 3k \).
+			
+			Setzen wir dies in die Gleichung \( a^2 = 3b^2 \) ein:
+			\begin{align*}
+				(3k)^2 & = 3b^2  \\
+				9k^2   & = 3b^2  \\
+				3k^2   & = b^2.
+			\end{align*}
+			
+			Jetzt sehen wir, dass \( b^2 \) auch durch 3 teilbar ist, und somit ist \( b \) ebenfalls durch 3 teilbar. Dies steht im Widerspruch dazu, dass \( a \) und \( b \) teilerfremd sein sollen. Daher ist unsere Annahme, dass \( \sqrt{3} \) rational ist, falsch, und es folgt, dass \( \sqrt{3} \) irrational sein muss.
+		\end{proof}
+\end{itemize}
+
+\section*{Aufgabe 11}
+
+\textit{Zu zeigen:} die Summenformel 
+\[
+	\sum_{i=1}^{n} i^3 = \frac{n^2(n + 1)^2}{4}
+\]
+gilt für alle natürlichen Zahlen \( n \). Wir führen den Beweis mittels vollständiger Induktion.
+
+\begin{proof}
+
+	\textbf{Schritt 1: Induktionsanfang.}
+
+	Wir müssen zeigen, dass die Formel für \( n = 1 \) wahr ist. Setzen wir \( n = 1 \) in die Formel ein, erhalten wir:
+	\[
+		\sum_{i=1}^{1} i^3 = 1^3 = 1
+	\]
+	und
+	\[
+		\frac{1^2(1 + 1)^2}{4} = \frac{1 \cdot 4}{4} = 1.
+	\]
+	Da beide Seiten gleich sind, ist der Induktionsanfang bewiesen.
+	
+	\textbf{Schritt 2: Induktionsschritt.}
+
+	\textit{Induktionsannahme:} Wir nehmen nun an, dass die Formel für ein beliebiges, aber festes \( n \) wahr ist:
+	\[
+		\sum_{i=1}^{n} i^3 = \frac{n^2(n + 1)^2}{4}.
+	\]
+	Nun zeigen wir, dass die Formel auch für \( n + 1 \) gültig ist:
+	\[
+		\sum_{i=1}^{n+1} i^3 = \sum_{i=1}^{n} i^3 + (n + 1)^3.
+	\]
+	Gemäß unserer Induktionsannahme können wir den ersten Teil der Summe ersetzen:
+	\[
+		\frac{n^2(n + 1)^2}{4} + (n + 1)^3.
+	\]
+
+	Dies vereinfachen wir zu:
+	\begin{align*}
+		\frac{n^2(n + 1)^2}{4} + (n + 1)^3 & = \frac{n^2(n + 1)^2 + 4(n + 1)^3}{4}                                    \\
+		                                   & = \frac{(n + 1)^2(n^2 + 4(n + 1))}{4} \mid (n + 1)^2 \text{ ausklammern} \\
+		                                   & = \frac{(n + 1)^2(n^2 + 4n + 4)}{4}                                      \\
+		                                   & = \frac{(n + 1)^2(n + 2)^2}{4}.
+	\end{align*}		Dies ist genau die Form, die wir für \( n + 1 \) zeigen wollten:
+	\[
+		\sum_{i=1}^{n+1} i^3 = \frac{(n+1)^2((n+1) + 1)^2}{4}.
+	\]
+	
+	Da der Induktionsanfang und der Induktionsschritt erfolgreich waren, ist die Formel für alle natürlichen Zahlen \( n \) bewiesen.
+\end{proof}
+
+\section*{Aufgabe 12: Potenzen}
+
+\subsection*{Teil 1: Bestimmung der kleinsten natürlichen Zahl \( M \)}
+
+Durch Berechnung finden wir, dass das kleinste \( M \), das größer als 1 ist und für das \( 2^M > M^2 \) gilt, gleich 5 ist, da \( 2^5 = 32 > 25 = 5^2 \). Die Fälle für \( M < 5 \) zeigen, dass kein zulässiger kleinerer Wert die Bedingung erfüllt:
+
+\begin{align*}
+	M = 2 & : \quad 2^2 = 4 \leq 4 = 2^2,    \\
+	M = 3 & : \quad 2^3 = 8 \leq 9 = 3^2,    \\
+	M = 4 & : \quad 2^4 = 16 \leq 16 = 4^2.
+\end{align*}
+
+\subsection*{Teil 2: Beweis der Ungleichung für alle \( n \geq M \)}
+
+Nun beweisen wir, dass \( 2^n > n^2 \) für alle natürlichen Zahlen \( n \geq M \) gilt, wobei \( M = 5 \) ist.
+
+\begin{proof}
+	\textbf{Induktionsanfang}: \\
+	Für \( M = 5 \) haben wir bereits gezeigt, dass \( 2^5 = 32 > 25 = 5^2 \). Daher ist der Induktionsanfang bestätigt.
+
+	\textbf{Induktionsschritt}:
+
+	\textit{Induktionsannahme}: Wir nehmen an, dass die Ungleichung \( 2^k > k^2 \) für ein beliebiges, aber festes \( k \geq 5 \) wahr ist.
+
+	Es gilt zu zeigen, dass aus \( 2^k > k^2 \) folgt, dass \( 2^{k+1} > (k+1)^2 \). Wir beginnen mit der linken Seite der Ungleichung für \( k+1 \):
+	\[ 2^{k+1} = 2 \cdot 2^k \]
+
+	Unter Verwendung der Induktionsvoraussetzung ergibt sich:
+	\[ 2^{k+1} = 2 \cdot 2^k > 2 \cdot k^2 \]
+
+	Wir zeigen, dass \( 2 \cdot k^2 \) größer als \( (k+1)^2 \) ist. Dazu betrachten wir die Differenz zwischen \( 2 \cdot k^2 \) und \( (k+1)^2 \):
+	\begin{align*}
+		(k+1)^2               & = k^2 + 2k + 1 \\
+		2 \cdot k^2 - (k+1)^2 & = k^2 - 2k - 1
+	\end{align*}
+
+	Um zu zeigen, dass \( k^2 - 2k - 1 > 0 \) für \( k \geq 5 \), bemerken wir, dass dies äquivalent ist zu \( (k - 1)^2 - 2 > 0 \):
+	\[ k^2 - 2k - 1 = (k - 1)^2 - 2 \]
+
+	Für \( k = 5 \) ist diese Differenz \( 14 \), was offensichtlich positiv ist. Da \( (k - 1)^2 \) als quadratische Funktion schneller wächst als die lineare Funktion \( 2k \), wird diese Differenz für \( k > 5 \) nur größer. Daher ist \( k^2 - 2k - 1 > 0 \) für alle \( k \geq 5 \).
+
+	Daraus folgt:
+	\[ 2 \cdot k^2 > k^2 + 2k + 1 \]
+
+	und somit:
+	\[ 2^{k+1} > (k+1)^2 \]
+
+	\textbf{Schlussfolgerung}: \\
+	Da der Induktionsanfang bestätigt ist und der Induktionsschritt für alle \( k \geq M \) gilt, folgt nach dem Prinzip der vollständigen Induktion, dass \( 2^n > n^2 \) für alle natürlichen Zahlen \( n \geq M \) wahr ist.
+\end{proof}
+
+\end{document}

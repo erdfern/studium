@@ -1,0 +1,58 @@
+**1. Aufgabe 13 (b-adische Darstellung)**
+In dieser Aufgabe geht es um die Berechnung der b-adischen Darstellung einiger Zahlen (siehe hierzu auch Satz 3.7).
+
+(a) Bestimmen Sie die Binärdarstellung von 101.
+
+(b) Bestimmen Sie die Hexadezimaldarstellung von 107470.
+
+(c) Bestimmen Sie die Oktaldarstellung (dies bedeutet Basis 8) von 95.
+
+Geben Sie auch den Rechenweg an!
+
+**2. Aufgabe 14 (Rationale Zahlen)**
+
+Man kann die rationalen Zahlen \( \mathbb{Q} \) mittels folgender Äquivalenzrelation auf \( \mathbb{Z} \times (\mathbb{Z} \setminus \{0\}) \) definieren:
+
+\( (m,n) \sim (p,q) \) genau dann, wenn \( m \cdot q = n \cdot p \).
+
+Die Äquivalenzklasse eines Elementes \( (m,n) \in \mathbb{Z} \times (\mathbb{Z} \setminus \{0\}) \) lautet
+
+\[ [(m,n)] = \{ (p,q) \in \mathbb{Z} \times (\mathbb{Z} \setminus \{0\}) : (p,q) \sim (m,n) \}. \]
+
+Die Menge aller dieser Äquivalenzklassen sind die rationalen Zahlen \( \mathbb{Q} \).
+
+Die Addition und die Multiplikation sind definiert durch
+
+\[ [(m,n)] + [(u,v)] := [(m \cdot v + u \cdot n, n \cdot v)] \] und \( [(m,n)] \cdot [(u,v)] := [(m \cdot u, n \cdot v)] \)
+
+für alle \( m, u \in \mathbb{Z} \) und alle \( n, v \in \mathbb{Z} \setminus \{0\} \).
+
+(a) Zeigen Sie: Die Addition und die Multiplikation sind wohldefiniert, d. h. dass die Äquivalenzklassen \( [(m \cdot v + u \cdot n, n \cdot v)] \) und \( [(m \cdot u, n \cdot v)] \) nicht von der Wahl der Repräsentanten \( (m,n) \) und \( (u,v) \) aus den Äquivalenzklassen \( [(m,n)] \) und \( [(u,v)] \) abhängen. Für die Multiplikation ist damit also zu zeigen, dass wenn \( [(m_1,n_1)] = [(m_2,n_2)] \) und \( [(u_1,v_1)] = [(u_2,v_2)] \) gilt, dann auch \( [(m_1 \cdot u_1, n_1 \cdot v_1)] = [(m_2 \cdot u_2, n_2 \cdot v_2)] \). Analoges ist für die Addition zu zeigen.
+
+(b) Zeigen Sie: Die Äquivalenzklasse \( [(0,1)] \) fungiert als Nullelement und die Äquivalenzklasse \( [(1,1)] \) fungiert als Einselement.
+
+(c) Zeigen Sie: Alle Äquivalenzklassen, die von der Null verschieden sind, haben die Form \( [(m,n)] \) mit \( m, n \neq 0 \). Weiterhin besitzen diese Äquivalenzklassen eine multiplikative Inverse.
+
+**3. Aufgabe 15 (Minimum, Maximum, Infimum und Supremum)**
+
+Entscheiden Sie in den folgenden Fällen darüber, ob die Menge M nach unten bzw. nach oben beschränkt ist und diskutieren Sie die Existenz eines Minimums, Maximums, Infimums und Supremums der Menge M in \( \mathbb{Q} \).
+
+(a) \( M := \mathbb{N}_0 = \mathbb{N} \cup \{0\}; \)
+
+(b) \( M := \mathbb{Z}; \)
+
+(c) \( M := \{x \in \mathbb{Z} | 8 < x^2 < 50\}; \)
+
+(d) \( M := \{x \in \mathbb{Q} | 2 < x^2 < 4\}; \)
+
+(e) \( M := \{x \in \mathbb{Q} | x = \frac{2}{3n+1} \text{ für ein } n \in \mathbb{N}_0\}. \)
+
+**4. Aufgabe 16 (Konvergenz, Divergenz)**
+
+(a) Zeigen Sie mithilfe von Definition 5.2 aus der Vorlesung, dass die Folge \( (a_n)_{n\in\mathbb{N}} \) mit
+
+\[ a_n := \frac{4n^3 + n^2}{5n^3} \]
+
+gegen den Grenzwert \( \frac{4}{5} \) konvergiert (d.h. Sie müssen zu jedem \( \varepsilon > 0 \) ein \( N(\varepsilon) \) mit den geforderten Eigenschaften finden).
+
+(b) Zeigen Sie, dass die Folgen \( (b_n)_{n\in\mathbb{N}} \) mit \( b_n := (-1)^n \) und \( (c_n)_{n\in\mathbb{N}} \) mit \( c_n := 2^{-n} \) nicht konvergieren.

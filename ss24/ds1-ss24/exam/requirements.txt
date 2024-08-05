@@ -1,0 +1,9 @@
+pandas
+seaborn
+numpy
+scipy
+scikit-learn
+matplotlib
+geopy
+openpyxl
+git+https://github.com/sinzlab/dsplotter.git

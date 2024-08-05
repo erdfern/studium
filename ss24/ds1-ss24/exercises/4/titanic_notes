@@ -1,0 +1,9 @@
+- Survived is numeric boolean
+- Sometimes multiple consecutive commas (maybe empty cells?)
+- From line 201, separator changes to semi-colon ;
+- Name and surnames in the "Name" column are separated by semi-colons, too..
+
+Might be easiest just to replace all commas with semi-colons, since numbers are using dots for decimals.
+
+maybe:
+sed 's/,/;/g' titanic.csv > cleaned_titanic.csv

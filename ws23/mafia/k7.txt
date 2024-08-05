@@ -1,0 +1,73 @@
+**Definition 7.1**  
+Für \( n \in \mathbb{N} \) ist der euklidische Raum \( \mathbb{R}^n \) definiert als das n-fache kartesische Produkt von \( \mathbb{R} \), d.h.
+
+\[ \mathbb{R}^n := \mathbb{R} \times \cdots \times \mathbb{R} = \{(x_1, \ldots, x_n) : x_j \in \mathbb{R}, j = 1, \ldots, n\}. \]
+
+Die Elemente von \( \mathbb{R}^n \) nennen wir Punkte oder Vektoren. Die Addition zweier Vektoren \( x = (x_1, \ldots, x_n) \) und \( y = (y_1, \ldots, y_n) \) ist definiert durch
+
+\[ x + y := (x_1 + y_1, \ldots, x_n + y_n). \]
+
+und das skalare Produkt oder die skalare Multiplikation eines Vektors \( x = (x_1, \ldots, x_n) \) mit einer Zahl \( \alpha \in \mathbb{R} \) durch \( \alpha \cdot x := (\alpha \cdot x_1, \ldots, \alpha \cdot x_n). \)
+
+Bemerkung: 
+Wenn wir den \( \mathbb{R}^2 \) als Ebene interpretieren, dann können wir \( x = (x_1, x_2) \) als gerichtete Strecke vom Nullpunkt (0,0) nach \( (x_1, x_2) \) auffassen und damit die Bezeichnungsweise Vektor motivieren. Die Addition lässt sich dann interpretieren als Hintereinanderfügen der Strecke von (0, 0) nach \( (x_1, x_2) \) und der Strecke von \( (x_1, x_2) \) nach \( (x_1 + y_1, x_2 + y_2) \). Die skalare Multiplikation mit \( \alpha \) entspricht einer Streckung des Vektors \( (x_1, x_2) \) um den Faktor \( \alpha \) verbunden mit einer Richtungsumkehr bei negativem \( \alpha \). Die Rechenregeln für die Addition und die skalare Multiplikation auf dem \( \mathbb{R}^n \) bringen wir in der folgenden Definition unter.
+
+**Definition 7.2**  
+Eine nichtleere Menge \( V \) heißt ein Vektorraum oder ein linearer Raum über einem Körper \( \mathbb{K} \), wenn eine Addition \( + : V \times V \rightarrow V \) und eine skalare Multiplikation \( \cdot : \mathbb{K} \times V \rightarrow V \) definiert ist mit den folgenden Eigenschaften:
+
+1. \( V \) ist bezüglich der Addition eine Abelsche Gruppe, d.h. die Addition ist assoziativ und kommutativ, es gibt ein neutrales Element 0, und zu jedem Element \( v \in V \) ein eindeutig bestimmtes Inverses \( -v \in V \) mit \( v + (-v) = 0 \).
+
+2. Die skalare Multiplikation ist bilinear, d.h.
+
+   \[ (\alpha + \beta) \cdot v = \alpha \cdot v + \beta \cdot v \] 
+   \[ \alpha \cdot (u + v) = \alpha \cdot u + \alpha \cdot v \]
+
+   für alle \( u, v \in V \) und \( \alpha, \beta \in \mathbb{K} \).
+
+3. Es gilt ferner
+
+   \[ (\alpha \cdot \beta) \cdot v = \alpha \cdot (\beta \cdot v) \] 
+   \[ 1 \cdot v = v \]
+
+   für alle \( v \in V \) und \( \alpha, \beta \in \mathbb{K} \) und dem Einselement 1 in \( \mathbb{K} \).
+
+**Satz 7.3**  
+Cauchy–Schwarzsche Ungleichung  
+Für \( 2n \) reelle Zahlen \( a_1, \ldots, a_n \) und \( b_1, \ldots, b_n \) gilt die Ungleichung
+
+\[ \left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right). \]
+
+**Beweis.**  
+Wir setzen  
+\( A := \sum_{k=1}^n a_k^2 \),  
+\( B := \sum_{k=1}^n b_k^2 \),  
+\( C := \sum_{k=1}^n a_k b_k \),  
+und können \( A > 0 \) annehmen, da für \( A = 0 \) die Ungleichung richtig ist. Wir setzen außerdem  
+\( \beta := \sqrt{A} \),  
+\( \alpha := -\frac{C}{\sqrt{A}} \),  
+und haben  
+
+\[ 0 \leq \left( \sum_{k=1}^n \alpha a_k + \beta b_k \right)^2 = \alpha^2 A + 2 \alpha \beta C + \beta^2 B = AB - C^2, \]
+
+und die Behauptung ist bewiesen.  
+
+Bemerkung:
+Aus dem Beweis ersehen wir, daß Gleichheit in der Cauchy–Schwarzschen Ungleichung auftritt genau dann, wenn der Vektor \( a \) ein Vielfaches von \( b \) ist (oder umgekehrt).
+
+Nun können wir motiviert durch den Satz von Pythagoras, die Länge des Vektors \( x = (x_1, \ldots, x_n) \) durch
+
+\[ \|x\| := \sqrt{\sum_{k=1}^n x_k^2} \]
+
+definieren. Hierfür gelten analog zu Satz 4.9 die Eigenschaften
+
+(N1) \( \|x\| \geq 0 \) (Positivität)
+
+(N2) \( \|x\| = 0 \) genau dann, wenn \( x = 0 \) (Definitheit)
+
+(N3) \( \|\alpha x\| = |\alpha| \|x\| \) (Homogenität)
+
+(N4) \( \|x + y\| \leq \|x\| + \|y\| \) (Dreiecksungleichung)
+
+für alle \( x, y \in \mathbb{R}^n \) und alle \( \alpha \in \mathbb{R} \). Die Dreiecksungleichung (deren Namen wir nun auch verstehen) erhalten wir aus der Cauchy–Schwarzschen Ungleichung
+
+\[ \|x + y\|^2 = \|x\|^2 + 2 \sum_{k=1}^n x_k y_k + \|y\|^2 \leq \|x\|^2 + 2\|x\|\|y\| + \|y\|^2 = (\|x\| + \|y\|)^2. \]

@@ -1,0 +1,208 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+
+% "Beweis" anstatt "Proof" bei proof Umgebung
+\renewcommand{\proofname}{Beweis}
+% Ohne serielle Nummerierung
+\newtheorem*{theorem}{Satz}
+% \newtheorem*{lemma}[theorem]{Lemma}
+
+\title{Lösungen zu Übungsaufgaben 03 \\ \small Gruppe: Do 08-10 HS 3, Runa Pflume}
+\author{Linus Keiser, Viktor Varbanov}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+\subsection*{(i)}
+
+\begin{enumerate}
+	\item \textbf{Berechnung der Summe \( S(n) \) für \( n = 0, 1, 2, 3, 4, 5 \):}
+	      \begin{itemize}
+		      \item \( S(0) = 0 \) (keine ungeraden Zahlen)
+		      \item \( S(1) = 1 \) (nur die erste ungerade Zahl)
+		      \item \( S(2) = 1 + 3 = 4 \)
+		      \item \( S(3) = 1 + 3 + 5 = 9 \)
+		      \item \( S(4) = 1 + 3 + 5 + 7 = 16 \)
+		      \item \( S(5) = 1 + 3 + 5 + 7 + 9 = 25 \)
+	      \end{itemize}
+	\item \textbf{Möglichen Formel für \( S(n) \):}
+
+	      Die berechneten Werte sind Quadratzahlen. Tatsächlich scheint \( S(n) = n^2 \) zu sein, da \( 1^2 = 1 \), \( 2^2 = 4 \), \( 3^2 = 9 \), \( 4^2 = 16 \), und \( 5^2 = 25 \).
+
+	      \textit{Vermutung:} \( S(n) = n^2 \).
+\end{enumerate}
+
+\subsection*{(ii)}
+
+\textbf{Überprüfung der Gleichung \( S(n) + (2n + 1) = S(n + 1) \):}
+
+Wir überprüfen die Gültigkeit der Gleichung \( S(n) + (2n + 1) = S(n + 1) \) unter der Annahme, dass \( S(n) = n^2 \).
+Für ein beliebiges \( n \in \mathbb{N} \) gilt:
+\begin{align*}
+	S(n) + (2n + 1) & = n^2 + (2n + 1)                                 \\
+	                & = n^2 + 2n + 1                                   \\
+	                & = (n + 1)^2                                      \\
+	                & = S(n + 1) \quad \text{(nach unserer Vermutung)}
+\end{align*}
+Diese Betrachtung zeigt, dass unter der Annahme \( S(n) = n^2 \), die Gleichung \( S(n) + (2n + 1) = S(n + 1) \) für alle \( n \) erfüllt ist.
+
+\textbf{Bedeutung der Gleichung:}
+Die Gleichung \( S(n) + (2n + 1) = S(n + 1) \) illustriert, wie das Hinzufügen der nächsten ungeraden Zahl \( 2n + 1 \) zur Summe \( S(n) \) die Summe \( S(n + 1) \) ergibt. Diese Beobachtung ist konsistent mit der Vermutung, dass die Summe der ersten \( n \) ungeraden Zahlen durch die Quadratzahl \( n^2 \) gegeben ist.
+
+% \newpage
+
+\subsection*{(iii)}
+
+\textbf{Induktionsbeweis der Vermutung \( S(n) = n^2 \):}
+
+\begin{theorem}
+	Für \( n \in \mathbb{N} \) gilt \( S(n) = n^2 \).
+\end{theorem}
+
+\begin{proof}
+	Wir beweisen die Aussage per Induktion nach \( n \) für \( n_0 = 0 \).
+
+	\textbf{Induktionsanfang:}
+	Betrachten wir \( n_0 = 0 \). In diesem Fall ist \( S(0) \) die Summe der ersten 0 ungeraden Zahlen, also \( 0 \), und \( 0^2 \) ist ebenfalls \( 0 \). Damit ist die Vermutung für \( n_0 = 0 \) erfüllt.
+
+	\textbf{Induktionsschritt:} Es sei \( n \in \mathbb{N} \) mit \( n \geq n_0 \).
+	\begin{enumerate}
+		\item \textit{Induktionsvoraussetzung:} Nehmen wir an, dass die Vermutung für ein beliebiges, aber festes \( n = k \) wahr ist, also dass \( S(k) = k^2 \).
+		\item \textit{Induktionsschluss:} Zu zeigen ist, dass unter dieser Voraussetzung die Vermutung auch für \( n = k + 1 \) wahr ist, also dass \( S(k + 1) = (k + 1)^2 \).
+	\end{enumerate}
+	Unter der Induktionsvoraussetzung, dass \( S(k) = k^2 \), betrachten wir \( S(k + 1) \). Die Summe \( S(k + 1) \) besteht aus der Summe \( S(k) \) plus die nächste ungerade Zahl, welche \( 2k + 1 \) ist. Daher gilt:
+	\begin{align*}
+		S(k + 1) & = S(k) + (2k + 1)                                    \\
+		% & \stackrel{IV}{=} k^2 + (2k + 1) \\
+		         & \overset{\makebox[0pt]{\tiny{IV}}}{=} k^2 + (2k + 1) \\ % ohne \makebox leicht nach rechts verschoben
+		         & = k^2 + 2k + 1                                       \\
+		         & = (k + 1)^2.
+	\end{align*}
+	Damit haben wir gezeigt, dass wenn \( S(k) = k^2 \) wahr ist, dann ist auch \\ \( S(k + 1) = (k + 1)^2 \) wahr.
+\end{proof}
+
+\newpage
+
+% \section*{Aufgabe 2}
+
+% \begin{theorem}
+% 	Für alle \( n \in \mathbb{N} \) gilt \[ \sum_{k=0}^{n} k(k+1) = \frac{n(n+1)(n+2)}{3}\]
+% \end{theorem}
+
+% \begin{proof} Wir beweisen die Aussage mittels Induktion über \( n \).
+
+% 	\subsection*{IA:}
+
+% 	Für \( n = 0 \), überprüfen wir die zu beweisende Gleichung:
+
+% 	\[
+% 		\sum_{k=0}^{0} k(k + 1) = 0 \cdot (0 + 1) = 0
+% 	\]
+% 	und
+% 	\[
+% 		\frac{0 \cdot (0 + 1) \cdot (0 + 2)}{3} = 0
+% 	\]
+
+% 	Da beide Seiten der Gleichung gleich sind, ist der Induktionsanfang für \( n = 0 \) erledigt.
+
+% 	\subsection*{IV:} Wir nehmen an, dass die Behauptung für ein beliebiges \( n \in \mathbb{N} \) gilt:
+
+% 	\[
+% 		\sum_{k=0}^{n} k(k+1) = \frac{n(n+1)(n+2)}{3}
+% 	\]
+
+% 	\subsection*{IS:} Zu zeigen ist, dass wenn die Behauptung für \( n \) gilt, sie auch für \( n + 1 \) gilt.
+
+% 	\begin{align*}
+% 		\sum_{k=0}^{n+1} k(k + k) & = \frac{(n+1)(n+2)(n+3)}{3} \rightarrow \\
+% 		\left(\sum_{k=0}^{n} k(k + 1)\right) + (n+1)(n + 2)  & =               \\
+% 		% & = \frac{k(k + 1)(k + 2)}{3} + (k+1)(k + 2)            &  & \mid \text{Induktionsvoraussetzung}               \\
+% 		% & = \frac{k(k + 1)(k + 2)}{3} + \frac{3(k+1)(k + 2)}{3} &  & \mid \text{auf gleichen Nenner bringen}           \\
+% 		% & = \frac{k(k + 1)(k + 2) + 3(k+1)(k + 2)}{3}                                                                  \\
+% 		% & = \frac{(k+1)(k + 2)(k + 3)}{3}                       &  & \mid \text{Faktoren ausklammern und vereinfachen}
+% 	\end{align*}
+
+% \end{proof}
+
+\section*{Aufgabe 2}
+
+\begin{theorem}
+	Für alle \( n \in \mathbb{N} \) gilt \[ \sum_{k=0}^{n} k(k+1) = \frac{n(n+1)(n+2)}{3}\]
+\end{theorem}
+
+\begin{proof} Wir beweisen die Aussage mittels Induktion über \( n \).
+	\subsection*{Induktionsanfang:}
+
+	Für \( n = 0 \), überprüfen wir die zu beweisende Gleichung:
+	\[
+		\sum_{k=0}^{0} k(k + 1) = 0 \cdot (0 + 1) =	\frac{0 \cdot (0 + 1) \cdot (0 + 2)}{3} = 0
+	\]
+	Aufgrund der Gleicheit ist der Induktionsanfang für \( n = 0 \) erledigt.
+
+	\subsection*{Induktionsvoraussetzung:}
+
+	Wir nehmen an, dass die Behauptung für ein beliebiges, aber festes \( k \in \mathbb{N} \) gilt:
+	\[
+		\sum_{i=0}^{k} i(i + 1) = \frac{k(k + 1)(k + 2)}{3}
+	\]
+
+	\subsection*{Induktionsschritt:}
+
+	Es ist zu zeigen, dass wenn die Behauptung für \( k \) wahr ist, sie auch für \( k + 1 \) wahr ist:
+	\[
+		\sum_{i=0}^{k+1} i(i + 1) = \frac{(k+1)(k + 2)(k + 3)}{3}
+	\]
+	Wir formen die linke Seite der Gleichung für \( n = k+1 \) algebraisch um:
+	\begin{align*}
+		\sum_{i=0}^{k+1} i(i + 1) & = \left(\sum_{i=0}^{k} i(i + 1)\right) + (k+1)(k + 2)                                                                     \\
+		                          & \overset{\makebox[0pt]{\tiny{IV}}}{=} \frac{k(k + 1)(k + 2)}{3} + (k+1)(k + 2) &  & \mid \cdot \frac{3}{3}                \\
+		                          & = \frac{k(k + 1)(k + 2)}{3} + \frac{3(k+1)(k + 2)}{3}                                                                     \\
+		                          & = \frac{k(k + 1)(k + 2) + 3(k+1)(k + 2)}{3}                                    &  & \mid \text{ausklammern, vereinfachen} \\
+		                          & = \frac{(k+1)(k + 2)(k + 3)}{3}
+	\end{align*}
+	Damit haben wir gezeigt, dass wenn die Gleichung für \( k \) gilt, sie auch für \( k+1 \) gilt. Da die Induktionsannahme bestätigt ist und der Induktionsschritt gültig ist, ist der Beweis durch vollständige Induktion erbracht und die Gleichung gilt für alle \( n \in \mathbb{N} \).
+\end{proof}
+
+\section*{Aufgabe 3}
+
+Wir analysieren den in Abbildung 1 des Übungsblatts gegebenen Induktionsbeweis, der die Behauptung aufstellt, dass bei Auswahl von \( n \) beliebigen Studierenden diese alle dieselbe Schuhgröße haben. Der Beweis beginnt mit einem korrekten Induktionsanfang für \( n = 1 \). Im Induktionsschritt wird argumentiert, dass für zwei Teilmengen von \( n \) Studierenden, die jeweils ein gemeinsames Mitglied haben, die Schuhgrößen aller Mitglieder gleich sein müssen, wenn die Schuhgröße dieses gemeinsamen Mitglieds in beiden Teilmengen gleich ist. Diese Argumentation ist jedoch fehlerhaft.
+
+Der logische Fehler im Beweis liegt im Induktionsschritt. Es wird angenommen, dass die Gleichheit der Schuhgröße einer Studierenden in zwei Teilmengen notwendigerweise impliziert, dass alle Studierenden in der gesamten Menge \( S \) dieselbe Schuhgröße haben. Diese Annahme ist jedoch nicht zwingend korrekt. Sie übersieht die Möglichkeit, dass die hinzugefügte Studierende eine andere Schuhgröße haben könnte. Der Beweis zeigt lediglich eine Überschneidung in den Schuhgrößen (die von \( s_2 \)), aber nicht, dass alle Schuhgrößen identisch sind.
+
+Unsere Analyse offenbart, dass der Beweis in seiner ursprünglichen Form die Behauptung nicht stützt. Der logische Übergang im Induktionsschritt ist nicht allgemeingültig und führt somit zu einer unzureichenden Verallgemeinerung.
+
+\section*{Aufgabe 4}
+
+\[
+	\begin{array}{cc|c|c|c|c}
+		A & B & \neg(A \land B) & (\neg A) \lor B & A \rightarrow B & A \leftrightarrow B \\ \hline
+		w & w & f               & w               & w               & w                   \\
+		w & f & w               & f               & f               & f                   \\
+		f & w & w               & w               & w               & f                   \\
+		f & f & w               & w               & w               & w                   \\
+	\end{array}
+\]
+
+\section*{Aufgabe 5}
+
+Es sei \( C \coloneq A \rightarrow B \quad \text{und} \quad D \coloneq B \rightarrow A \).
+
+\[
+	\begin{array}{cc|c|c|c|c|c}
+		A & B & C & D & C \land D & A \leftrightarrow B & C \land D \leftrightarrow (A \leftrightarrow B) \\ \hline
+		w & w & w & w & w         & w                   & w                                               \\
+		w & f & f & w & f         & f                   & w                                               \\
+		f & w & w & f & f         & f                   & w                                               \\
+		f & f & w & w & w         & w                   & w                                               \\
+	\end{array}
+\]
+
+\end{document}

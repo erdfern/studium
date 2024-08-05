@@ -1,0 +1,181 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{Lösungen zu Übungsaufgaben 02 \\ \small Gruppe: Do 08-10 HS 3, Runa Pflume}
+\author{Linus Keiser}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+Wir prüfen \(R_1\), \(R_2\) und \(R_3\) jeweils auf Reflexivität, Symmetrie und Transitivität.
+
+\subsection*{(i) \(R_1 = \left\{ (a, b) \in \mathbb{N} \times \mathbb{N} \mid a \text{ teilt } b \right\}\)}
+
+\textbf{Reflexivität:} Für alle \(a \in \mathbb{N}\) gilt, dass \(a\) sich selbst teilt. Daher ist \(R_1\) reflexiv.
+
+\textbf{Symmetrie:} Betrachten wir zwei natürliche Zahlen \(a\) und \(b\), wobei \(a\) \(b\) teilt. Es ist jedoch nicht notwendigerweise der Fall, dass \(b\) auch \(a\) teilt. Zum Beispiel teilt 2 die Zahl 4, aber 4 teilt nicht 2. Daher ist \(R_1\) nicht symmetrisch.
+
+\textbf{Transitivität:} Wenn \(a\) \(b\) teilt und \(b\) \(c\) teilt, dann teilt \(a\) auch \(c\). Somit ist \(R_1\) transitiv.
+
+\subsection*{(ii) \(R_2 = \left\{ (a, b) \in \mathbb{N} \times \mathbb{N} \mid ab \text{ ist eine Quadratzahl} \right\}\)}
+
+\textbf{Reflexivität:} Für jedes \(a \in \mathbb{N}\) ist das Produkt \(aa = a^2\) eine Quadratzahl. Daher ist \(R_2\) reflexiv.
+
+\textbf{Symmetrie:} Wenn \(ab\) eine Quadratzahl ist, dann ist auch \(ba\) eine Quadratzahl, da \(ab = ba\). Daher ist \(R_2\) symmetrisch.
+
+\textbf{Transitivität:} Um zu zeigen, dass \( R_2 \) transitiv ist, betrachten wir, dass wenn \( (a, b) \) und \( (b, c) \) in \( R_2 \) sind, dann muss auch \( (a, c) \) in \( R_2 \) sein. Das bedeutet, wenn \( ab \) und \( bc \) Quadratzahlen sind, dann muss auch \( ac \) eine Quadratzahl sein.
+
+Wenn \( ab \) eine Quadratzahl ist, existiert eine ganze Zahl \( x \), so dass \( ab = x^2 \). Ebenso, wenn \( bc \) eine Quadratzahl ist, existiert eine ganze Zahl \( y \), so dass \( bc = y^2 \). Das Produkt \( x^2y^2 = (xy)^2 \) ist ebenfalls eine Quadratzahl. Da \( ab = x^2 \) und \( bc = y^2 \), folgt \( abc = x^2y^2 \). Daraus ergibt sich \( ac = \frac{abc}{b} = \frac{x^2y^2}{b} \).
+
+Da \( b \) in \( bc = y^2 \) enthalten ist, kürzt sich \( b \) heraus, und wir erhalten \( ac = xy^2 \), was eine Quadratzahl ist. Daher ist \( R_2 \) transitiv.
+
+\subsection*{(iii) \(R_3 = \left\{ ((a, b), (c, d)) \in \mathbb{N}^2 \times \mathbb{N}^2 \mid (a < c) \lor (c = a \land b < d) \right\}\)}
+
+\textbf{Reflexivität:} Für jedes Paar \((a, b)\) muss gelten, dass \((a, b)\) zu sich selbst in Relation steht. Da weder \(a < a\) noch \(b < b\) wahr ist, ist \(R_3\) nicht reflexiv.
+
+\textbf{Symmetrie:} Wenn \((a, b)\) zu \((c, d)\) in Relation steht, bedeutet dies nicht notwendigerweise, dass \((c, d)\) zu \((a, b)\) in Relation steht. Daher ist \(R_3\) nicht symmetrisch.
+
+\textbf{Transitivität:} Um zu zeigen, dass \( R_3 \) nicht transitiv ist, betrachten wir ein Gegenbeispiel. Nehmen wir die Paare \((1, 2)\), \((2, 1)\) und \((2, 3)\) in \( \mathbb{N}^2 \).
+
+\begin{itemize}
+	\item Das Paar \((1, 2)\) steht in Relation zu \((2, 1)\), da \(1 < 2\).
+	\item Das Paar \((2, 1)\) steht in Relation zu \((2, 3)\), da \(1 < 3\).
+	\item Jedoch steht das Paar \((1, 2)\) nicht in Relation zu \((2, 3)\) nach der Definition von \( R_3 \), da weder \(1 < 2\) noch \(2 < 3\) und auch nicht \(2 = 2 \land 2 < 3\) wahr ist.
+\end{itemize}
+
+Dieses Beispiel zeigt, dass \( R_3 \) nicht transitiv ist. Selbst wenn zwei Paare jeweils in Relation zueinander stehen, folgt daraus nicht, dass das erste Element des ersten Paares in Relation zum zweiten Element des zweiten Paares steht.
+
+\section*{Aufgabe 2 (Mächtigkeit der Potenzmenge)}
+
+\textbf{Teil 1:} Zeigen Sie, dass die Anzahl der Teilmengen einer endlichen Menge \( A \) mit \( n \) Elementen gleich \( 2^n \) ist.
+
+\textit{Schlüsselidee:} Jedes der \( n \) Elemente der Menge \( A \) kann entweder in einer Teilmenge enthalten sein oder nicht, was zu \( 2^n \) möglichen Teilmengen führt.
+
+\begin{proof}
+	\textbf{Induktionsanfang:} Für \( n = 0 \) (leere Menge) gibt es nur eine Teilmenge, nämlich die leere Menge selbst. Also, \( 2^0 = 1 \), was stimmt.
+
+	\textbf{Induktionsschritt:} Angenommen, die Aussage gilt für eine Menge mit \( n \) Elementen. Betrachten wir eine Menge mit \( n+1 \) Elementen. Wir entfernen ein Element und haben eine Menge mit \( n \) Elementen, die \( 2^n \) Teilmengen hat. Wenn wir das entfernte Element wieder hinzufügen, kann es entweder in einer Teilmenge enthalten sein oder nicht, was die Anzahl der Teilmengen verdoppelt. Daher hat eine Menge mit \( n+1 \) Elementen \( 2 \times 2^n = 2^{n+1} \) Teilmengen.
+\end{proof}
+
+\textbf{Teil 2:} Zeigen Sie, dass die Anzahl echter Teilmengen gleich \( 2^n - 1 \) ist.
+
+\textit{Schlüsselidee:} Eine echte Teilmenge von \( A \) ist jede Teilmenge außer \( A \) selbst. Da es \( 2^n \) Teilmengen gibt, einschließlich \( A \), ist die Anzahl der echten Teilmengen \( 2^n - 1 \).
+
+\begin{proof}
+	\textbf{Induktionsanfang:} Für \( n = 0 \) gibt es keine echten Teilmengen, da die einzige Teilmenge die leere Menge selbst ist. Also, \( 2^0 - 1 = 0 \), was stimmt.
+
+	\textbf{Induktionsschritt:} Angenommen, die Aussage gilt für eine Menge mit \( n \) Elementen. Für eine Menge mit \( n+1 \) Elementen gibt es \( 2^{n+1} \) Teilmengen. Da alle diese Teilmengen bis auf eine (die Menge selbst) echte Teilmengen sind, ist die Anzahl der echten Teilmengen \( 2^{n+1} - 1 \).
+\end{proof}
+
+\section*{Aufgabe 3}
+
+Geben Sie jeweils eine Bijektion von \(A\) nach \(B\) an, um dadurch zu zeigen, dass die beiden Mengen die gleiche Mächtigkeit besitzen.
+
+\subsection*{(i) \( A = \{1,2,3\}, B = \{a,b,c\} \)}
+
+Wir definieren die Funktion \( f: A \rightarrow B \) wie folgt:
+\begin{align*}
+	f(1) & = a, \\
+	f(2) & = b, \\
+	f(3) & = c.
+\end{align*}
+Diese Funktion ist bijektiv, da jedes Element von \( A \) genau einem Element von \( B \) zugeordnet wird und umgekehrt.
+
+\subsection*{(ii) \( A = \mathbb{N} \), \( B \) die Menge der geraden natürlichen Zahlen}
+
+Wir definieren die Funktion \( g: A \rightarrow B \) durch:
+\begin{align*}
+	g(n) = 2n.
+\end{align*}
+Diese Funktion ist bijektiv, da jedes Element von \( A \) genau einem Element von \( B \) zugeordnet wird (jede natürliche Zahl wird verdoppelt, um eine gerade Zahl zu ergeben) und jede gerade natürliche Zahl ist das Bild einer natürlichen Zahl unter dieser Funktion (jede gerade Zahl kann halbiert werden, um eine natürliche Zahl zu erhalten).
+
+\subsection*{(iii) \( A \) gerade ganze Zahlen, \( B \) ungerade ganze Zahlen}
+
+Eine gerade ganze Zahl kann als \( 2n \) dargestellt werden, wobei \( n \) eine ganze Zahl ist. Eine ungerade ganze Zahl kann als \( 2m + 1 \) dargestellt werden, wobei \( m \) ebenfalls eine ganze Zahl ist.
+
+Wir definieren die Bijektion \( h: A \rightarrow B \) durch:
+\begin{align*}
+	h(2n) = 2n + 1.
+\end{align*}
+
+Diese Funktion ist bijektiv, da sie die folgenden Eigenschaften erfüllt:
+
+\textbf{Injektivität:} Wenn \( h(2n) = h(2m) \), dann \( 2n + 1 = 2m + 1 \), was impliziert, dass \( 2n = 2m \) und somit \( n = m \). Das bedeutet, dass verschiedene gerade Zahlen auf verschiedene ungerade Zahlen abgebildet werden.
+
+\textbf{Surjektivität:} Jede ungerade Zahl \( 2m + 1 \) in \( B \) hat ein Urbild in \( A \), nämlich \( 2m \). Das bedeutet, dass jede ungerade Zahl als Bild einer geraden Zahl unter \( h \) erscheint.
+
+\subsection*{(iv) \( A \) die Menge der durch \(k\) teilbaren Zahlen, \( B \) die Menge der durch \(m\) teilbaren Zahlen, \( (\{k,m \in \mathbb{N} \setminus \{0\}\}) \)}
+
+Seien \( k \) und \( m \) feste, unterschiedliche natürliche Zahlen ungleich null.
+
+Die Menge \( A \) besteht aus den Vielfachen von \( k \), \( A = \{k \cdot n | n \in \mathbb{Z}\} \), \( B \) aus den Vielfachen von \( m \), \( B = \{m \cdot n | n \in \mathbb{Z}\} \).
+
+Wir definieren die Bijektion \( i : A \rightarrow B \) durch die Zuordnung:
+\begin{align*}
+	i(k \cdot n) = m \cdot n.
+\end{align*}
+Diese Funktion ist bijektiv, denn:
+
+\textbf{Injektivität:} Wenn \( i(k \cdot n) = i(k \cdot p)\) für unterschiedliche \( n, p \in \mathbb{Z}\), dann \( m \cdot n = m \cdot p \), was impliziert, dass \( n = p \). Das bedeutet, dass verschiedene Vielfache von \( k \) auf verschiedene Vielfache von \( m \) abgebildet werden.
+
+\textbf{Surjektivität:} Jedes Vielfache von \( m \) in \( B \), sagen wir \( m \cdot q \), hat ein Urbild in \( A \), nämlich \( k \cdot q \), d.h., dass jedes Vielfache von \( m \) als Bild eines Vielfachen von \( k \) unter \( i \) erscheint.
+
+\subsection*{(v) \( A = \mathbb{N} \), \( B = \mathbb{Z} \)}
+
+Wir definieren die Bijektion \( j: A \rightarrow B \) durch die folgende Zuordnung:
+\begin{align*}
+	j(n) =
+	\begin{cases}
+		\frac{n}{2}      & \text{für gerade } n,   \\
+		-\frac{(n-1)}{2} & \text{für ungerade } n.
+	\end{cases}
+\end{align*}
+Diese Funktion bildet die natürlichen Zahlen abwechselnd auf positive und negative ganze Zahlen ab. Die Funktion ist bijektiv, denn:
+
+\textbf{Injektivität:} Wir nehmen an, dass \( j(n_1) = j(n_2) \) für zwei natürliche Zahlen \( n_1 \) und \( n_2 \). Ohne Beschränkung der Allgemeinheit nehmen wir an, dass \( n_1 \) gerade und \( n_2 \) ungerade ist (der umgekehrte Fall folgt analog). Dann gilt \( \frac{n_1}{2} = -\frac{(n_2-1)}{2} \), was zu einem Widerspruch führt, da die linke Seite positiv (oder null) und die rechte Seite negativ ist. Daher muss \( n_1 \) und \( n_2 \) entweder beide gerade oder beide ungerade sein. In beiden Fällen führt dies direkt zu \( n_1 = n_2 \), was die Injektivität zeigt.
+
+\textbf{Surjektivität:} Für jede ganze Zahl \( z \in \mathbb{Z} \), gibt es ein \( n \in \mathbb{N} \) so, dass \( j(n) = z \). Ist \( z \) positiv oder null, setzen wir \( n = 2z \), und für ein negatives \( z \), setzen wir \( n = -2z - 1 \). In beiden Fällen erhalten wir \( j(n) = z \), was die Surjektivität zeigt.
+
+Somit ist \( j \) eine Bijektion zwischen \( \mathbb{N} \) und \( \mathbb{Z} \).
+
+\section*{Aufgabe 4 (Äquivalenzklassen und deren Schnitte)}
+
+Wir bestimmen die Äquivalenzklassen der Relation \[ R = \{ (a,b) \in \mathbb{Z} \times \mathbb{Z} \mid 5 \mid (a - b) \} \] und zeigen, dass der Schnitt zweier verschiedener Äquivalenzklassen leer ist.
+
+\subsection*{Bestimmung der Äquivalenzklassen}
+
+Die Äquivalenzklassen der Relation \( R \) ergeben sich aus den Resten, die die Zahlen bei Division durch 5 lassen. Die Äquivalenzklassen sind wie folgt definiert:
+
+\begin{align*}
+	[0] & = \{ 5k \mid k \in \mathbb{Z} \},     \\
+	[1] & = \{ 5k + 1 \mid k \in \mathbb{Z} \}, \\
+	[2] & = \{ 5k + 2 \mid k \in \mathbb{Z} \}, \\
+	[3] & = \{ 5k + 3 \mid k \in \mathbb{Z} \}, \\
+	[4] & = \{ 5k + 4 \mid k \in \mathbb{Z} \}.
+\end{align*}
+
+
+\subsection*{Beispiele und Gegenbeispiele zur Zugehörigkeit}
+
+\begin{itemize}
+	\item \textbf{Beispiel:} Betrachten wir die Zahl 7. Da \( 7 \mod 5 = 2 \), liegt 7 in der Äquivalenzklasse \( [2] \).
+	\item \textbf{Gegenbeispiel:} Im Gegensatz dazu liegt die Zahl 8 nicht in der Äquivalenzklasse \( [2] \), da \( 8 \mod 5 = 3 \). Stattdessen gehört sie zur Äquivalenzklasse \( [3] \) -- Eine Zahl gehört genau einer Äquivalenzklasse an.
+\end{itemize}
+
+\subsection*{Beweis der Disjunktheit der Äquivalenzklassen}
+
+\begin{proof}
+	Angenommen, es gibt ein Element \( c \) im Schnitt zweier Äquivalenzklassen \( [a] \) und \( [b] \). Dann gilt sowohl \( 5 \mid (a - c) \) als auch \( 5 \mid (b - c) \). Daraus folgt \( 5 \mid ((a - c) - (b - c)) \), also \( 5 \mid (a - b) \). Dies impliziert, dass \( a \) und \( b \) zur selben Äquivalenzklasse gehören, was ein Widerspruch zur Annahme ist, dass \( [a] \) und \( [b] \) unterschiedliche Äquivalenzklassen sind. Daher ist der Schnitt der beiden Äquivalenzklassen leer.
+\end{proof}
+
+.\end{document}
+
+

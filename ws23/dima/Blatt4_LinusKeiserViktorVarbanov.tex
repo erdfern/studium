@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[ngerman]{babel}
+
+% "Beweis" anstatt "Proof" bei proof Umgebung
+\renewcommand{\proofname}{Beweis}
+% Ohne serielle Nummerierung
+% \newtheorem*{theorem}{Satz}
+% \newtheorem*{lemma}[theorem]{Lemma}
+
+% \theoremstyle{definition}
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem{conjecture}[theorem]{Conjecture}
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{example}[theorem]{Example}
+% \theoremstyle{remark}
+% \newtheorem*{remark}{Bemerkung}
+% \theoremstyle{plain}
+% \newtheorem*{proof*}{Beweis}
+
+\title{Lösungen zu Übungsaufgaben 04 \\ \small Gruppe: Do 08-10 HS 3, Runa Pflume}
+\author{Linus Keiser, Viktor Varbanov}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+\subsection*{(i)}
+Gegeben sei eine Funktion $f: \{1, \ldots, n\} \rightarrow \{1, \ldots, m\}$ mit $n > m$. Das Schubfachprinzip besagt, dass wenn $n$ Objekte in $m$ Schubfächer verteilt werden und $n > m$, dann muss mindestens ein Schubfach mehr als ein Objekt enthalten.
+
+\begin{proof}
+	Angenommen, für unsere Funktion $f$ gäbe es keine zwei unterschiedlichen Elemente $k_1, k_2 \in \{1, \ldots, n\}$, so dass $f(k_1) = f(k_2)$. Dies würde implizieren, dass $f$ injektiv wäre. Jedoch ist dies nicht möglich, da es mehr Elemente in der Definitionsmenge als in der Zielmenge gibt, was einen Widerspruch zur Annahme darstellt. Folglich muss es mindestens ein Paar $(k_1, k_2)$ geben, sodass $k_1 \neq k_2$ und $f(k_1) = f(k_2)$ gilt.
+\end{proof}
+
+\subsection*{(ii)}
+Sei \(a_1, \ldots, a_n\) eine Permutation der Zahlen \(1, \ldots, n\) und \(n\) sei ungerade. Zu zeigen ist, dass das Produkt \((a_1 - 1) \cdot \ldots \cdot (a_n - n)\) gerade ist.
+
+\begin{proof}
+	Nach Teil (i) und dem Schubfachprinzip, angewendet auf die Permutation \(a_1, \ldots, a_n\), existieren wegen der ungeraden Anzahl von \(n\) notwendigerweise Elemente \(a_i\) der Permutation, für die gilt, dass die Differenz \(a_i - i\) gerade ist. Dies passiert, wenn eine ungerade Zahl von ihrer Position subtrahiert wird, die ebenfalls ungerade ist, oder eine gerade Zahl von einer geraden Position. Da das Produkt ungerader Zahlen ungerade ist, führt das Vorhandensein eines einzigen geraden Faktors dazu, dass das gesamte Produkt gerade ist. Da wir wissen, dass es mindestens ein \(a_i\) gibt, für das \(a_i - i\) gerade ist, folgt daraus, dass das Produkt \((a_1 - 1) \cdot \ldots \cdot (a_n - n)\) ebenfalls gerade sein muss.
+\end{proof}
+
+\newpage
+
+\section*{Aufgabe 2}
+
+\subsection*{(i)}
+Die Anzahl der möglichen Tabellenkonstellationen für 18 Mannschaften berechnet sich als:
+\[ 18! = 6.402.373.705.728.000 \]
+
+\subsection*{(ii)}
+Die Anzahl der verschiedenen Besetzungen der ersten sechs Plätze ist gegeben durch:
+\[ \frac{18!}{(18-6)!} = 13.366.080 \]
+
+\subsection*{(iii)}
+Unter der Annahme, dass A eine der letzten drei Mannschaften ist und B vor C liegt, ergibt sich die Anzahl der möglichen Konstellationen als:
+\[ 3 \cdot P(15, 2) \cdot 15! = 823.834.851.840.000 \]
+Wobei \( P(n, k) \) die Anzahl der Permutationen von \( n \) Objekten, die in \( k \) Positionen angeordnet werden können mit \( P(n, k) = \frac{n!}{(n-k)!} \) ist.
+
+\subsection*{(iv)}
+Wir finden eine geeignete Bedingung für 6! \(\cdot\) 12! Konstellationen durch die Betrachtung zweier Gruppen von Mannschaften: \( G_1 \) mit 6 Mannschaften und \( G_2 \) mit 12 Mannschaften. Die Reihenfolge innerhalb jeder Gruppe ist relevant, aber die Reihenfolge der Gruppen zueinander nicht. Die Anzahl der möglichen Anordnungen für \( G_1 \) ist \( 6! \) und für \( G_2 \) ist \( 12! \). Die Gesamtanzahl der Anordnungen ist das Produkt der Anordnungen beider Gruppen:
+\[ 6! \times 12! = 720 \times 479,001,600 = 345,098,752,000 \]
+Dies bedeutet, dass die Gesamtanzahl der Konstellationen genau 6! \(\cdot\) 12! beträgt, wenn die Bedingungen erfüllt sind. Die Reihenfolge von \( G_1 \) und \( G_2 \) ist unabhängig voneinander, wobei beispielsweise \( G_1 \) die ersten sechs oder die letzten sechs Plätze einnehmen könnte und \( G_2 \) entsprechend die anderen Plätze.
+
+% \newpage
+
+\section*{Aufgabe 3}
+
+Die Notenverteilung ist gegeben durch:
+\begin{align*}
+	 & n_{1.0} = n_{4.0} = 10, \\
+	 & n_{1.3} = n_{3.7} = 15, \\
+	 & n_{1.7} = n_{3.3} = 25, \\
+	 & n_{2.0} = n_{3.0} = 35, \\
+	 & n_{2.3} = n_{2.7} = 40.
+\end{align*}
+Daraus berechnet sich die Anzahl der möglichen Verteilungen als Multinomialkoeffizient wie folgt:
+\[
+	\frac{250!}{10! \cdot 10! \cdot 15! \cdot 15! \cdot 25! \cdot 25! \cdot 35! \cdot 35! \cdot 40! \cdot 40!}
+\]
+
+\section*{Aufgabe 4}
+
+Wir untersuchen die Permutationsmöglichkeiten von 16 Schachfiguren auf einem 8x8 Schachbrett, wobei wir äquivalente Figuren als nicht unterscheidbar betrachten.
+
+\subsection*{Platzierung auf den ersten beiden Reihen}
+Für die Anordnung von 8 Bauern, je 2 Springern, Läufern und Türmen sowie einer Dame und einem König auf den ersten 16 Feldern des Bretts ergibt sich:
+\[
+	\frac{16!}{8! \cdot (2!)^3} = 64.864.800
+\]
+
+\subsection*{Verteilung auf dem gesamten Schachbrett}
+Die Gesamtzahl der Platzierungen unter Berücksichtigung der Nicht-Unterscheidbarkeit identischer Figuren über das gesamte Brett ist:
+\[
+	\frac{64!}{8! \cdot (2!)^3 \cdot (64-16)!} = 31.688.202.068.279.540.784.000
+\]
+
+\end{document}

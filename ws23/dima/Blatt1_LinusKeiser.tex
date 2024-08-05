@@ -1,0 +1,212 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Lösungen zu Übungsaufgaben 01 \\ \small Gruppe: Do 08-10 HS 3, Runa Pflume}
+\author{Linus Keiser}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\paragraph{Notiz:} Aufgrund einer Erkrankung in den ersten zwei Vorlesungswochen konnte ich noch keine Lerngruppe finden. Daher reiche ich die Lösungen zu den Übungsaufgaben dieser Woche eigenständig ein. Ich bemühe mich aktiv um Anschluss an eine Gruppe und hoffe, dass Sie unter diesen Umständen meine Einzelabgabe für diese Woche entschuldigen.
+\section*{Aufgabe 1}
+
+\subsection*{(i) \( \mathcal{P}(A \cup B) = \mathcal{P}(A) \cup \mathcal{P}(B) \)}
+
+Die Identität \( \mathcal{P}(A \cup B) = \mathcal{P}(A) \cup \mathcal{P}(B) \) ist \textbf{falsch}.
+
+\textbf{Gegenbeispiel:}
+Seien \( A \) und \( B \) nicht-leere, disjunkte Mengen, d.h., \( A \cap B = \emptyset \).
+Betrachten wir ein Element \( a \in A \) und ein Element \( b \in B \).
+Die Menge \( \{a, b\} \) ist ein Element von \( \mathcal{P}(A \cup B) \), aber nicht von \( \mathcal{P}(A) \) oder \( \mathcal{P}(B) \).
+Folglich ist \( \{a, b\} \) nicht in \( \mathcal{P}(A) \cup \mathcal{P}(B) \), was beweist, dass die Gleichheit nicht gilt.
+
+\subsection*{(ii) \( \mathcal{P}(A \cap B) = \mathcal{P}(A) \cap \mathcal{P}(B) \)}
+
+Die Identität \( \mathcal{P}(A \cap B) = \mathcal{P}(A) \cap \mathcal{P}(B) \) ist \textbf{wahr}.
+
+\textbf{Beweis:}
+Sei \( X \) eine Teilmenge von \( A \cap B \), d.h. \( X \subseteq A \cap B \).
+Dann gilt \( X \subseteq A \) und \( X \subseteq B \), also ist \( X \) in \( \mathcal{P}(A) \) und \( \mathcal{P}(B) \).
+Daher ist \( X \) in \( \mathcal{P}(A) \cap \mathcal{P}(B) \).
+
+Umgekehrt, sei \( X \) ein Element von \( \mathcal{P}(A) \cap \mathcal{P}(B) \).
+Dann ist \( X \) eine Teilmenge von \( A \) und \( B \), d.h. \( X \subseteq A \) und \( X \subseteq B \).
+Also ist \( X \subseteq A \cap B \), und daher ist \( X \) ein Element von \( \mathcal{P}(A \cap B) \).
+
+Somit ist \( \mathcal{P}(A \cap B) = \mathcal{P}(A) \cap \mathcal{P}(B) \).
+
+\section*{Aufgabe 2}
+
+\subsection*{a) \( \{1, 2\} \times \{3, 4\}\) \(\cup\) \{1, 2, 3\}}
+
+\[\{(1, 3), (1, 4), (2, 3), (2, 4)\} \cup \{1, 2, 3\} = \{(1, 3), (1, 4), (2, 3), (2, 4), 1, 2, 3\}\]
+
+\subsection*{b) \(2^{\{1,2,3\}} \setminus 2^{\{1,2\}}\)}
+
+Seien \(A = \mathcal{P}(\{1,2,3\})\) und \(B = \mathcal{P}(\{1,2\})\), dann ist 
+
+\begin{align*}
+	A             & = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1, 2\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\}, \\
+	B             & = \{\emptyset, \{1\}, \{2\}, \{1, 2\}\},                                         \\
+	A \setminus B & = \{\{3\}, \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\}.
+\end{align*}
+
+\subsection*{c) \( \bigcap_{i=2}^{6} \left\{\frac{i}{2}, i + 1\right\} \)}
+
+\begin{itemize}
+	\item Für \( i = 2 \): \( \left\{\frac{2}{2}, 2 + 1\right\} = \{1, 3\} \)
+	\item Für \( i = 3 \): \( \left\{\frac{3}{2}, 3 + 1\right\} = \left\{\frac{3}{2}, 4\right\} \)
+	\item Für \( i = 4 \): \( \left\{\frac{4}{2}, 4 + 1\right\} = \{2, 5\} \)
+	\item Für \( i = 5 \): \( \left\{\frac{5}{2}, 5 + 1\right\} = \left\{\frac{5}{2}, 6\right\} \)
+	\item Für \( i = 6 \): \( \left\{\frac{6}{2}, 6 + 1\right\} = \{3, 7\} \)
+\end{itemize}
+
+Da keine Elemente in allen Mengen gemeinsam vorkommen, ist die Schnittmenge aller dieser Mengen die leere Menge:
+
+\[ \bigcap_{i=2}^{6} \left\{\frac{i}{2}, i + 1\right\} = \emptyset \]
+
+\subsection*{d) \( \bigcup_{n \in \mathbb{N}} \{n, n + 1, 2n\} \)}
+
+Da die natürlichen Zahlen \( \mathbb{N} \) alle positiven ganzen Zahlen enthalten, und für jede natürliche Zahl \( n \), die Menge \( \{n, n + 1, 2n\} \) die Zahl \( n \) und ihren Nachfolger \( n + 1 \) enthält, sowie die gerade Zahl \( 2n \), wird jede natürliche Zahl in mindestens einer dieser Mengen erscheinen. Daher ist die Vereinigung dieser Mengen gleich der Menge aller natürlichen Zahlen:
+
+\[
+	\bigcup_{n \in \mathbb{N}} \{n, n + 1, 2n\} = \mathbb{N}
+\]
+
+Somit enthält die Vereinigungsmenge alle Elemente von \( \mathbb{N} \), was bedeutet, dass sie identisch mit \( \mathbb{N} \) ist.
+
+\section*{Aufgabe 3}
+
+\subsection*{a) \( A \subset B \cap C \Leftrightarrow (A \subset B) \land (A \subset C) \)}
+
+\paragraph{Zu zeigen:}
+\( A \subset B \cap C \Leftrightarrow (A \subset B) \land (A \subset C) \)
+
+\begin{enumerate}
+	\item[\textbf{Teil 1:}] \( A \subset B \cap C \Rightarrow (A \subset B) \land (A \subset C) \)
+		
+		\textit{Annahme:} \( A \subset B \cap C \)
+		
+		Unter dieser Annahme folgt, dass jedes Element von A auch ein Element von \( B \cap C \) ist. Weil \( B \cap C \) ausschließlich Elemente enthält, die in B und in C liegen, ergibt sich daraus, dass jedes Element von A auch in B und in C enthalten sein muss. Somit erhalten wir \( A \subset B \) und \( A \subset C \), was äquivalent zu \( (A \subset B) \land (A \subset C) \) ist.
+		
+	\item[\textbf{Teil 2:}] \( (A \subset B) \land (A \subset C) \Rightarrow A \subset B \cap C \)
+		
+		\textit{Annahme:} \( (A \subset B) \land (A \subset C) \)
+		
+		Diese Annahme impliziert, dass jedes Element von A sowohl ein Element von B als auch von C ist. Demnach muss jedes Element von A zur Schnittmenge \( B \cap C \) gehören, denn die Schnittmenge umfasst genau jene Elemente, die in beiden Mengen, B und C, vorkommen. Folglich liegt A in \( B \cap C \).
+\end{enumerate}
+
+Da wir beide Implikationen gezeigt haben, ist die Äquivalenz bewiesen:
+
+\[ A \subset B \cap C \Leftrightarrow (A \subset B) \land (A \subset C) \]
+
+\subsection*{b) \( A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C) \)}
+
+\paragraph{Zu zeigen:}
+\( A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C) \)\\Wir zeigen die Inklusion in beide Richtungen.
+
+\begin{enumerate}
+	\item[\textbf{Teil 1:}] \( A \setminus (B \cup C) \subseteq (A \setminus B) \cap (A \setminus C) \)
+
+		\textit{Annahme:} Sei \(x \in A \setminus (B \cup C)\).
+
+		Das bedeutet, dass \(x \in A\) und \(x \notin B \cup C\). Da \(x \notin B \cup C\), folgt daraus, dass \(x \notin B\) und \(x \notin C\). Also ist \(x \in A \setminus B\) und \(x \in A \setminus C\). Daraus ergibt sich, dass \(x \in (A \setminus B) \cap (A \setminus C)\).
+
+	\item[\textbf{Teil 2:}] \((A \setminus B) \cap (A \setminus C) \subseteq A \setminus (B \cup C)\)
+
+		\textit{Annahme:} Sei \(x \in (A \setminus B) \cap (A \setminus C)\).
+
+		Das bedeutet, dass \(x \in A\) und \(x \notin B\) und \(x \notin C\). Also \(x \notin B \cup C\). Zusammengefasst ist \(x \in A\) und \(x \notin B \cup C\), was bedeutet, dass \(x \in A \setminus (B \cup C)\).
+\end{enumerate}
+
+Damit ist gezeigt, dass jedes Element der Menge \(A \setminus (B \cup C)\) in \((A \setminus B) \cap (A \setminus C)\) enthalten ist und umgekehrt, womit die Gleichheit der Mengen bewiesen ist.
+
+\subsection*{c) \( \left(\bigcap_{i \in I} D_i\right) \cap B = \bigcap_{i \in I} (D_i \cap B) \)}
+
+\paragraph{Zu zeigen:}
+\( \left(\bigcap_{i \in I} D_i\right) \cap B = \bigcap_{i \in I} (D_i \cap B) \)\\Wir zeigen die Inklusion in beide Richtungen.
+	
+\begin{enumerate}
+	\item[\textbf{Teil 1:}] \( \left(\bigcap_{i \in I} D_i\right) \cap B \subseteq \bigcap_{i \in I} (D_i \cap B) \)
+	
+		\textit{Annahme:} Sei \( x \) ein beliebiges Element von \( \left(\bigcap_{i \in I} D_i\right) \cap B \).
+		
+		Dann gilt \( x \in D_i \) für alle \( i \in I \) und \( x \in B \). Daraus folgt, dass \( x \in D_i \cap B \) für alle \( i \in I \), und somit ist \( x \in \bigcap_{i \in I} (D_i \cap B) \).
+	
+	\item[\textbf{Teil 2:}] \( \bigcap_{i \in I} (D_i \cap B) \subseteq \left(\bigcap_{i \in I} D_i\right) \cap B \)
+	
+		\textit{Annahme:} Sei \( x \) ein beliebiges Element von \( \bigcap_{i \in I} (D_i \cap B) \).
+		
+		Dann gilt \( x \in D_i \cap B \) für alle \( i \in I \), was bedeutet, dass \( x \in D_i \) und \( x \in B \) für alle \( i \in I \). Folglich ist \( x \in \left(\bigcap_{i \in I} D_i\right) \cap B \).
+	
+\end{enumerate}
+
+Damit sind beide Inklusionen gezeigt und die Gleichheit der Mengen ist bewiesen.
+
+\section*{Aufgabe 4}
+
+\subsection*{(i)} \( f_1: \mathbb{N} \rightarrow \mathbb{N}, \quad f_1(n) = n^2 \)
+
+\textbf{Injektivität}: \( f_1 \) ist injektiv, weil wenn \( f_1(a) = f_1(b) \), also \( a^2 = b^2 \), dann muss \( a = b \) sein, da es im Bereich der natürlichen Zahlen \(\mathbb{N}\) keine negativen Zahlen gibt, die zu demselben Quadrat führen könnten.
+
+\textbf{Surjektivität}: \( f_1 \) ist jedoch nicht surjektiv, da nicht jede natürliche Zahl als Quadrat einer anderen natürlichen Zahl geschrieben werden kann. Zum Beispiel gibt es kein \( n \in \mathbb{N} \), so dass \( n^2 = 2 \), da 2 kein Quadrat einer natürlichen Zahl ist.
+
+\textbf{Bijektivität}: Da \( f_1 \) nicht surjektiv ist, ist sie auch nicht bijektiv.
+
+\subsection*{(ii)} \( f_2: \mathbb{Z} \rightarrow \mathbb{N}, \quad f_2(x) = |x| \)
+
+\textbf{Injektivität}: \( f_2 \) ist nicht injektiv. Zum Beispiel sind \( f_2(1) = |1| = 1 \) und \( f_2(-1) = |-1| = 1 \), aber \( 1 \neq -1 \). Es werden also zwei verschiedene Zahlen aus dem Definitionsbereich \(\mathbb{Z}\) auf denselben Wert im Wertebereich \(\mathbb{N}\) abgebildet, weshalb \( f_2 \) nicht injektiv ist.
+
+\textbf{Surjektivität}: \( f_2 \) ist surjektiv, da jede natürliche Zahl \( n \) als der Betrag einer ganzen Zahl dargestellt werden kann. Für jedes \( n \in \mathbb{N} \) 
+können wir \( x = n \) oder \( x = -n \) wählen, und es gilt \( f_2(x) = |x| = n \).
+
+\textbf{Bijektivität}: Da \( f_2 \) nicht injektiv ist, kann sie nicht bijektiv sein.
+
+\subsection*{(iii)} \( f_3: \mathbb{R} \rightarrow \mathbb{R}, \quad f_3(x) = sin(x) \)
+
+\textbf{Injektivität}: \( f_3 \) ist nicht injektiv. Zum Beispiel ist \( sin(0) = sin(\pi)\), aber \( 0 \neq \pi \).
+
+\textbf{Surjektivität}: \( f_3 \) ist auch nicht surjektiv. Der Wertebereich der Sinusfunktion ist das Intervall \( [-1, 1] \). Da für jeden Wert \( y \) im Intervall \( [-1, 1] \) ein \( x \) existiert, so dass \( \sin(x) = y \), ist die Funktion \( f_3 \) surjektiv auf diesem Intervall. Jedoch, da der Wertebereich hier als \( \mathbb{R} \) definiert ist und es Werte in \( \mathbb{R} \) gibt, die außerhalb von \( [-1, 1] \) liegen, die von \( \sin(x) \) nicht erreicht werden, ist \( f_3 \) in diesem Kontext nicht surjektiv.
+
+\textbf{Bijektivität}: Da \( f_3 \) weder injektiv noch surjektiv ist, ist sie auch nicht bijektiv.
+
+\subsection*{(iv)} \( f_4: \mathbb{R} \rightarrow \{\ x \in \mathbb{R} \, | \, -1 \leq x \leq 1 \}, \quad f_4(x) = sin(x) \)
+
+\( f_4 \) ist eine Eingrenzung der Sinusfunktion auf den Wertebereich [-1, 1].
+
+\textbf{Injektivität}: Wie bereits bei \( f_3 \) festgestellt, ist die Sinusfunktion nicht injektiv über den gesamten Definitionsbereich \( \mathbb{R} \), da sie periodisch ist. Das bedeutet, dass es mehrere \( x \)-Werte gibt, die denselben \( \sin(x) \)-Wert erzeugen. Daher ist auch \( f_4 \) nicht injektiv.
+
+\textbf{Surjektivität}: Im Gegensatz zu \( f_3 \) ist \( f_4 \) surjektiv, weil der Wertebereich genau dem Bereich entspricht, den die Sinusfunktion annimmt. Für jeden Wert \( y \) im Intervall \([-1, 1]\) gibt es mindestens ein \( x \) in \( \mathbb{R} \), so dass \( \sin(x) = y \). Daher erreicht \( f_4 \) jeden möglichen Wert im angegebenen Wertebereich.
+
+\textbf{Bijektivität}: Da \( f_4 \) zwar surjektiv aber nicht injektiv ist, ist sie auch nicht bijektiv.
+
+\subsection*{(v)} \( f_5: \mathbb{Z} \rightarrow \mathbb{N}, \quad f_5(x) = \begin{cases}-2x - 1 & \text{falls } x < 0 \\2x & \text{sonst}\end{cases}\)
+
+\textbf{Injektivität}: \( f_5 \) ist injektiv.
+
+Angenommen, \( f_5(a) = f_5(b) \) für \( a, b \in \mathbb{Z} \).
+
+Wenn \( a \) und \( b \) beide positiv sind, dann gilt \( 2a = 2b \), was impliziert, dass \( a = b \).
+
+Wenn \( a \) und \( b \) beide negativ sind, dann gilt \( -2a -1 = -2b -1 \), was ebenfalls impliziert, dass \( a = b \).
+
+Wenn \( a \) negativ und \( b \) positiv ist (oder umgekehrt), dann würde \( f_5(a) \) ungerade und \( f_5(b) \) gerade sein, was ein Widerspruch zur Annahme \( f_5(a) = f_5(b)\) ist.
+
+Da es keine zwei unterschiedlichen ganzen Zahlen gibt, die denselben Funktionswert haben, ist \( f_5 \) injektiv.
+
+\textbf{Surjektivität}: \( f_5 \) ist surjektiv.
+
+Jede gerade natürliche Zahl \( n \) kann als \( 2x \) für ein \( x \in \mathbb{Z} \) geschrieben werden.
+
+Jede ungerade natürliche Zahl \( m \) kann als \( -2x - 1 \) für ein \( x < 0 \) geschrieben werden, da \( m+1 \) gerade ist und somit \( m = -2(-\frac{m+1}{2}) - 1 \).
+
+Da jeder Wert in \( \mathbb{N} \) als Funktionswert auftritt, ist \( f_5 \) surjektiv.
+
+\textbf{Bijektivität}: Da \( f_5 \) sowohl injektiv als auch surjektiv ist, ist sie bijektiv.
+
+\end{document}

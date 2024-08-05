@@ -1,0 +1,273 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[ngerman]{babel}
+
+% "Beweis" anstatt "Proof" bei proof Umgebung
+\renewcommand{\proofname}{Beweis}
+% Ohne serielle Nummerierung
+% \newtheorem*{theorem}{Satz}
+% \newtheorem*{lemma}[theorem]{Lemma}
+
+\title{Lösungen zu Übungsaufgaben 06 \\ \small Gruppe: Do 08-10 HS 3, Runa Pflume}
+\author{Linus Keiser, Viktor Varbanov}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+\section*{Aufgabe 1}
+
+\subsection*{i) \( \text{ggT}(225, 162) \)}
+
+\begin{align*}
+	225 & = 162 \cdot 1 + 63, \\
+	162 & = 63 \cdot 2 + 36,  \\
+	63  & = 36 \cdot 1 + 27,  \\
+	36  & = 27 \cdot 1 + 9,   \\
+	27  & = 9 \cdot 3 + 0.
+\end{align*}
+
+Da der letzte Rest, der nicht null ist, 9 ist, gilt \( \text{ggT}(225, 162) = 9 \). Nun finden wir die Koeffizienten \( x \) und \( y \), sodass \( 9 = x \cdot 225 + y \cdot 162 \):
+
+\begin{align*}
+	9 & = 36 - 27 \cdot 1,                            \\
+	9 & = 36 - (63 - 36 \cdot 1) \cdot 1,             \\
+	9 & = 36 \cdot 2 - 63 \cdot 1,                    \\
+	9 & = (162 - 63 \cdot 2) \cdot 2 - 63 \cdot 1,    \\
+	9 & = 162 \cdot 2 - 63 \cdot 3,                   \\
+	9 & = 162 \cdot 2 - (225 - 162 \cdot 1) \cdot 3,  \\
+	9 & = -225 \cdot 3 + 162 \cdot 5,                 \\
+	9 & = -225 \cdot 3 + (225 \cdot 1 + 162) \cdot 5, \\
+	9 & = 225 \cdot (-3 + 5) + 162 \cdot 5,           \\
+	9 & = 225 \cdot 2 + 162 \cdot 5.
+\end{align*}
+
+Also ist die gesuchte Linearkombination \( 9 = (-5) \cdot 225 + 7 \cdot 162 \). Die Koeffizienten \( x \) und \( y \) sind somit \( x = -5 \) und \( y = 7 \).
+
+\subsection*{ii) \& iii)}
+
+Die Rechenwege für die weiteren Zahlenpaare (144, 100) und (1909, 1660) führen wir analog durch und es ergeben sich folgende Linearkombinationen:
+
+Für \( \text{ggT}(144, 100) \):
+\[ 4 = (-9) \cdot 144 + 13 \cdot 100. \]
+
+Für \( \text{ggT}(1909, 1660) \):
+\[ 83 = 7 \cdot 1909 - 8 \cdot 1660. \]
+
+
+\section*{Aufgabe 2}
+
+Wir untersuchen die ganzzahligen Lösungen der folgenden Gleichungen:
+
+\begin{enumerate}
+	\item \(6x + 8y = 38\)
+	\item \(65x - 26y = 91\)
+	\item \(522x - 132y = 8\)
+\end{enumerate}
+
+\subsection*{Lösung für Gleichung (i)}
+Zuerst berechnen wir den ggT von \(6\) und \(8\):
+\begin{align*}
+	\text{ggT}(6, 8) & = 2.
+\end{align*}
+Da \(2\) die Zahl \(38\) teilt, existiert eine Lösung.
+
+Mit dem erweiterten Euklidischen Algorithmus erhalten wir die Bézout-Koeffizienten:
+\begin{align*}
+	-1 \cdot 6 + 1 \cdot 8 & = 2.
+\end{align*}
+Multipliziert mit \(\frac{38}{2} = 19\) erhalten wir die spezifische Lösung:
+\begin{align*}
+	x & = -19, \\
+	y & = 19.
+\end{align*}
+
+\subsection*{Lösung für Gleichung (ii)}
+Analog erhalten wir für \(65x - 26y = 91\):
+\begin{align*}
+	\text{ggT}(65, 26) & = 13.
+\end{align*}
+Auch hier teilt der ggT die Zahl \(91\), also gibt es eine Lösung.
+
+Die Bézout-Koeffizienten sind:
+\begin{align*}
+	1 \cdot 65 - 2 \cdot 26 & = 13.
+\end{align*}
+Multipliziert mit \(\frac{91}{13} = 7\) ergibt sich:
+\begin{align*}
+	x & = 7,  \\
+	y & = 14.
+\end{align*}
+
+\subsection*{Analyse von Gleichung (iii)}
+Für die Gleichung \(522x - 132y = 8\) finden wir:
+\begin{align*}
+	\text{ggT}(522, 132) & = 6.
+\end{align*}
+Da \(6\) nicht \(8\) teilt, gibt es keine ganzzahligen Lösungen für diese Gleichung.
+
+\section*{Aufgabe 3}
+
+\textbf{Behauptung:} Für alle Zahlen \( a, b \in \mathbb{Z} \), die nicht beide gleich 0 sind, gilt
+\[
+	\text{ggT}\left( \frac{a}{\text{ggT}(a, b)}, \frac{b}{\text{ggT}(a, b)} \right) = 1.
+\]
+
+\begin{proof}
+	Sei \( d = \text{ggT}(a, b) \). Dann existieren ganze Zahlen \( m \) und \( n \) mit \( a = md \) und \( b = nd \).
+
+	Betrachten wir nun die Ausdrücke \( \frac{a}{\text{ggT}(a, b)} = \frac{md}{d} = m \) und \( \frac{b}{\text{ggT}(a, b)} = \frac{nd}{d} = n \).
+
+	Es bleibt zu zeigen, dass \( \text{ggT}(m, n) = 1 \). Angenommen, dies ist nicht der Fall und es existiert ein Teiler \( t > 1 \), der sowohl \( m \) als auch \( n \) teilt. Dann teilt \( t \) ebenfalls \( md \) und \( nd \), d.h. \( a \) und \( b \), was im Widerspruch zur Definition von \( d \) als dem größten gemeinsamen Teiler von \( a \) und \( b \) steht. Daher muss die Annahme falsch sein, und es folgt \( \text{ggT}(m, n) = 1 \).
+
+	Somit ist bewiesen, dass \( \text{ggT}\left( \frac{a}{\text{ggT}(a, b)}, \frac{b}{\text{ggT}(a, b)} \right) = 1 \) für alle \( a, b \in \mathbb{Z} \), die nicht beide gleich 0 sind.
+\end{proof}
+
+\section*{Aufgabe 4}
+
+\textbf{Teil (i):} Beweis der Teilbarkeitsregel durch 11.
+
+\textbf{Behauptung:} Eine Zahl \( a = a_n \cdot 10^n + a_{n-1} \cdot 10^{n-1} + \ldots + a_1 \cdot 10^1 + a_0 \) mit \( a_0, \ldots, a_n \in \{0, \ldots, 9\} \) ist genau dann durch 11 teilbar, wenn ihre alternierende Quersumme \( \sum_{i=0}^{n} (-1)^i a_i \) durch 11 teilbar ist.
+
+\begin{proof}
+	Zunächst beobachten wir, dass \( 10 \equiv -1 \) (mod 11), woraus folgt, dass \( 10^k \equiv (-1)^k \) (mod 11) für alle ganzen Zahlen \( k \).
+
+	Daher kann die Zahl \( a \) umgeschrieben werden als:
+	\[
+		a \equiv a_n \cdot (-1)^n + a_{n-1} \cdot (-1)^{n-1} + \ldots + a_1 \cdot (-1)^1 + a_0 \quad (\text{mod} \; 11).
+	\]
+	Diese Darstellung entspricht der alternierenden Quersumme von \( a \).
+
+	Somit ist \( a \) genau dann durch 11 teilbar, wenn \( a \equiv 0 \) (mod 11), was äquivalent dazu ist, dass die alternierende Quersumme durch 11 teilbar ist.
+\end{proof}
+
+\textbf{Teil (ii):} Anwendung der Regel auf 82199295211.
+
+\textbf{Behauptung:} Die Zahl 82199295211 ist durch 11 teilbar.
+
+\begin{proof}
+	Wir berechnen die alternierende Quersumme von 82199295211:
+	\[
+		1 - 1 + 2 - 5 + 9 - 2 + 9 - 9 + 1 - 2 + 8 = 11.
+	\]
+	Da 11 durch 11 teilbar ist, bestätigt dies nach Teil (i), dass 82199295211 ebenfalls durch 11 teilbar ist.
+\end{proof}
+
+\section*{Zusatzaufgabe 5}
+
+Gegeben: Ein Alphabet mit 26 Buchstaben, davon 5 Vokale und 21 Konsonanten.
+
+\subsection*{(i) Wörter mit 3 verschiedenen Konsonanten und 2 verschiedenen Vokalen}
+Wähle zuerst 3 Konsonanten und dann 2 Vokale aus, danach ordne alle 5 Buchstaben.
+\[
+	\binom{21}{3} \cdot \binom{5}{2} \cdot 5!
+\]
+
+\subsection*{(ii) Wörter, die den Buchstaben B enthalten}
+B wird fixiert, wähle 2 weitere Konsonanten und 2 Vokale aus, ordne dann die verbleibenden 4 Buchstaben.
+\[
+	\binom{20}{2} \cdot \binom{5}{2} \cdot 4!
+\]
+
+\subsection*{(iii) Wörter, die B und C enthalten}
+B und C werden fixiert, wähle einen weiteren Konsonanten und 2 Vokale aus, ordne dann die verbleibenden 3 Buchstaben.
+\[
+	\binom{19}{1} \cdot \binom{5}{2} \cdot 3!
+\]
+
+\subsection*{(iv) Wörter, die mit B beginnen und C enthalten}
+B ist am Anfang fixiert, wähle 2 Konsonanten (inklusive C) und 2 Vokale aus, ordne die verbleibenden 4 Buchstaben.
+\[
+	\binom{20}{2} \cdot \binom{5}{2} \cdot 4!
+\]
+
+\subsection*{(v) Wörter, die mit B beginnen und mit C enden}
+B am Anfang und C am Ende sind fixiert, wähle einen weiteren Konsonanten und 2 Vokale, ordne die verbleibenden 3 Buchstaben.
+\[
+	\binom{20}{1} \cdot \binom{5}{2} \cdot 3!
+\]
+
+\subsection*{(vi) Wörter, die A und B enthalten}
+A und B werden fixiert, wähle 2 weitere Konsonanten und einen weiteren Vokal, ordne dann die verbleibenden 4 Buchstaben.
+\[
+	\binom{20}{2} \cdot \binom{4}{1} \cdot 4!
+\]
+
+\subsection*{(vii) Wörter, die mit A beginnen und B enthalten}
+A ist am Anfang fixiert, wähle 2 Konsonanten (inklusive B) und einen weiteren Vokal, ordne die verbleibenden 4 Buchstaben.
+\[
+	\binom{20}{2} \cdot \binom{4}{1} \cdot 4!
+\]
+
+\subsection*{(viii) Wörter, die mit B beginnen und ein A enthalten}
+B ist am Anfang fixiert, wähle 2 weitere Konsonanten und einen Vokal (inklusive A), ordne die verbleibenden 4 Buchstaben.
+\[
+	\binom{20}{2} \cdot \binom{4}{1} \cdot 4!
+\]
+
+\subsection*{(ix) Wörter, die mit A beginnen und mit B enden}
+A am Anfang und B am Ende sind fixiert, wähle einen weiteren Konsonanten und einen weiteren Vokal, ordne die verbleibenden 3 Buchstaben.
+\[
+	\binom{20}{1} \cdot \binom{4}{1} \cdot 3!
+\]
+
+\subsection*{(x) Wörter, die A, B und C enthalten}
+A, B und C werden fixiert, wähle einen weiteren Konsonanten und einen weiteren Vokal, ordne die verbleibenden 3 Buchstaben.
+\[
+	\binom{18}{1} \cdot \binom{4}{1} \cdot 3!
+\]
+
+\section*{Zusatzaufgabe 6}
+
+Gegeben sind fünf identische, sechsseitige, faire Würfel.
+
+\subsection*{(i) Genau ein Würfel zeigt eine Fünf}
+Für die anderen vier Würfel gibt es jeweils 5 mögliche Ergebnisse (alles außer 5).
+\[
+	5^4
+\]
+
+\subsection*{(ii) Keiner der Würfel zeigt eine Eins}
+Jeder Würfel hat 5 mögliche Ergebnisse (2, 3, 4, 5, 6).
+\[
+	5^5
+\]
+
+\subsection*{(iii) Alle sechs Augenzahlen werden angezeigt}
+Dies ist unmöglich mit fünf Würfeln, daher ist die Anzahl der möglichen Ergebnisse 0.
+
+\[
+	0
+\]
+
+\subsection*{(iv) Die angezeigten Augenzahlen sind paarweise verschieden}
+Wähle 5 verschiedene Zahlen aus den 6 möglichen aus. Die Reihenfolge ist irrelevant, da die Würfel identisch sind.
+\[
+	\binom{6}{5}
+\]
+
+\subsection*{(v) Die Würfel ergeben ein Full-House}
+Wähle 2 verschiedene Zahlen aus den 6 möglichen aus. Eine Zahl wird dreimal, die andere zweimal angezeigt.
+\[
+	\binom{6}{2}
+\]
+
+\section*{Zusatzaufgabe 7}
+
+Wir betrachten die zwei Personen, die nebeneinandersitzen wollen, als eine Einheit. Dadurch reduziert sich das Problem auf das Setzen von 4 Einheiten. Für diese 4 Einheiten gibt es \(3!\) mögliche Anordnungen. Innerhalb der Einheit, die die zwei Personen bildet, gibt es \(2!\) mögliche Anordnungen, da diese beiden Personen auf zwei Arten nebeneinandersitzen können.
+
+Die Gesamtzahl der Anordnungen ergibt sich aus dem Produkt der Anordnungen der Einheiten und der Anordnungen innerhalb der Einheit:
+
+\[
+	3! \cdot 2! = 6 \cdot 2 = 12
+\]
+
+Folglich existieren insgesamt 12 unterschiedliche Möglichkeiten für die Anordnung der 5 Personen, wobei zwei bestimmte Personen nebeneinandersitzen müssen.
+
+\end{document}

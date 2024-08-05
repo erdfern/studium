@@ -1,0 +1,22 @@
+Definition 6.9:
+Eine Menge \( M \) heißt abzählbar, wenn es eine bijektive Abbildung von \( M \) nach \( \mathbb{N} \) gibt.
+
+Satz 6.10:
+\(\mathbb{Q}\) ist abzählbar, \(\mathbb{R}\) ist nicht abzählbar.
+
+Beweis:
+Die Abzählbarkeit von \(\mathbb{Q}\) zeigen wir mit dem Cantorschen Diagonalverfahren. Dazu schreiben wir alle Brüche \( \frac{p}{q} \) mit \( p, q \in \mathbb{N} \) in ein Rechteckschema, so dass alle Brüche mit dem gleichen Nenner in derselben Zeile und alle Brüche mit dem gleichen Zähler in derselben Spalte stehen. Von den Diagonalen von links unten nach rechts oben stehen dann jeweils Brüche mit der gleichen Summe aus Zähler und Nenner. Wir durchlaufen die Elemente des Rechteckschemas nun längs dieser Diagonalen und nummerieren sie durch, wobei die Zahlen ausgelassen werden, die schon in anderer Darstellung durchlaufen worden sind.
+
+Für die Nichtabzählbarkeit von \(\mathbb{R}\) reicht es, das Intervall \([0, 1]\) zu betrachten. Wir nehmen an, es sei \([0, 1] = \{z_n : n \in \mathbb{N}\}\) mit Dezimaldarstellungen
+
+\[ z_n = \sum_{k=1}^{\infty} \beta_{-k,n} \cdot 10^{-k}. \]
+
+Wir wählen eine Zahlenfolge \(\alpha_{-k}\) aus \(\{0, 1, \ldots, 8\}\) (die 9 lassen wir aus, um Nichteindeutigkeitsprobleme zu umgehen!) mit der Eigenschaft
+
+\[ \alpha_{-k} \neq \beta_{-k,k}, \quad k \in \mathbb{N}. \]
+
+Dann ist
+
+\[ a := \sum_{k=1}^{\infty} \alpha_{-k} \cdot 10^{-k} \]
+
+eine reelle Zahl aus dem Intervall \([0, 1]\), die mit keiner der \(z_n, n \in \mathbb{N}\), übereinstimmt.

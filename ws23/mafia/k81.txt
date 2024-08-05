@@ -1,0 +1,96 @@
+Definition 8.1 Eine Zahlenfolge \((a_n)_{n\in\mathbb{N}}\) aus \(\mathbb{R}\) heißt monoton wachsend, wenn
+
+\[ a_n \leq a_{n+1} \]
+
+für alle \( n \in \mathbb{N} \). Sie heißt streng monoton wachsend, wenn
+
+\[ a_n < a_{n+1} \]
+
+für alle \( n \in \mathbb{N} \). Eine Zahlenfolge \((a_n)_{n\in\mathbb{N}}\) aus \(\mathbb{R}\) heißt monoton fallend, wenn
+
+\[ a_n \geq a_{n+1} \]
+
+für alle \( n \in \mathbb{N} \). Sie heißt streng monoton fallend, wenn
+
+\[ a_n > a_{n+1} \]
+
+für alle \( n \in \mathbb{N} \).
+
+
+Satz 8.2 Jede monoton wachsende (bzw. fallende) und nach oben (bzw. unten) beschränkte Folge aus \(\mathbb{R}\) ist konvergent.
+
+Beweis. Wir zeigen, dass eine monoton wachsende und nach oben beschränkte Folge \((a_n)\) eine Cauchyfolge ist. Dazu gehen wir indirekt vor und nehmen an \((a_n)\) sei keine Cauchyfolge. Dann gibt es ein \(\varepsilon > 0\), zu dem kein \(N \in \mathbb{N}\) existiert mit \(|a_n - a_m| < \varepsilon\) für alle \(n, m \geq N\). Hieraus folgt durch Induktion die Existenz einer Teilfolge \((a_{n_k})\), so dass
+
+\[ |a_{n_k} - a_{n_{k-1}}| \geq \varepsilon \]
+
+für alle \( k \in \mathbb{N} \). Als Induktionsanfang gibt es \(n_1 < n_2\) mit \(|a_{n_2} - a_{n_1}| \geq \varepsilon\), denn andernfalls wäre \(|a_n - a_m| < \varepsilon\) für alle \(n, m \in \mathbb{N}\). Wir nehmen an, die Folge sei bis zu einem \(k \in \mathbb{N}\) konstruiert. Dann gibt es ein \(n_{k+1} > n_k\) mit 
+
+\[ |a_{n_{k+1}} - a_{n_k}| \geq \varepsilon \]
+
+denn andernfalls wäre \(|a_m - a_{n_k}| < \varepsilon\) für alle \(m \geq n_k\) und wegen der Monotonie dann auch \(|a_m - a_n| \leq |a_m - a_{n_k}| < \varepsilon\) für alle \(m > n \geq n_k\). 
+
+Mit der Monotonie folgt aus der obigen Ungleichung weiter 
+
+\[ a_{n_k} \geq a_{n_{k-1}} + \varepsilon \]
+
+für alle \( k \in \mathbb{N} \) und hieraus durch Induktion 
+
+\[ a_{n_k} \geq a_{n_1} + k\varepsilon \geq a_1 + k\varepsilon \]
+
+für alle \( k \in \mathbb{N} \). Dies ist im Widerspruch zur Beschränktheit von \((a_n)\) nach oben, d.h. zur Existenz einer Zahl \(M \in \mathbb{R}\) mit \(a_{n_k} \leq M\) für alle \( k \in \mathbb{N} \).
+
+Bemerkung: Die Funktion `Fakultät` von \( mathbb{N}_0 \) nach \( mathbb{N} \) ist rekursiv definiert durch \( 0! = 1\) und \( (n +1)! = (n + 1) \cdot (n!) \) für alle \( n \in \mathbb{N}_0 \). Offenbar gilt:
+
+\[ n! = 1 \cdot 2 \ldots (n - 1) \cdot n\]
+
+Satz 8.3 Die Reihe \(\sum_{k=0}^{\infty} \frac{1}{k!}\) ist konvergent.
+
+Beweis. Die Folge der Partialsummen \(S_n = \sum_{k=0}^{n} \frac{1}{k!}\) ist streng monoton wachsend. Für \(n \geq 2\) gilt
+\[ n! = 1 \cdot 2 \cdot \ldots \cdot (n - 1) \cdot n \geq 2^{n-1} \]
+und daher können wir unter Verwendung der geometrischen Reihe (5.1) für \(q = \frac{1}{2}\) abschätzen
+\[ S_n = 1 + \sum_{k=2}^{n} \frac{1}{k!} \leq 1 + \sum_{k=2}^{n} \frac{1}{2^{k-1}} < 1 + \sum_{k=2}^{\infty} \frac{1}{2^{k-1}} = 2. \]
+Also ist die Folge \((S_n)\) auch nach oben beschränkt und die Behauptung folgt aus Satz 8.2.
+
+Bemerkung: Die Summe der Reihe aus Satz (8.3) stellt eine der wichtigsten reelen Zahlen dar und heist Eulersche Zahl e. Offenbar gilt \( 2 < e < 3 \). Man kann zeigen, dass die Zahl e keine rationale Zahl ist.
+
+Satz 8.4: Seien \((a_n)\) und \((b_n)\) konvergente Folgen aus \(\mathbb{R}\) mit Grenzwerten \(a\) und \(b\) sowie der Eigenschaft \(a_n \leq b_n\). Dann gilt \(a \leq b\).
+
+Beweis: Wir nehmen an, es gelte \(a > b\). Dann gibt es zu \(\varepsilon = \frac{1}{2}(a - b) > 0\) ein \(n \in \mathbb{N}\) mit \(|a_n - a| < \varepsilon\) und \(|b_n - b| < \varepsilon\). Daraus folgt
+\[ b_n = b + (b_n - b) < b + \varepsilon = a - \varepsilon < a - (a - a_n) = a_n, \]
+d.h. \(b_n < a_n\) für ein \(n \in \mathbb{N}\) im Widerspruch zur Voraussetzung \(a_n \leq b_n\).
+
+Satz 8.5: Seien \((a_n)\), \((b_n)\) und \((c_n)\) Folgen aus \(\mathbb{R}\) mit der Eigenschaft \(a_n \leq b_n \leq c_n\) für alle \(n \in \mathbb{N}\) und seien die Folgen \((a_n)\) und \((c_n)\) konvergent gegen den gleichen Grenzwert. Dann ist auch die Folge \((b_n)\) konvergent gegen diesen Grenzwert.
+
+Beweis: Wir bezeichnen den Grenzwert der beiden konvergenten Folgen mit \(b\). Dann gibt es zu jedem \(\varepsilon > 0\) natürliche Zahlen \(N_1\) und \(N_2\) so, dass
+\[ |a_n - b| < \frac{\varepsilon}{3} \]
+für alle \(n \geq N_1\) und
+\[ |c_n - b| < \frac{\varepsilon}{3} \]
+für alle \(n \geq N_2\).
+Dann setzen wir \(N := \max\{N_1, N_2\}\) und haben unter der Verwendung der Voraussetzung
+\[ |b_n - b| = |b_n - a_n + a_n - b| \leq |b_n - a_n| + |a_n - b| \leq |c_n - a_n| + |a_n - b| \]
+\[ \leq |c_n - b| + |b - a_n| + |a_n - b| < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon \]
+für alle \(n \geq N\).
+
+Korollar 8.6: Sei \((c_n)\) eine Nullfolge und \((b_n)\) eine Folge mit der Eigenschaft 
+\[ 0 \leq b_n \leq c_n \]
+für alle \( n \in \mathbb{N} \). Dann ist auch \(b_n\) eine Nullfolge.
+
+Satz 8.7 Bolzano-Weierstrass: Jede beschränkte Folge aus \(\mathbb{R}\) besitzt eine konvergente Teilfolge.
+
+Beweis: Sei \((b_n)\) eine beschränkte Folge und \(\alpha\) und \(\gamma\) eine untere und obere Schranke. Wir definieren nun rekursiv Folgen \((a_k)\) und \((c_k)\) durch Intervallhalbierung derart, dass stets unendlich viele Glieder der Folge \((b_n)\) in dem Intervall \([a_k, c_k]\) enthalten sind. Dazu starten wir mit \(a_1 = \alpha\) und \(c_1 = \gamma\) und erklären rekursiv
+\[ a_{k+1} := 
+   \begin{cases} 
+      a_k & \text{falls unendlich viele Glieder von } (b_n) \text{ in dem Intervall } [a_k, \frac{a_k + c_k}{2}] \text{ liegen} \\
+      \frac{a_k + c_k}{2} & \text{andernfalls}
+   \end{cases}
+\]
+und
+\[ c_{k+1} := 
+   \begin{cases} 
+      \frac{a_k + c_k}{2} & \text{falls unendlich viele Glieder von } (b_n) \text{ in dem Intervall } [a_k, \frac{a_k + c_k}{2}] \text{ liegen} \\
+      c_k & \text{andernfalls}
+   \end{cases}
+\]
+Dann liegen stets unendlich viele Glieder von \((b_n)\) in dem Intervall \([a_k, c_k]\) der Länge \(c_k - a_k = 2^{-k+1}(\gamma - \alpha)\). Daher können wir eine streng monoton steigende Folge \((n_k)\) aus \(\mathbb{N}\) so auswählen, dass
+\[ a_k \leq b_{n_k} \leq c_k \]
+für alle \(k \in \mathbb{N}\). (8.5)
