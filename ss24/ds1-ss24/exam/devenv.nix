@@ -46,6 +46,8 @@
       geopy
       openpyxl
       git+https://github.com/sinzlab/dsplotter.git
+
+      ruff-lsp
     '';
   };
 
