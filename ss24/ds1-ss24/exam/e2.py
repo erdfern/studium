@@ -112,7 +112,7 @@ def main():
     print("\nYearly sales per machine and location:")
     print(yearly_sales_by_machine)
 
-    plot_map(yearly_sales_by_machine, "yearly_sales_eur", "yearly_sales_eur", radius_scale=15)
+    plot_map(yearly_sales_by_machine, "yearly_sales_eur", "yearly_sales_eur", radius_scale=10)
 
     # Observation regarding shared characteristics of machines with high sales volume:
     # Lesser distance to city center -> higher sales volume

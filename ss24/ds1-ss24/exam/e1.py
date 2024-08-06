@@ -64,15 +64,14 @@ def deduplicate_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def transform_cale_data(df: pd.DataFrame):
-    df = df.rename(columns=CALE_COLS)
-    # cale_df = cale_df[['time', 'machine_id', 'fee', 'category']]
-    df = df[["time", "machine_id", "fee"]]
     df["category"] = "machine"
+    df = df.rename(columns=CALE_COLS).reset_index()
+    df = df[["time", "machine_id", "fee"]].reset_index()
     df["machine_id"] = pd.to_numeric(
         df["machine_id"].astype(str).str.replace("PA", ""), errors="coerce"
     )
     df["machine_id"] = df["machine_id"].replace(0, 1)
-    df = df[df["machine_id"] != 999]
+    df = df[df["machine_id"] != 999].reset_index()
     return deduplicate_dataframe(df)
 
 
