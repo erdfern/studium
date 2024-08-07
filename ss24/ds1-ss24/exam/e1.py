@@ -69,7 +69,7 @@ def transform_cale_data(df: pd.DataFrame):
     df["machine_ID"] = pd.to_numeric(
         df["machine_ID"].astype(str).str.replace("PA", ""), errors="coerce"
     )
-    df["machine_id"] = df["machine_id"].replace(0, 1)
+    df["machine_ID"] = df["machine_ID"].replace(0, 1)
     df = df[df["machine_ID"] != 999]
     return deduplicate_dataframe(df)
 
