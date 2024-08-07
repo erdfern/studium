@@ -209,7 +209,26 @@ def main():
     # clean_df.info()
 
     # print(f"Equal: {final_df.equals(clean_df)}")
-    final_df.to_csv(join("out", "my_clean_dataframe.csv"))
+    # final_df.to_csv(join("out", "my_clean_dataframe.csv"), dtype={})
+
+    fdf = pd.read_csv(
+        "out/my_clean_dataframe.csv",
+        parse_dates=["time"],
+        index_col="time",
+        dtype={
+            "machine_ID": "Int64",
+            "fee": "float64",
+            "category": "object",
+            "street": "object",
+            "latitude_machine": "float64",
+            "longitude_machine": "float64",
+            "zone": "int64",
+            "latitude_zone": "float64",
+            "longitude_zone": "float64",
+        },
+    ).sort_index()
+    fdf.info()
+    fdf.to_csv(join("out", "fdf.csv"))
 
 
 if __name__ == "__main__":
