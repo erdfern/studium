@@ -10,9 +10,7 @@ def load_and_prepare_data(clean_df):
         machine_sales.groupby("machine_ID")["fee"].sum().nlargest(5, "first")
     )
 
-    weekly_sales = machine_sales[
-        machine_sales["machine_ID"].isin(top_5_by_sales.index)
-    ]
+    weekly_sales = machine_sales[machine_sales["machine_ID"].isin(top_5_by_sales.index)]
     weekly_sales = (
         weekly_sales.groupby([pd.Grouper(freq="W"), "machine_ID"])["fee"]
         .sum()
@@ -23,9 +21,7 @@ def load_and_prepare_data(clean_df):
 
 
 def plot_heatmap(weekly_sales):
-    pivot_data = weekly_sales.pivot(
-        index="time", columns="machine_ID", values="fee"
-    )
+    pivot_data = weekly_sales.pivot(index="time", columns="machine_ID", values="fee")
 
     # Add week numbers to the index
     pivot_data["week_number"] = pivot_data.index.isocalendar().week
@@ -87,9 +83,7 @@ def main():
 
     yearly_sales_by_machine: pd.DataFrame = (
         clean_df[clean_df["category"] == "machine"]
-        .groupby("machine_ID")[
-            ["fee", "latitude_machine", "longitude_machine"]
-        ]
+        .groupby("machine_ID")[["fee", "latitude_machine", "longitude_machine"]]
         .agg(
             {
                 "fee": "sum",
@@ -112,7 +106,9 @@ def main():
     print("\nYearly sales volume per machine:")
     print(yearly_sales_by_machine)
 
-    plot_map(yearly_sales_by_machine, "yearly_sales_eur", "yearly_sales_eur", radius_scale=10)
+    plot_map(
+        yearly_sales_by_machine, "yearly_sales_eur", "yearly_sales_eur", radius_scale=10
+    )
 
     # Observation regarding shared characteristics of machines with high sales volume:
     # Lesser distance to city center -> higher sales volume
@@ -120,19 +116,19 @@ def main():
     # ...?
 
     # 2.2
-    yearly_sales_by_machine: pd.DataFrame = (
-        clean_df[clean_df["category"] == "machine"]
-        .groupby(["machine_ID"])[
-            ["fee", "latitude_machine", "longitude_machine"]
-        ]
-        .agg(
-            {
-                "fee": "sum",
-                "latitude_machine": "first",
-                "longitude_machine": "first",
-            }
+    sales_by_category_per_parkzone = (
+        clean_df.groupby(["zone", "category"])["fee"]
+        # .sum()
+        .count()
+        .reset_index()
+        .pivot_table(
+            index=["zone", "category"], values="fee", fill_value=0
         )
-    ).reset_index()  # reset_index() ensures that we get a DataFrame, which is only needed to silence the LSP (no functional difference)
+    )
+
+    print("\nSales by app and machine per parkzone:")
+    print(sales_by_category_per_parkzone)
+    sales_by_category_per_parkzone.info()
 
 
 if __name__ == "__main__":
