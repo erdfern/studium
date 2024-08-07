@@ -119,6 +119,10 @@ def main():
     # Lesser distance to z-campus -> higher sales volume
     # ...?
 
+    # 2.2
+
+    # machine_sales = 
+
 
 if __name__ == "__main__":
     main()
