@@ -34,12 +34,13 @@ def process_cale_file(path: str):
         usecols=list(CALE_COLS.keys()),
         parse_dates=["Kaufdatum Lokal"],
         date_format="%d.%m.%Y %H:%M:%S",
+        decimal=".",
     ).rename(columns=CALE_COLS)
     df["machine_ID"] = pd.to_numeric(
         df["machine_ID"].str.replace("PA", ""),
         errors="coerce",
     ).replace(0, 1)
-    df.drop(df.loc[df["machine_ID"] == 999].index, inplace=True)
+    df = df.drop(df.loc[df["machine_ID"] == 999].index)
     df["category"] = "machine"
     return df
 
@@ -51,6 +52,7 @@ def process_parkster_file(path: str):
         usecols=list(PARKSTER_COLS.keys()),
         parse_dates=["Start"],
         date_format="%Y-%m-%d %H:%M:%S",
+        decimal=".",
     ).rename(columns=PARKSTER_COLS)
     df["category"] = "app"
     return df
@@ -111,16 +113,12 @@ def merge_and_format_data(
     parkzones_latlong_df: pd.DataFrame,
     psa_latlong_df: pd.DataFrame,
 ) -> pd.DataFrame:
-    # Merge Cale data with psa_latlong
     cale_merged = pd.merge(
         cale_df,
         psa_latlong_df,
         on="machine_ID",
         how="left",
-    )
-    print("cale_merged info")
-    cale_merged.info()
-    cale_merged = cale_merged.rename(
+    ).rename(
         columns={
             "latitude": "latitude_machine",
             "longitude": "longitude_machine",
@@ -128,21 +126,14 @@ def merge_and_format_data(
         }
     )
 
-    # Merge both sales datasets
     combined_df = pd.concat([cale_merged, parkster_df], ignore_index=True)
-    print("combined_df info")
-    combined_df.info()
 
     # Merge with parkzones_latlong
     final_df = pd.merge(combined_df, parkzones_latlong_df, on="zone", how="left")
-    print("final df post-merge")
-    final_df.info()
 
     final_df = final_df.rename(
         columns={"latitude": "latitude_zone", "longitude": "longitude_zone"}
     )
-    print("final df renamed cols")
-    final_df.info()
 
     final_df = (
         final_df[
@@ -161,11 +152,7 @@ def merge_and_format_data(
         ]
         .set_index("time")
         .sort_index()
-    )
-
-    print("final")
-    final_df.info()
-    print(final_df.head(5))
+    )#.astype({"machine_ID": "int64"})
 
     return final_df
 
@@ -182,7 +169,6 @@ def main():
     parkzones_latlong_df.info()
 
     psa_latlong_df = load_psa_latlong(join(DATA_DIR, "psa_latlong.csv"))
-    # psa_latlong_df.to_csv("out/filtered_psa_latlong.csv", index=False)
 
     # # Print summary
     print("\nData Processing Summary:")
@@ -199,6 +185,9 @@ def main():
     final_df = merge_and_format_data(
         cale_df, parkster_df, parkzones_latlong_df, psa_latlong_df
     )
+
+    print("\nFinal DataFrame:")
+    final_df.info()
 
     # print("Reference DataFrame:")
     # clean_df = pd.read_csv(
@@ -219,12 +208,8 @@ def main():
     # ).sort_index()
     # clean_df.info()
 
-    # print("\nFinal DataFrame:")
-    # final_df.info()
-
     # print(f"Equal: {final_df.equals(clean_df)}")
-
-    # final_df.to_csv(join("out", "my_clean_dataframe.csv"))
+    final_df.to_csv(join("out", "my_clean_dataframe.csv"))
 
 
 if __name__ == "__main__":
