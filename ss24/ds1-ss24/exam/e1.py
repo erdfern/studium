@@ -4,16 +4,14 @@ import pandas as pd
 import re
 
 DATA_DIR = "data"
-ID_COLUMN_ORIG = "Automat - Automaten ID"
-ID_COLUMN = "machine_id"
-# machine_id,Zahleinheit - Name,Knoten,Kaufdatum Lokal,Betrag,Artikelname,Artikel ID,Tarifpaket - Name,Maskierter PAN,Transaktionsreferenz,Ticket Nummer,month
+# machine_ID,Zahleinheit - Name,Knoten,Kaufdatum Lokal,Betrag,Artikelname,Artikel ID,Tarifpaket - Name,Maskierter PAN,Transaktionsreferenz,Ticket Nummer
 CALE_COLS = {
     "Automat - Automaten ID": "machine_ID",
     "Knoten": "node",
     "Kaufdatum Lokal": "time",
     "Betrag": "fee",
 }
-# Parkzone,Erstellt,Start,Stopp,Parkgebühren inkl. MwSt. in EUR,Status,Parkscheinart,Zonencode,Eigentümercode,month
+# Parkzone,Erstellt,Start,Stopp,Parkgebühren inkl. MwSt. in EUR,Status,Parkscheinart,Zonencode,Eigentümercode
 # TODO verify that Parkzone and Zonencode are identical
 PARKSTER_COLS = {
     "Parkzone": "zone",
@@ -45,7 +43,6 @@ def process_excel_files(directory, prefix):
         path = join(directory, file)
         print(f"Loading {path}")
         df = load_cale(path) if prefix == "Cale-" else load_parkster(path)
-        df["month"] = file.split()[-2]
         dfs.append(df)
 
     if dfs:
@@ -65,13 +62,15 @@ def deduplicate_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 
 def transform_cale_data(df: pd.DataFrame):
     df["category"] = "machine"
-    df = df.rename(columns=CALE_COLS).reset_index()
-    df = df[["time", "machine_id", "fee"]].reset_index()
-    df["machine_id"] = pd.to_numeric(
-        df["machine_id"].astype(str).str.replace("PA", ""), errors="coerce"
+    df.info()
+    df = df.rename(columns=CALE_COLS)
+    df.info()
+    df = df[["time", "machine_ID", "fee"]]
+    df["machine_ID"] = pd.to_numeric(
+        df["machine_ID"].astype(str).str.replace("PA", ""), errors="coerce"
     )
     df["machine_id"] = df["machine_id"].replace(0, 1)
-    df = df[df["machine_id"] != 999].reset_index()
+    df = df[df["machine_ID"] != 999]
     return deduplicate_dataframe(df)
 
 
@@ -110,12 +109,12 @@ def merge_and_format_data(
     parkster_df = parkster_df[["time", "fee", "category", "zone"]]
 
     # Merge Cale data with psa_latlong
-    psa_latlong_df = psa_latlong_df.rename(columns={"PSA": "machine_id"})
+    psa_latlong_df = psa_latlong_df.rename(columns={"PSA": "machine_ID"})
     psa_latlong_df.info()
     cale_merged = pd.merge(
         cale_df,
         psa_latlong_df,
-        on="machine_id",
+        on="machine_ID",
         how="left",
     )
     print("cale_merged")
@@ -152,7 +151,7 @@ def merge_and_format_data(
     final_df = final_df[
         [
             "time",
-            "machine_id",
+            "machine_ID",
             "fee",
             "category",
             "street",
@@ -169,8 +168,8 @@ def merge_and_format_data(
     final_df.sort_index(inplace=True)
 
     # Ensure correct data types
-    # final_df["machine_id"] = pd.to_numeric(
-    #     final_df["machine_id"], errors="coerce"
+    # final_df["machine_ID"] = pd.to_numeric(
+    #     final_df["machine_ID"], errors="coerce"
     # ).astype("Int64")
     # final_df["fee"] = final_df["fee"].astype("float64")
     # final_df["zone"] = final_df["zone"].astype("int64")
@@ -216,7 +215,7 @@ def main():
         parse_dates=["time"],
         index_col="time",
         dtype={
-            "machine_id": "Int64",
+            "machine_ID": "Int64",
             "fee": "float64",
             "category": "object",
             "street": "object",

@@ -109,7 +109,7 @@ def main():
 
     yearly_sales_by_machine.info()
 
-    print("\nYearly sales per machine and location:")
+    print("\nYearly sales volume per machine:")
     print(yearly_sales_by_machine)
 
     plot_map(yearly_sales_by_machine, "yearly_sales_eur", "yearly_sales_eur", radius_scale=10)
@@ -120,8 +120,19 @@ def main():
     # ...?
 
     # 2.2
-
-    # machine_sales = 
+    yearly_sales_by_machine: pd.DataFrame = (
+        clean_df[clean_df["category"] == "machine"]
+        .groupby(["machine_ID"])[
+            ["fee", "latitude_machine", "longitude_machine"]
+        ]
+        .agg(
+            {
+                "fee": "sum",
+                "latitude_machine": "first",
+                "longitude_machine": "first",
+            }
+        )
+    ).reset_index()  # reset_index() ensures that we get a DataFrame, which is only needed to silence the LSP (no functional difference)
 
 
 if __name__ == "__main__":
