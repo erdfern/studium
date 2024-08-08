@@ -1,5 +1,9 @@
-tabulate
 ipykernel
+jupyter
+notebook
+tabulate
+
+
 pandas
 seaborn
 numpy

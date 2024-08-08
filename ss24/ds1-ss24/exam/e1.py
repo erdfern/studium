@@ -80,7 +80,10 @@ def load_parkzones_latlong(path: str):
 
 
 def process_excel_files(prefix: str) -> pd.DataFrame:
-    pickle_file = os.path.join(PICKLE_DIR, f"{prefix}_dataframe.pickle")
+    """
+    Loads and concatenates either Cale- or Parkster- excel sheets.
+    """
+    pickle_file = os.path.join(PICKLE_DIR, f"{prefix}_df")
     if os.path.exists(pickle_file):
         print(f"Loading DataFrame from {pickle_file}")
         return pd.read_pickle(pickle_file)
@@ -112,6 +115,10 @@ def merge_and_format_data(
     parkzones_latlong_df: pd.DataFrame,
     psa_latlong_df: pd.DataFrame,
 ) -> pd.DataFrame:
+    """
+    This function produces the final dataframe for exercise 1.2 by
+    merging all the loaded data as specified.
+    """
     cale_merged = pd.merge(
         cale_df,
         psa_latlong_df,
@@ -133,7 +140,6 @@ def merge_and_format_data(
     print("Shapes after concatenating Cale and Parkster:")
     print(f"Combined DataFrame shape: {combined_df.shape}")
 
-    # Merge with parkzones_latlong
     final_df = pd.merge(combined_df, parkzones_latlong_df, on="zone", how="left")
 
     print("Shapes after merging with Parkzones LatLong:")
@@ -162,69 +168,61 @@ def merge_and_format_data(
     )
 
 
-def main():
-    # # Stage 1: Load initial excel files
-    cale_df = process_excel_files("Cale")
-    parkster_df = process_excel_files("Parkster")
+cale_df = process_excel_files("Cale")
+parkster_df = process_excel_files("Parkster")
 
-    # # Stage 2: Load and transform additional data
-    parkzones_latlong_df = load_parkzones_latlong(
-        join(DATA_DIR, "parkzones_latlong.csv")
-    )
-    parkzones_latlong_df.info()
+parkzones_latlong_df = load_parkzones_latlong(join(DATA_DIR, "parkzones_latlong.csv"))
+parkzones_latlong_df.info()
+parkzones_latlong_df.to_pickle("pickles/parkzones_latlong")
 
-    psa_latlong_df = load_psa_latlong(join(DATA_DIR, "psa_latlong.csv"))
+psa_latlong_df = load_psa_latlong(join(DATA_DIR, "psa_latlong.csv"))
+psa_latlong_df.to_pickle("pickles/psa_latlong")
 
-    # # Print summary
-    print("\nData Processing Summary:")
-    print(f"Cale DataFrame shape: {cale_df.shape}")
-    cale_df.info()
-    print(f"Parkster DataFrame shape: {parkster_df.shape}")
-    parkster_df.info()
-    print(f"Parkzones LatLong DataFrame shape: {parkzones_latlong_df.shape}")
-    parkzones_latlong_df.info()
-    print(f"PSA LatLong DataFrame shape: {psa_latlong_df.shape}")
-    psa_latlong_df.info()
+print("\nData Processing Summary:")
+print(f"Cale DataFrame shape: {cale_df.shape}")
+cale_df.info()
+print(f"Parkster DataFrame shape: {parkster_df.shape}")
+parkster_df.info()
+print(f"Parkzones LatLong DataFrame shape: {parkzones_latlong_df.shape}")
+parkzones_latlong_df.info()
+print(f"PSA LatLong DataFrame shape: {psa_latlong_df.shape}")
+psa_latlong_df.info()
 
-    # # Stage 3: Merge and format data
-    final_df = merge_and_format_data(
-        cale_df, parkster_df, parkzones_latlong_df, psa_latlong_df
-    )
+# # Stage 3: Merge and format data
+final_df = merge_and_format_data(
+    cale_df, parkster_df, parkzones_latlong_df, psa_latlong_df
+)
 
-    print("\nFinal DataFrame:")
-    final_df.info()
-    final_df.to_csv("out/final_df.csv")
+print("\nFinal DataFrame:")
+final_df.info()
+final_df.to_csv("out/final_df.csv")
 
-    print("Reference DataFrame:")
-    clean_df = pd.read_csv(
-        "data/clean_dataframe.csv",
-        parse_dates=["time"],
-        index_col="time",
-        dtype={
-            "machine_ID": "Int64",
-            "fee": "float64",
-            "category": "object",
-            "street": "object",
-            "latitude_machine": "float64",
-            "longitude_machine": "float64",
-            "zone": "int64",
-            "latitude_zone": "float64",
-            "longitude_zone": "float64",
-        },
-    ).sort_index()
-    clean_df.info()
+print("Reference DataFrame:")
+clean_df = pd.read_csv(
+    "data/clean_dataframe.csv",
+    parse_dates=["time"],
+    index_col="time",
+    dtype={
+        "machine_ID": "Int64",
+        "fee": "float64",
+        "category": "object",
+        "street": "object",
+        "latitude_machine": "float64",
+        "longitude_machine": "float64",
+        "zone": "int64",
+        "latitude_zone": "float64",
+        "longitude_zone": "float64",
+    },
+).sort_index()
+clean_df.info()
 
-    print("\nComparison with Reference DataFrame:")
-    if final_df.shape == clean_df.shape and final_df.columns.equals(clean_df.columns):
-        print("Shapes and columns match!")
+print("\nComparison with Reference DataFrame:")
+if final_df.shape == clean_df.shape and final_df.columns.equals(clean_df.columns):
+    print("Shapes and columns match!")
 
-        if final_df.equals(clean_df):
-            print("Values match exactly!")
-        else:
-            print("Values differ.")
+    if final_df.equals(clean_df):
+        print("Values match exactly!")
     else:
-        print("Shapes or columns do not match.")
-
-
-if __name__ == "__main__":
-    main()
+        print("Values differ.")
+else:
+    print("Shapes or columns do not match.")
