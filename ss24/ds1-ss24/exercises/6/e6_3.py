@@ -45,6 +45,8 @@ group2 = [
 # H0 (Null Hypothesis): The mean time to solve homework is the same for both groups.
 # H1 (Alternative Hypothesis): The mean time to solve homework is different for the two groups.
 
+# We'll perform a one sample t test, comparing the mean machine usage rate to a hypothetical value of 0.5 where we take p value of higher than 0.5 to mean that parkers prefer using machines in a given zone
+
 # The groups are independent (unpaired) because there is no inherent pairing or matching between the individuals in group1 and group2.
 
 # 3.2.a)

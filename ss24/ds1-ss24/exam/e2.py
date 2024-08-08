@@ -120,11 +120,9 @@ def main():
         ).sort_index()
     )
 
-    # 2.1
-
     # analyze_machine_sales(sales_df)
 
-    # 2.2
+    # 2.2...
     # Group by `zone` and count the number of rows to get `total_transactions`
     zone_agg = sales_df.groupby("zone").size().to_frame(name="total_transactions")
 
@@ -159,50 +157,50 @@ def main():
 
     df221.info()
 
-    # df_melted221 = df221.melt(
-    #     id_vars=["zone"],
-    #     value_vars=["app_usage_rate", "machine_usage_rate"],
-    #     var_name="variable",
-    #     value_name="value",
-    # )
+    df_melted221 = df221.melt(
+        id_vars=["zone"],
+        value_vars=["app_usage_rate", "machine_usage_rate"],
+        var_name="variable",
+        value_name="value",
+    )
 
-    # plt.figure(figsize=(12, 6))
-    # sns.barplot(x="zone", y="value", hue="variable", data=df_melted221)
+    plt.figure(figsize=(12, 6))
+    sns.barplot(x="zone", y="value", hue="variable", data=df_melted221)
 
-    # plt.xlabel("Park Zone")
-    # plt.ylabel("Usage Rate")
-    # plt.title("App vs. Machine Usage Rate per Park Zone in 2023")
-    # plt.xticks(rotation=45)
-    # plt.legend(title="Usage Type")
+    plt.xlabel("Park Zone")
+    plt.ylabel("Usage Rate")
+    plt.title("App vs. Machine Usage Rate per Park Zone in 2023")
+    plt.xticks(rotation=45)
+    plt.legend(title="Usage Type")
 
-    # plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter(1.0))
-    # plt.ylim(0.0, 1.0)
+    plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter(1.0))
+    plt.ylim(0.0, 1.0)
 
-    # plt.savefig("out/2.2.1.png")
+    plt.savefig("out/2.2.1.png")
 
     # 2.2.2
-    # df_melted221 = df221.melt(
-    #     id_vars=["zone"],
-    #     value_vars=["total_transactions", "transactions_machine"],
-    #     var_name="variable",
-    #     value_name="value",
-    # )
+    df_melted221 = df221.melt(
+        id_vars=["zone"],
+        value_vars=["total_transactions", "transactions_machine"],
+        var_name="variable",
+        value_name="value",
+    )
 
-    # plt.figure(figsize=(10, 6))
-    # ax = sns.barplot(x="zone", y="value", hue="variable", data=df_melted221)
-    # handles, labels = ax.get_legend_handles_labels()
-    # custom_labels = ["Total Transactions", "Machine Transactions"]
-    # ax.legend(handles, custom_labels)
+    plt.figure(figsize=(10, 6))
+    ax = sns.barplot(x="zone", y="value", hue="variable", data=df_melted221)
+    handles, labels = ax.get_legend_handles_labels()
+    custom_labels = ["Total Transactions", "Machine Transactions"]
+    ax.legend(handles, custom_labels)
 
-    # plt.yscale("log")
+    plt.yscale("log")
 
-    # plt.title("Total Transactions vs Machine Transactions per Zone (Log Scale)")
-    # plt.xlabel("Zone")
-    # plt.ylabel("Transactions")
+    plt.title("Total Transactions vs Machine Transactions per Zone (Log Scale)")
+    plt.xlabel("Zone")
+    plt.ylabel("Transactions")
 
-    # plt.xticks(rotation=45)
+    plt.xticks(rotation=45)
 
-    # plt.savefig("out/2.2.2.png")
+    plt.savefig("out/2.2.2.png")
 
     # 2.2.3
     psa_latlong_df = pd.read_pickle("pickles/psa_latlong")
@@ -225,7 +223,7 @@ def main():
     # busiest_zone = df223.loc[df223["normalized_transactions"].idxmax(), "zone"]
     # print(f"The busiest parkzone is: {busiest_zone}")
 
-    # Melt the dataframe to have `normalized_transactions` and `normalized_machine_transactions` in one column
+    # # Melt the dataframe to have `normalized_transactions` and `normalized_machine_transactions` in one column
     # df_melted223 = df223.melt(
     #     id_vars=["zone"],
     #     value_vars=["normalized_transactions", "normalized_machine_transactions"],
@@ -262,7 +260,7 @@ def main():
     parkzones_latlong = pd.read_pickle("pickles/parkzones_latlong")
     parkzones_latlong.info()
     df224 = df221.merge(parkzones_latlong, on="zone")
-    # plot_map(df224, "machine_usage_rate", "transactions_machine", radius_scale=10)
+    plot_map(df224, "machine_usage_rate", "transactions_machine", radius_scale=10)
 
     # 3.1 - t-test
     # 1. Determine daily rate of machine use per parkzone
@@ -308,7 +306,9 @@ def main():
         zone_data = sales_counts.xs(zone, level="zone")
         # print(zone_data)
 
-        t_statistic, p_value = stats.ttest_1samp(zone_data["rate_machine"], 0.5, alternative="greater")
+        t_statistic, p_value = stats.ttest_1samp(
+            zone_data["rate_machine"], 0.5, alternative="greater"
+        )
 
         if p_value < 0.05:
             print(
