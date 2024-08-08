@@ -3,6 +3,8 @@ from os.path import join
 import pandas as pd
 import re
 
+from pandas.core.arrays.masked import notna
+
 DATA_DIR = "data"
 CALE_COLS = {
     "Automat - Automaten ID": "machine_ID",
@@ -132,24 +134,23 @@ def merge_and_format_data(
         columns={"latitude": "latitude_zone", "longitude": "longitude_zone"}
     )
 
-    # final_df = (
-    #     final_df[
-    #         [
-    #             "time",
-    #             "machine_ID",
-    #             "fee",
-    #             "category",
-    #             "street",
-    #             "latitude_machine",
-    #             "longitude_machine",
-    #             "zone",
-    #             "latitude_zone",
-    #             "longitude_zone",
-    #         ]
-    #     ]
-    # )
-
-    return final_df
+    return (
+        final_df.astype(
+            {
+                "machine_ID": "Int64",
+                "fee": "float64",
+                "category": "object",
+                "street": "object",
+                "latitude_machine": "float64",
+                "longitude_machine": "float64",
+                "zone": "int64",
+                "latitude_zone": "float64",
+                "longitude_zone": "float64",
+            }
+        )
+        .set_index("time")
+        .sort_index()
+    )
 
 
 def main():
@@ -177,13 +178,15 @@ def main():
     psa_latlong_df.info()
 
     # # Stage 3: Merge and format data
-    final_df = merge_and_format_data(
-        cale_df, parkster_df, parkzones_latlong_df, psa_latlong_df
+    final_df = (
+        merge_and_format_data(
+            cale_df, parkster_df, parkzones_latlong_df, psa_latlong_df
+        )
+        # .reset_index()
     )
 
     print("\nFinal DataFrame:")
     final_df.info()
-    final_df.to_csv("out/final_df.csv", index=False)
 
     print("Reference DataFrame:")
     clean_df = pd.read_csv(
@@ -204,25 +207,16 @@ def main():
     ).sort_index()
     clean_df.info()
 
-    fdf = pd.read_csv(
-        "out/final_df.csv",
-        parse_dates=["time"],
-        index_col="time",
-        dtype={
-            "machine_ID": "Int64",
-            "fee": "float64",
-            "category": "object",
-            "street": "object",
-            "latitude_machine": "float64",
-            "longitude_machine": "float64",
-            "zone": "int64",
-            "latitude_zone": "float64",
-            "longitude_zone": "float64",
-        },
-    ).sort_index()
-    fdf.info()
+    print("\nComparison with Reference DataFrame:")
+    if final_df.shape == clean_df.shape and final_df.columns.equals(clean_df.columns):
+        print("Shapes and columns match!")
 
-    print(f"Equal: {final_df.equals(clean_df)}")
+        if final_df.equals(clean_df):  
+            print("Values match exactly!")
+        else:
+            print("Values differ.")
+    else:
+        print("Shapes or columns do not match.")
 
 
 if __name__ == "__main__":
