@@ -151,7 +151,6 @@ def main():
 
     df = df.reset_index()
 
-    print(df.to_markdown())
     df.info()
     # df.to_csv("df.csv")
 
@@ -171,6 +170,7 @@ def main():
     plt.xlabel("Park Zone")
     plt.ylabel("Usage Rate")
     plt.title("App vs. Machine Usage Rate per Park Zone in 2023")
+    plt.xticks(rotation=45)
     plt.legend(title="Usage Type")
 
     plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter(1.0))
@@ -179,18 +179,26 @@ def main():
     plt.savefig("out/2.2.1.png")
 
     # 2.2.2
-    df_melted = df.melt(id_vars=["zone"], value_vars=["total_transactions", "transactions_machine"], var_name="variable", value_name="value")
+    df_melted = df.melt(
+        id_vars=["zone"],
+        value_vars=["total_transactions", "transactions_machine"],
+        var_name="variable",
+        value_name="value",
+    )
 
     plt.figure(figsize=(10, 6))
     sns.barplot(x="zone", y="value", hue="variable", data=df_melted)
 
-    plt.yscale('log')
+    plt.yscale("log")
 
-    plt.title('Total Transactions vs Machine Transactions per Zone (Log Scale)')
-    plt.xlabel('Zone')
-    plt.ylabel('Transactions')
+    plt.title("Total Transactions vs Machine Transactions per Zone (Log Scale)")
+    plt.xlabel("Zone")
+    plt.ylabel("Transactions")
+
+    plt.xticks(rotation=45)
 
     plt.savefig("out/2.2.2.png")
+
 
 if __name__ == "__main__":
     main()
