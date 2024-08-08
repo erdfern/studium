@@ -48,7 +48,6 @@ def _plot_heatmap(weekly_sales):
     plt.title("Weekly Sales Heatmap for Top 5 Parking Machines (2023)")
     plt.xlabel("Machine ID")
     plt.ylabel("Week Number")
-    plt.tight_layout()
     plt.savefig("out/top_5_machines_heatmap.png", dpi=300)
     plt.close()
 
@@ -150,14 +149,16 @@ def main():
 
     df = zone_agg.join(transactions_by_category).join(sales_volume_by_category)
 
+    df = df.reset_index()
+
     print(df.to_markdown())
     df.info()
-    df.to_csv("df.csv")
+    # df.to_csv("df.csv")
 
     df["app_usage_rate"] = df["transactions_app"] / df["total_transactions"]
     df["machine_usage_rate"] = df["transactions_machine"] / df["total_transactions"]
 
-    df_melted = df.reset_index().melt(
+    df_melted = df.melt(
         id_vars=["zone"],
         value_vars=["app_usage_rate", "machine_usage_rate"],
         var_name="variable",
@@ -175,9 +176,24 @@ def main():
     plt.gca().yaxis.set_major_formatter(mticker.PercentFormatter(1.0))
     plt.ylim(0.0, 1.0)
 
-    plt.tight_layout()
-    plt.savefig("2.2.1.png")
+    plt.savefig("out/2.2.1.png")
 
+    # 2.2.2
+    df_melted = df.melt(id_vars=["zone"], value_vars=["total_transactions", "transactions_machine"], var_name="variable", value_name="value")
+
+    # Create the bar plot
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x="zone", y="value", hue="variable", data=df_melted)
+
+    # Set y-axis to logarithmic scale
+    plt.yscale('log')
+
+    # Add title and labels
+    plt.title('Total Transactions vs Machine Transactions per Zone (Log Scale)')
+    plt.xlabel('Zone')
+    plt.ylabel('Transactions')
+
+    plt.savefig("out/2.2.2.png")
 
 if __name__ == "__main__":
     main()
