@@ -181,14 +181,11 @@ def main():
     # 2.2.2
     df_melted = df.melt(id_vars=["zone"], value_vars=["total_transactions", "transactions_machine"], var_name="variable", value_name="value")
 
-    # Create the bar plot
     plt.figure(figsize=(10, 6))
     sns.barplot(x="zone", y="value", hue="variable", data=df_melted)
 
-    # Set y-axis to logarithmic scale
     plt.yscale('log')
 
-    # Add title and labels
     plt.title('Total Transactions vs Machine Transactions per Zone (Log Scale)')
     plt.xlabel('Zone')
     plt.ylabel('Transactions')
