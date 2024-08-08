@@ -1,3 +1,5 @@
+tabulate
+ipykernel
 pandas
 seaborn
 numpy

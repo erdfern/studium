@@ -1,11 +1,9 @@
 import os
 from os.path import join
 import pandas as pd
-import re
-
-from pandas.core.arrays.masked import notna
 
 DATA_DIR = "data"
+PICKLE_DIR = "pickles"
 CALE_COLS = {
     "Automat - Automaten ID": "machine_ID",
     "Kaufdatum Lokal": "time",
@@ -20,6 +18,7 @@ PARKSTER_COLS = {
 
 def deduplicate_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     original_length = len(df)
+    # df_deduped = df.drop_duplicates(keep="first")
     df_deduped = df.drop_duplicates()
     rows_removed = original_length - len(df_deduped)
     print(f"Rows removed due to deduplication: {rows_removed}")
@@ -42,6 +41,7 @@ def process_cale_file(path: str):
     ).replace(0, 1)
     df = df.drop(df.loc[df["machine_ID"] == 999].index)
     df["category"] = "machine"
+    # df = df.drop_duplicates(["machine_ID"])
     return df
 
 
@@ -80,6 +80,11 @@ def load_parkzones_latlong(path: str):
 
 
 def process_excel_files(prefix: str) -> pd.DataFrame:
+    pickle_file = os.path.join(PICKLE_DIR, f"{prefix}_dataframe.pickle")
+    if os.path.exists(pickle_file):
+        print(f"Loading DataFrame from {pickle_file}")
+        return pd.read_pickle(pickle_file)
+
     files = [
         f for f in os.listdir(DATA_DIR) if f.startswith(prefix) and f.endswith(".xlsx")
     ]
@@ -95,14 +100,9 @@ def process_excel_files(prefix: str) -> pd.DataFrame:
         )
         dfs.append(df)
 
-    return deduplicate_dataframe(pd.concat(dfs, ignore_index=True))
-
-
-def load_sales_data(prefix: str):
-    print(f"Processing {prefix} data")
-    df = process_excel_files(prefix)
-    print(f"Done with {prefix} data")
-    df.info()
+    # df = deduplicate_dataframe(pd.concat(dfs, ignore_index=True))
+    df = pd.concat(dfs, ignore_index=True)
+    df.to_pickle(pickle_file)
     return df
 
 
@@ -125,10 +125,19 @@ def merge_and_format_data(
         }
     )
 
+    print("Shapes after merging Cale and PSA LatLong:")
+    print(f"Cale merged DataFrame shape: {cale_merged.shape}")
+
     combined_df = pd.concat([cale_merged, parkster_df], ignore_index=True)
+
+    print("Shapes after concatenating Cale and Parkster:")
+    print(f"Combined DataFrame shape: {combined_df.shape}")
 
     # Merge with parkzones_latlong
     final_df = pd.merge(combined_df, parkzones_latlong_df, on="zone", how="left")
+
+    print("Shapes after merging with Parkzones LatLong:")
+    print(f"Final DataFrame shape: {final_df.shape}")
 
     final_df = final_df.rename(
         columns={"latitude": "latitude_zone", "longitude": "longitude_zone"}
@@ -155,8 +164,8 @@ def merge_and_format_data(
 
 def main():
     # # Stage 1: Load initial excel files
-    cale_df = load_sales_data("Cale")
-    parkster_df = load_sales_data("Parkster")
+    cale_df = process_excel_files("Cale")
+    parkster_df = process_excel_files("Parkster")
 
     # # Stage 2: Load and transform additional data
     parkzones_latlong_df = load_parkzones_latlong(
@@ -178,15 +187,13 @@ def main():
     psa_latlong_df.info()
 
     # # Stage 3: Merge and format data
-    final_df = (
-        merge_and_format_data(
-            cale_df, parkster_df, parkzones_latlong_df, psa_latlong_df
-        )
-        # .reset_index()
+    final_df = merge_and_format_data(
+        cale_df, parkster_df, parkzones_latlong_df, psa_latlong_df
     )
 
     print("\nFinal DataFrame:")
     final_df.info()
+    final_df.to_csv("out/final_df.csv")
 
     print("Reference DataFrame:")
     clean_df = pd.read_csv(
@@ -211,7 +218,7 @@ def main():
     if final_df.shape == clean_df.shape and final_df.columns.equals(clean_df.columns):
         print("Shapes and columns match!")
 
-        if final_df.equals(clean_df):  
+        if final_df.equals(clean_df):
             print("Values match exactly!")
         else:
             print("Values differ.")
