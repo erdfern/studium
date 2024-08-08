@@ -50,7 +50,11 @@ def process_parkster_file(path: str):
         usecols=list(PARKSTER_COLS.keys()),
         parse_dates=["Start"],
         date_format="%Y-%m-%d %H:%M:%S",
-        decimal=".",
+        decimal=",",
+        dtype={
+            "Parkgebühren inkl. MwSt. in EUR": "float64",
+            "Zonencode": "int64",
+        },
     ).rename(columns=PARKSTER_COLS)
     df["category"] = "app"
     return df
@@ -93,15 +97,10 @@ def process_excel_files(prefix: str) -> pd.DataFrame:
 
 
 def load_sales_data(prefix: str):
-    csv_path = f"out/{prefix.lower()}_combined.csv"
-    if os.path.exists(csv_path):
-        print(f"Loading existing {csv_path}")
-        df = pd.read_csv(csv_path, parse_dates=["time"], dtype={"fee": float})
-    else:
-        print(f"Processing {prefix} data")
-        df = process_excel_files(prefix)
-        df.to_csv(csv_path, index=False)
-        print(f"Saved processed data to {csv_path}")
+    print(f"Processing {prefix} data")
+    df = process_excel_files(prefix)
+    print(f"Done with {prefix} data")
+    df.info()
     return df
 
 
@@ -133,24 +132,22 @@ def merge_and_format_data(
         columns={"latitude": "latitude_zone", "longitude": "longitude_zone"}
     )
 
-    final_df = (
-        final_df[
-            [
-                "time",
-                "machine_ID",
-                "fee",
-                "category",
-                "street",
-                "latitude_machine",
-                "longitude_machine",
-                "zone",
-                "latitude_zone",
-                "longitude_zone",
-            ]
-        ]
-        .set_index("time")
-        .sort_index()
-    )#.astype({"machine_ID": "int64"})
+    # final_df = (
+    #     final_df[
+    #         [
+    #             "time",
+    #             "machine_ID",
+    #             "fee",
+    #             "category",
+    #             "street",
+    #             "latitude_machine",
+    #             "longitude_machine",
+    #             "zone",
+    #             "latitude_zone",
+    #             "longitude_zone",
+    #         ]
+    #     ]
+    # )
 
     return final_df
 
