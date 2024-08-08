@@ -3,8 +3,6 @@ from os.path import join
 import pandas as pd
 import re
 
-import pandas as pd
-
 DATA_DIR = "data"
 CALE_COLS = {
     "Automat - Automaten ID": "machine_ID",
@@ -188,31 +186,29 @@ def main():
 
     print("\nFinal DataFrame:")
     final_df.info()
+    final_df.to_csv("out/final_df.csv", index=False)
 
-    # print("Reference DataFrame:")
-    # clean_df = pd.read_csv(
-    #     "data/clean_dataframe.csv",
-    #     parse_dates=["time"],
-    #     index_col="time",
-    #     dtype={
-    #         "machine_ID": "Int64",
-    #         "fee": "float64",
-    #         "category": "object",
-    #         "street": "object",
-    #         "latitude_machine": "float64",
-    #         "longitude_machine": "float64",
-    #         "zone": "int64",
-    #         "latitude_zone": "float64",
-    #         "longitude_zone": "float64",
-    #     },
-    # ).sort_index()
-    # clean_df.info()
-
-    # print(f"Equal: {final_df.equals(clean_df)}")
-    # final_df.to_csv(join("out", "my_clean_dataframe.csv"), dtype={})
+    print("Reference DataFrame:")
+    clean_df = pd.read_csv(
+        "data/clean_dataframe.csv",
+        parse_dates=["time"],
+        index_col="time",
+        dtype={
+            "machine_ID": "Int64",
+            "fee": "float64",
+            "category": "object",
+            "street": "object",
+            "latitude_machine": "float64",
+            "longitude_machine": "float64",
+            "zone": "int64",
+            "latitude_zone": "float64",
+            "longitude_zone": "float64",
+        },
+    ).sort_index()
+    clean_df.info()
 
     fdf = pd.read_csv(
-        "out/my_clean_dataframe.csv",
+        "out/final_df.csv",
         parse_dates=["time"],
         index_col="time",
         dtype={
@@ -228,7 +224,8 @@ def main():
         },
     ).sort_index()
     fdf.info()
-    fdf.to_csv(join("out", "fdf.csv"))
+
+    print(f"Equal: {final_df.equals(clean_df)}")
 
 
 if __name__ == "__main__":
